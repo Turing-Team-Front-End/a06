@@ -5,6 +5,7 @@ import Register from '../pages/Register'
 import Index from '../pages/Index'
 import Site from '../pages/Site'
 import User from '../pages/User'
+import Document from '../pages/Document'
 
 // 路由映射表 
 const routes = [
@@ -31,6 +32,10 @@ const routes = [
             {
                 path: 'user',
                 element: <User />,
+            },
+            {
+                path: 'document',
+                element: <Document />,
             },
             {
                 path: '',
