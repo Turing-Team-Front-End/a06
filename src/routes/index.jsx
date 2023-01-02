@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom'
+import Main from '../pages/Main'
 import Home from '../pages/Home/'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
@@ -8,19 +9,30 @@ import User from '../pages/User'
 import Document from '../pages/Document'
 import Reset from '../pages/Reset'
 
+
 // 路由映射表 
 const routes = [
-    {   //登录页面
-        path: '/login',
-        element: <Login />,
-    },
-    {   //注册页面
-        path: '/register',
-        element: <Register />,
-    },
-    {   //重置密码页面
-        path: '/reset',
-        element: <Reset />,
+    {   //第一屏页面
+        path: '/main',
+        element: <Main />,
+        children: [
+            {   //登录
+                path: 'login',
+                element: <Login />,
+            },
+            {   //注册
+                path: 'register',
+                element: <Register />,
+            },
+            {   //重置密码
+                path: 'reset',
+                element: <Reset />,
+            },
+            {   //重定向到登录页面
+                path: '',
+                element: <Navigate to='login' />
+            }
+        ]
     },
     {   //主页面
         path: '/home',
@@ -52,7 +64,7 @@ const routes = [
     // 路由重定向
     {
         path: '/',
-        element: <Navigate to='/login' />
+        element: <Navigate to='/main' />
     }
 ]
 export default routes
