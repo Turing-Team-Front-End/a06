@@ -1,0 +1,158 @@
+.main {
+  display: flex;
+}
+.sidebar {
+  /* 侧边栏 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  gap: 5rem;
+
+  width: 40rem;
+  height: 60.9375rem;
+
+  /* material-theme/ref/primary/primary60
+  
+  token=md.ref.palette.primary60
+  */
+  background: #6e88ff;
+  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.app-intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1.5rem;
+
+  width: 21rem;
+  height: 5.75rem;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.app-intro .app-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+
+  width: 4.75rem;
+  height: 4.75rem;
+  background: #ffffff;
+  border-radius: 1rem;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.app-intro .app-name {
+  width: 13.75rem;
+  height: 2.875rem;
+
+  font-family: "Otomanopee One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.875rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0rem;
+  gap: 4rem;
+
+  width: 19.5625rem;
+  height: 16rem;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.welcome .hello {
+  width: 100%;
+  height: 6rem;
+
+  font-family: "ZCOOL KuaiLe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 6rem;
+  line-height: 6rem;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.welcome .greeting {
+  width: 19.5625rem;
+  height: 6rem;
+
+  font-family: "ZCOOL KuaiLe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 3rem;
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rem 2rem 6.25rem;
+  gap: 2.5rem;
+
+  width: 57.3125rem;
+  height: 60.9375rem;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+}
