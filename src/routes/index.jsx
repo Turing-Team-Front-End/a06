@@ -9,35 +9,35 @@ import Document from '../pages/Document'
 
 // 路由映射表 
 const routes = [
-    {
+    {   //登录页面
         path: '/login',
         element: <Login />,
     },
-    {
+    {   //注册页面
         path: '/register',
         element: <Register />,
     },
-    {
+    {   //主页面
         path: '/home',
         element: <Home />,
         children: [
-            {
+            {   //主页面的主页
                 path: 'index',
                 element: <Index />,
             },
-            {
+            {   //主页面的设置页
                 path: 'site',
                 element: <Site />,
             },
-            {
+            {   //主页面的用户管理页
                 path: 'user',
                 element: <User />,
             },
-            {
+            {   //主页面的文件管理页
                 path: 'document',
                 element: <Document />,
             },
-            {
+            {   //主页面的重定向
                 path: '',
                 element: <Navigate to='index' />
             }
