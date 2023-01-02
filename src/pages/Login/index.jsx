@@ -1,7 +1,91 @@
-import React from 'react'
-
+import React from "react";
+import { Button, Checkbox, Form, Input } from "antd";
+import "./index.css";
+import { Link } from "react-router-dom";
 export default function Login() {
-    return (
-        <div>Login</div>
-    )
+  let email;
+  let password;
+  const [form] = Form.useForm();
+  const onReset = () => {
+    form.resetFields();
+  };
+  return (
+    <div>
+      <div className='title'>
+        <p>登录</p>
+      </div>
+      <Form
+        style={{ margin: "auto", paddingTop: 40, width: 600 }}
+        form={form}
+        layout='horizontal'
+        className='login-form'
+        initialValues={{
+          remember: true,
+          email: email,
+          password: password
+        }}
+        // onFinish={toLogin}
+        // onFinishFailed={onFinishFailed}
+      >
+        <p>邮箱地址</p>
+        <Form.Item
+          name='email'
+          rules={[
+            {
+              required: true,
+              message: "邮箱地址不能为空"
+            }
+          ]}
+        >
+          <Input className='login-input' placeholder='请输入邮箱地址' />
+        </Form.Item>
+        <p>密码</p>
+        <Form.Item
+          name='password'
+          rules={[
+            {
+              required: true,
+              message: "密码不能为空"
+            }
+          ]}
+        >
+          <Input
+            className='login-input'
+            type='password'
+            placeholder='请输入密码'
+          />
+        </Form.Item>
+        <Form.Item className='extra-option'>
+          <Form.Item
+            className='remember'
+            name='remember'
+            valuePropName='checked'
+            noStyle
+          >
+            <Checkbox>自动登录</Checkbox>
+          </Form.Item>
+          <a className='forget' href=''>
+            忘记密码
+          </a>
+        </Form.Item>
+        <Form.Item style={{ textAlign: "center" }}>
+          <Button
+            type='primary'
+            shape='round'
+            // htmlType='submit'
+            style={{ marginRight: "15px" }}
+          >
+            登录
+          </Button>
+          <Button shape='round' htmlType='button' onClick={onReset}>
+            重置
+          </Button>
+        </Form.Item>
+        <Form.Item style={{ textAlign: "center" }}>
+          首次使用？
+          <Link to='/main/register'>点我注册!</Link>
+        </Form.Item>
+      </Form>
+    </div>
+  );
 }
