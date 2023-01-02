@@ -6,6 +6,7 @@ import Index from '../pages/Index'
 import Site from '../pages/Site'
 import User from '../pages/User'
 import Document from '../pages/Document'
+import Reset from '../pages/Reset'
 
 // 路由映射表 
 const routes = [
@@ -16,6 +17,10 @@ const routes = [
     {   //注册页面
         path: '/register',
         element: <Register />,
+    },
+    {   //重置密码页面
+        path: '/reset',
+        element: <Reset />,
     },
     {   //主页面
         path: '/home',
