@@ -314,23 +314,6 @@
     width: 128px;
     height: 56px;
 
-    /* material-theme/sys/light/primary
-
-token=md.sys.color.primary
-
-primary / on-primary
-
-Regular text:
-Level AA - ✅ Pass
-Level AAA - ❌ Fail
-
-Large text:
-Level AA - ✅ Pass
-Level AAA - ✅ Pass
-
-Icons:
-Level AA - ✅ Pass
-*/
     border: 2px solid #3452CE;
     border-radius: 8px;
 
@@ -345,23 +328,6 @@ Level AA - ✅ Pass
     width: 56px;
     height: 56px;
 
-    /* material-theme/sys/light/secondary-container
-
-token=md.sys.color.secondary-container
-
-secondary-container / on-secondary-container
-
-Regular text:
-Level AA - ✅ Pass
-Level AAA - ✅ Pass
-
-Large text:
-Level AA - ✅ Pass
-Level AAA - ✅ Pass
-
-Icons:
-Level AA - ✅ Pass
-*/
     background: #DDE1FF;
     border-radius: 121px;
 
