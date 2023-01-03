@@ -78,8 +78,8 @@ export default function Home() {
                         <Upload {...props}>
                             <Button icon={<UploadOutlined />} className='upload'>上传文件</Button>
                         </Upload>
-                        <div className='admin'>admin</div>
-                        <div className='logout'>退出登录</div>
+                        <Button className='admin'>admin</Button>
+                        <Button className='logout'>退出登录</Button>
                         <div className='img-logo'></div>
                     </div>
                 </div>
