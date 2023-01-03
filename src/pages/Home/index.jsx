@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { Input, Space, Button, message, Upload } from 'antd';
+import { Button, message, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import "./index.css";
 import logo from '../../assets/turingLogo2.svg'
@@ -9,8 +9,6 @@ import img2 from '../../assets/Component2.svg'
 import img3 from '../../assets/Component3.svg'
 import img4 from '../../assets/Component4.svg'
 export default function Home() {
-    const { Search } = Input;
-    const onSearch = (value) => console.log(value);
     const [name, setname] = useState('Bucket')
     const props = {
         name: 'file',
