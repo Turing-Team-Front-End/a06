@@ -38,7 +38,7 @@
     align-items: flex-start;
     padding: 0px;
     /* Inside auto layout */
-
+    width: 100rem;
     flex: none;
     order: 1;
     align-self: stretch;
@@ -56,8 +56,8 @@
     align-items: center;
     padding: 0px 32px;
     gap: 100px;
-    height: 80px;
     background: #FEFBFF;
+    height: 80px;
     /* Inside auto layout */
 
     flex: none;
@@ -152,5 +152,222 @@
 
     flex: none;
     order: 1;
+    flex-grow: 0;
+}
+
+.topName {
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 8px 4px;
+    gap: 8px;
+
+    width: 123px;
+    height: 80px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.topName-content {
+    /* Bucket */
+
+
+    width: 107px;
+    height: 38px;
+
+    font-family: 'HarmonyOS Sans SC';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 38px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    /* material-theme/sys/light/on-background */
+
+    color: #1B1B1F;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.top-input {
+    /* Frame 55 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+
+    height: 56px;
+    font-size: 19px;
+    background: #DDE1FF;
+    border-radius: 8px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+.top-right {
+
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+
+    width: 450px;
+    height: 56px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.upload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 8px;
+    color: #fff;
+    width: 128px;
+    height: 56px;
+    background: #3452CE;
+    border-radius: 8px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.admin {
+    /* Frame 54 */
+
+
+    box-sizing: border-box;
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+
+    width: 90px;
+    height: 56px;
+
+
+    border: 2px solid #3452CE;
+    border-radius: 8px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.logout {
+
+    box-sizing: border-box;
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+
+    width: 128px;
+    height: 56px;
+
+    /* material-theme/sys/light/primary
+
+token=md.sys.color.primary
+
+primary / on-primary
+
+Regular text:
+Level AA - ✅ Pass
+Level AAA - ❌ Fail
+
+Large text:
+Level AA - ✅ Pass
+Level AAA - ✅ Pass
+
+Icons:
+Level AA - ✅ Pass
+*/
+    border: 2px solid #3452CE;
+    border-radius: 8px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.img-logo {
+    width: 56px;
+    height: 56px;
+
+    /* material-theme/sys/light/secondary-container
+
+token=md.sys.color.secondary-container
+
+secondary-container / on-secondary-container
+
+Regular text:
+Level AA - ✅ Pass
+Level AAA - ✅ Pass
+
+Large text:
+Level AA - ✅ Pass
+Level AAA - ✅ Pass
+
+Icons:
+Level AA - ✅ Pass
+*/
+    background: #DDE1FF;
+    border-radius: 121px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
     flex-grow: 0;
 }
