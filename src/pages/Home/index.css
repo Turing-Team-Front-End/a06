@@ -1,0 +1,156 @@
+.main1 {
+    /* 自动布局 */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+}
+
+.side {
+    /* 侧边栏 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 48px;
+    gap: 80px;
+    width: 96px;
+    height: 975px;
+    background: #FEFBFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.right {
+    /* Frame 97 */
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+.top {
+    /* 顶栏 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 32px;
+    gap: 100px;
+    height: 80px;
+    background: #FEFBFF;
+    /* Inside auto layout */
+
+    flex: none;
+    align-self: stretch;
+    flex-grow: 1;
+
+}
+
+.content1 {
+    /* 内容区域 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 24px 24px 16px;
+    gap: 16px;
+    height: 895px;
+    background: #FEFBFF;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+.logo {
+    /* Frame 37991 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 8px;
+
+    width: 56px;
+    height: 75.51px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.bar {
+    /* 侧边栏 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 32px;
+
+    width: 64px;
+    height: 352px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.item {
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 28px;
+    gap: 6px;
+
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    cursor: pointer;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
