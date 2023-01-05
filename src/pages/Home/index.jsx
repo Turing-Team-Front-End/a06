@@ -51,11 +51,11 @@ export default function Home() {
     ]
     const navigate = useNavigate();
     const onClick = (e) => {
-        navigate(`${e.target.alt}`)
+        navigate(`${e.target.id}`)
         setname(e.target.name)
     };
     const listItems = items.map((item, index) => {
-        return (<li key={index} className='item' onClick={onClick} ><img src={item.img} alt={item.url} name={item.name} /></li>)
+        return (<li key={index} className='item' onClick={onClick} ><img src={item.img} id={item.url} name={item.name} /></li>)
     })
     return (
         <div className='main1'>
@@ -72,7 +72,6 @@ export default function Home() {
                     <div className='topName'>
                         <div className='topName-content'>{name}</div>
                     </div>
-
                     <input type="text" name="" id="" className='top-input' placeholder='搜索...' />
                     <div className='top-right'>
                         <Upload {...props}>
