@@ -20,14 +20,21 @@ export default function Home() {
     //       key    /src/assets/Component5.svg
     //       index  0 
 
-    const [name, setName] = useState("Bucket");
+
     useEffect(() => {
+        if (window.sessionStorage.length == 0) {
+            window.sessionStorage.setItem("index", 0);
+            window.sessionStorage.setItem("key", img5);
+            window.sessionStorage.setItem("name", "Bucket");
+            setName(window.sessionStorage.getItem("name"))
+        }
         let allImg = document.querySelectorAll("li img")
         let index = window.sessionStorage.getItem("index")
         let key = window.sessionStorage.getItem("key")
         allImg[index].setAttribute("src", key)
 
     }, [])
+    const [name, setName] = useState(window.sessionStorage.getItem("name"));
     const props = {
         name: "file",
         action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -96,6 +103,7 @@ export default function Home() {
         })
         navigate(`${e.target.id}`);
         setName(e.target.name);
+        window.sessionStorage.setItem("name", e.target.name);
 
     };
     const listItems = items.map((item, index) => {
