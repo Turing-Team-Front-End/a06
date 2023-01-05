@@ -6,6 +6,10 @@
     padding: 0px;
 }
 
+li {
+    list-style: none;
+}
+
 .side {
     /* 侧边栏 */
 
@@ -151,6 +155,12 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+}
+
+.item>img:hover {
+    border-radius: 12px;
+    border: 1px solid #3452CE;
+
 }
 
 
