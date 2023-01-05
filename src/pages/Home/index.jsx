@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Button, message, Upload, Input } from "antd";
-import { UploadOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, message, Upload, Input, Avatar } from "antd";
+import { UploadOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
 import "./index.css";
 import logo from "../../assets/turingLogo2.svg";
 import img1 from "../../assets/Component1.svg";
@@ -12,6 +12,7 @@ import img5 from "../../assets/Component5.svg";
 import img6 from "../../assets/Component6.svg";
 import img7 from "../../assets/Component7.svg";
 import img8 from "../../assets/Component8.svg";
+import toby from "../../assets/toby.jpg";
 export default function Home() {
     //先这样，要用redux解决
     //目前打开home页会白屏，原因是sessionStorage里没有值，所以无法渲染组件
@@ -79,15 +80,17 @@ export default function Home() {
         items.forEach((item, index) => {
             //点击当前按钮
             if (e.target.getAttribute('src') == item.img) {
-                //再次循环，先将所有item的图片换成原来的
+                //再次循环，先将所有item的图片换成原来的无active的图片
                 items.forEach((item, index) => {
                     allImg[index].setAttribute("src", item.img)
                 })
                 //再将当前点击的item图片换成active的
                 e.target.setAttribute("src", item.imgActive)
                 //把当前的active和index保存在本地
+                console.log(item, index);
                 window.sessionStorage.setItem("index", index);
                 window.sessionStorage.setItem("key", item.imgActive);
+
             }
 
         })
@@ -124,7 +127,7 @@ export default function Home() {
                         </Upload>
                         <Button className='admin'>admin</Button>
                         <Button className='logout'>退出登录</Button>
-                        <div className='img-logo'></div>
+                        <div className='img-logo'><Avatar size={56} src={toby} /></div>
                     </div>
                 </div>
                 <div className='content1'></div>
