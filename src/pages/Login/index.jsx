@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
 import "./index.css";
 import { Link } from "react-router-dom";
 export default function Login() {
@@ -70,16 +71,15 @@ export default function Login() {
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
           <Button
-            type='primary'
-            shape='round'
+            className='login-button'
             // htmlType='submit'
-            style={{ marginRight: "15px" }}
           >
-            登录
+            <p>登录</p>
+            <ArrowRightOutlined />
           </Button>
-          <Button shape='round' htmlType='button' onClick={onReset}>
+          {/* <Button shape='round' htmlType='button' onClick={onReset}>
             重置
-          </Button>
+          </Button> */}
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
           首次使用？
