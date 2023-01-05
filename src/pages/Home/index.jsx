@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Button, message, Upload, Input } from "antd";
 import { UploadOutlined, SearchOutlined } from "@ant-design/icons";
@@ -8,8 +8,25 @@ import img1 from "../../assets/Component1.svg";
 import img2 from "../../assets/Component2.svg";
 import img3 from "../../assets/Component3.svg";
 import img4 from "../../assets/Component4.svg";
+import img5 from "../../assets/Component5.svg";
+import img6 from "../../assets/Component6.svg";
+import img7 from "../../assets/Component7.svg";
+import img8 from "../../assets/Component8.svg";
 export default function Home() {
+    //先这样，要用redux解决
+    //目前打开home页会白屏，原因是sessionStorage里没有值，所以无法渲染组件
+    //手动添加 Key    Value
+    //       key    /src/assets/Component5.svg
+    //       index  0 
+
     const [name, setName] = useState("Bucket");
+    useEffect(() => {
+        let allImg = document.querySelectorAll("li img")
+        let index = window.sessionStorage.getItem("index")
+        let key = window.sessionStorage.getItem("key")
+        allImg[index].setAttribute("src", key)
+
+    }, [])
     const props = {
         name: "file",
         action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -30,29 +47,53 @@ export default function Home() {
     const items = [
         {
             img: img1,
+            imgActive: img5,
             url: "/home/index",
             name: "Bucket"
         },
         {
             img: img2,
+            imgActive: img6,
             url: "/home/document",
             name: "文件管理"
         },
         {
             img: img3,
+            imgActive: img7,
             url: "/home/user",
             name: "用户管理"
         },
         {
             img: img4,
+            imgActive: img8,
             url: "/home/site",
             name: "设置"
         }
     ];
     const navigate = useNavigate();
     const onClick = (e) => {
+        //排他思想
+
+        //先获取所有的item
+        let allImg = document.querySelectorAll("li img")
+        items.forEach((item, index) => {
+            //点击当前按钮
+            if (e.target.getAttribute('src') == item.img) {
+                //再次循环，先将所有item的图片换成原来的
+                items.forEach((item, index) => {
+                    allImg[index].setAttribute("src", item.img)
+                })
+                //再将当前点击的item图片换成active的
+                e.target.setAttribute("src", item.imgActive)
+                //把当前的active和index保存在本地
+                window.sessionStorage.setItem("index", index);
+                window.sessionStorage.setItem("key", item.imgActive);
+            }
+
+        })
         navigate(`${e.target.id}`);
         setName(e.target.name);
+
     };
     const listItems = items.map((item, index) => {
         return (
