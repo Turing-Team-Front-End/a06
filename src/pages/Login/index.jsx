@@ -1,18 +1,14 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
 import "./index.css";
 import { Link } from "react-router-dom";
 export default function Login() {
   let email;
   let password;
   const [form] = Form.useForm();
-  const onReset = () => {
-    form.resetFields();
-  };
   return (
     <div>
-      <div className='title'>
+      <div className='login-title'>
         <p>登录</p>
       </div>
       <Form
@@ -57,13 +53,8 @@ export default function Login() {
           />
         </Form.Item>
         <Form.Item className='extra-option'>
-          <Form.Item
-            className='remember'
-            name='remember'
-            valuePropName='checked'
-            noStyle
-          >
-            <Checkbox>自动登录</Checkbox>
+          <Form.Item name='remember' valuePropName='checked' noStyle>
+            <Checkbox className='remember'>自动登录</Checkbox>
           </Form.Item>
           <a className='forget' href=''>
             忘记密码
@@ -74,16 +65,14 @@ export default function Login() {
             className='login-button'
             // htmlType='submit'
           >
-            <p>登录</p>
-            <ArrowRightOutlined />
+            <p>登录 →</p>
           </Button>
           {/* <Button shape='round' htmlType='button' onClick={onReset}>
             重置
           </Button> */}
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
-          首次使用？
-          <Link to='/main/register'>点我注册!</Link>
+          <Link to='/main/register'>创建账户</Link>
         </Form.Item>
       </Form>
     </div>
