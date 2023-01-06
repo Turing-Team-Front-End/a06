@@ -6,6 +6,10 @@
     padding: 0px;
 }
 
+li {
+    list-style: none;
+}
+
 .side {
     /* 侧边栏 */
 
@@ -153,6 +157,13 @@
     flex-grow: 0;
 }
 
+.item>img:hover {
+    border-radius: 12px;
+    border: 1px solid #3452CE;
+
+}
+
+
 .topName {
     /* 自动布局 */
 
@@ -214,13 +225,9 @@
     gap: 4px;
     height: 56px;
     font-size: 19px;
-    background: #DDE1FF;
+    min-width: 200px;
     border-radius: 8px;
     /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 1;
 }
 
 .top-right {
@@ -258,6 +265,8 @@
     height: 56px;
     background: #3452CE;
     border-radius: 8px;
+    font-weight: 400;
+    font-size: 16px;
 
     /* Inside auto layout */
 
@@ -287,6 +296,9 @@
 
     border: 2px solid #3452CE;
     border-radius: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #3452CE;
 
     /* Inside auto layout */
 
@@ -313,6 +325,9 @@
 
     border: 2px solid #3452CE;
     border-radius: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #3452CE;
 
     /* Inside auto layout */
 
