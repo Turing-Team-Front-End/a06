@@ -5,7 +5,7 @@ import icon from '../../assets/refresh-cw.svg'
 import toby from "../../assets/toby.jpg";
 export default function Site() {
     return (
-        <div className='content1'>
+        <>
             <div className='site-content'>
                 <div className='site-content-own'>
                     <div className='site-content-own-main'>
@@ -93,6 +93,6 @@ export default function Site() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
