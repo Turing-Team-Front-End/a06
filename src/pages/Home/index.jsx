@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Button, message, Upload, Input, Avatar } from "antd";
-import { UploadOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { UploadOutlined, SearchOutlined } from "@ant-design/icons";
 import "./index.css";
 import logo from "../../assets/turingLogo2.svg";
 import img1 from "../../assets/Component1.svg";
