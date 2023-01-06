@@ -8,6 +8,8 @@ import Site from '../pages/Site'
 import User from '../pages/User'
 import Document from '../pages/Document'
 import Reset from '../pages/Reset'
+import BasicSettings from '../pages/BasicSettings'
+import DetailedSettings from '../pages/DetailedSettings'
 
 
 // 路由映射表 
@@ -41,6 +43,21 @@ const routes = [
             {   //主页面的主页
                 path: 'index',
                 element: <Index />,
+                children: [
+                    {   //主页面的主页
+                        path: 'basic',
+                        element: <BasicSettings />,
+                    },
+                    {   //主页面的主页
+                        path: 'detail',
+                        element: <DetailedSettings />,
+
+                    },
+                    {   //重定向
+                        path: '',
+                        element: <Navigate to='basic' />
+                    }
+                ]
             },
             {   //主页面的设置页
                 path: 'site',

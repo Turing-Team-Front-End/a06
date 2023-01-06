@@ -1,0 +1,130 @@
+.bucket-content {
+    /* Frame 107 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+.bucket-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 32px;
+
+
+
+    background: #F4F5FB;
+    ;
+    /* Drop Shadow */
+
+    border-radius: 16px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+.bucket-mid {
+    /* 访问域名 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+.bucket-mid-content {
+    /* Frame 89 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+
+
+
+
+    background: #F4F5FB;
+    ;
+    /* Drop Shadow */
+
+    border-radius: 16px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+.bucket-site {
+    /* 基础设置 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 8px;
+
+
+
+
+    background: #F4F5FB;
+    ;
+    /* Drop Shadow */
+
+    box-shadow: 0px 0px 18px -20px rgba(234, 234, 234, 0.8);
+    border-radius: 16px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 1;
+}
