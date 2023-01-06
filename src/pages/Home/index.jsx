@@ -138,8 +138,10 @@ export default function Home() {
                         <div className='img-logo'><Avatar size={56} src={toby} /></div>
                     </div>
                 </div>
-                <div className='content1'></div>
-                <Outlet />
+                <div className='content1'>
+                    <Outlet />
+                </div>
+
             </div>
         </div>
     );

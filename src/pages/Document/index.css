@@ -1,0 +1,53 @@
+.document-side {
+    /* 二级侧边栏 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px 16px;
+    gap: 16px;
+    box-sizing: border-box;
+    width: 251px;
+
+    background: #e2e1ec;
+
+    /* Drop Shadow */
+
+    box-shadow: 0px 0px 18px -20px rgba(234, 234, 234, 0.8);
+    border-radius: 16px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
+
+.document-content {
+    /* Frame 107 */
+
+
+    /* 自动布局 */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+
+    box-shadow: 0px 0px 18px -20px rgba(234, 234, 234, 0.8);
+    border-radius: 16px;
+    background: #e2e1ec;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+}
