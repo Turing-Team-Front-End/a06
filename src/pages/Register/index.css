@@ -1,9 +1,37 @@
-.login-title {
+.return {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
+
+  width: 656px;
+  /* height: 56px; */
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.return .return-button {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #767680;
+  color: #767680;
+}
+.return .return-button:hover {
+  background: #3452ce;
+  color: #ffffff;
+}
+.title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
   padding: 0.5rem;
   gap: 0.5rem;
 
@@ -17,7 +45,7 @@
   align-self: stretch;
   flex-grow: 0;
 }
-.login-title p {
+.title p {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,17 +60,15 @@
   order: 0;
   flex-grow: 0;
 }
-.login-form > p {
+.register-form > p {
   height: 2.4375rem;
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
   padding-bottom: 0.5rem;
 }
-.login-form .login-input {
+.register-form .register-input {
   box-sizing: border-box;
-
-  /* 自动布局 */
 
   display: flex;
   flex-direction: row;
@@ -52,10 +78,7 @@
   border-radius: 0.5rem;
 }
 
-.login-form .extra-option .forget {
-  float: right;
-}
-.login-form .login-button {
+.register-form .register-button {
   display: flex;
   justify-content: center;
   margin: auto;
@@ -71,13 +94,11 @@
   font-size: 1rem;
   border-radius: 0.5rem;
 
-  /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
-.login-form .login-button:hover {
+.register-form .register-button:hover {
   background: #3452ce;
   color: #ffffff;
 }
