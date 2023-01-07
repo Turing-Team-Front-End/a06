@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Button, message, Upload, Input, Avatar } from "antd";
-import { UploadOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons";
+import { UploadOutlined, SearchOutlined } from "@ant-design/icons";
 import "./index.css";
 import logo from "../../assets/turingLogo2.svg";
 import img1 from "../../assets/Component1.svg";
@@ -138,8 +138,10 @@ export default function Home() {
                         <div className='img-logo'><Avatar size={56} src={toby} /></div>
                     </div>
                 </div>
-                <div className='content1'></div>
-                <Outlet />
+                <div className='content1'>
+                    <Outlet />
+                </div>
+
             </div>
         </div>
     );
