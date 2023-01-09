@@ -16,7 +16,7 @@ export default function Register() {
           </Button>
         </Link>
       </div>
-      <div className='title'>
+      <div className='register-title'>
         <p>注册</p>
       </div>
       <Form
