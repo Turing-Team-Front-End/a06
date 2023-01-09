@@ -56,9 +56,9 @@ export default function Login() {
           <Form.Item name='remember' valuePropName='checked' noStyle>
             <Checkbox className='remember'>自动登录</Checkbox>
           </Form.Item>
-          <a className='forget' href=''>
+          <Link className='forget' to='/main/reset'>
             忘记密码
-          </a>
+          </Link>
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
           <Button
