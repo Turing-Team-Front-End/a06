@@ -10,7 +10,7 @@ export default function BasicSettings() {
                     <div className='bucket-mid-content'>bucket-mid-content</div>
                 </div>
                 <div className='bucket-site'>基础设置
-                    <Link to='/home/index/detail'>跳转到详细设置</Link></div>
+                    <Link to='/home/bucket/detail'>跳转到详细设置</Link></div>
             </div>
         </>
     )
