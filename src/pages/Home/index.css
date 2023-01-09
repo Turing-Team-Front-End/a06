@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
+    width: 100vw;
+    height: 100vh;
 }
 
 li {
@@ -12,8 +13,6 @@ li {
 
 .side {
     /* 侧边栏 */
-
-
     /* 自动布局 */
 
     display: flex;
@@ -22,7 +21,6 @@ li {
     padding: 24px 48px;
     gap: 80px;
     width: 96px;
-    height: 975px;
     background: #FEFBFF;
     /* Inside auto layout */
 
@@ -40,9 +38,8 @@ li {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
+    min-height: 700px;
     /* Inside auto layout */
-    width: 100rem;
     flex: none;
     order: 1;
     align-self: stretch;
@@ -66,7 +63,7 @@ li {
 
     flex: none;
     align-self: stretch;
-    flex-grow: 1;
+    flex-grow: 0;
 
 }
 
@@ -79,7 +76,6 @@ li {
     align-items: center;
     padding: 8px 24px 24px 16px;
     gap: 16px;
-    height: 895px;
     background: #FEFBFF;
 
     /* Inside auto layout */
