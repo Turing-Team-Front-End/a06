@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import './index.css'
-export default function Index() {
+export default function Bucket() {
     return (
         <>
             <div className='bucket-side'>bucket-side</div>
