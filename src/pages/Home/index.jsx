@@ -26,7 +26,6 @@ export default function Home() {
       window.sessionStorage.setItem("key", img5);
       window.sessionStorage.setItem("name", "bucket");
       setName(window.sessionStorage.getItem("name"));
-      document.getElementById(bucket).classList.add("button-active");
     }
     let allImg = document.querySelectorAll("li img");
     let index = window.sessionStorage.getItem("index");
