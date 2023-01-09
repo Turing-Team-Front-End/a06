@@ -1,347 +1,372 @@
 .main1 {
-    /* 自动布局 */
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100vw;
-    height: 100vh;
+  /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 .side {
-    /* 侧边栏 */
-    /* 自动布局 */
+  /* 侧边栏 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 48px;
-    gap: 80px;
-    width: 96px;
-    background: #FEFBFF;
-    /* Inside auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 48px;
+  gap: 80px;
+  width: 96px;
+  background: #fefbff;
+  /* Inside auto layout */
 
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .right {
-    /* Frame 97 */
+  /* Frame 97 */
 
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: 700px;
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 700px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
 }
 
 .top {
-    /* 顶栏 */
+  /* 顶栏 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 32px;
+  gap: 100px;
+  background: #fefbff;
+  height: 80px;
+  /* Inside auto layout */
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px 32px;
-    gap: 100px;
-    background: #FEFBFF;
-    height: 80px;
-    /* Inside auto layout */
-
-    flex: none;
-    align-self: stretch;
-    flex-grow: 0;
-
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .content1 {
-    /* 内容区域 */
-    /* 自动布局 */
+  /* 内容区域 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 8px 24px 24px 16px;
-    gap: 16px;
-    background: #FEFBFF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 24px 24px 16px;
+  gap: 16px;
+  background: #fefbff;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
 }
 
 .logo {
-    /* Frame 37991 */
+  /* Frame 37991 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  width: 56px;
+  height: 75.51px;
 
-    width: 56px;
-    height: 75.51px;
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .bar {
-    /* 侧边栏 */
+  /* 侧边栏 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 32px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 32px;
+  width: 64px;
+  height: 352px;
 
-    width: 64px;
-    height: 352px;
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .item {
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 28px;
+  gap: 6px;
+  /* transition: 2s; */
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  cursor: pointer;
+  /* Inside auto layout */
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 28px;
-    gap: 6px;
-
-    width: 64px;
-    height: 64px;
-    border-radius: 12px;
-    cursor: pointer;
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
-.item>img:hover {
-    border-radius: 12px;
-    border: 1px solid #3452CE;
-
+.item :hover {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: 0.5s;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
 }
+.side .bar .button-active {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #3452ce;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
 
-
+  -webkit-animation: flip 1s;
+  animation: flip 1s forwards;
+}
+@-webkit-keyframes flip {
+  0% {
+    -webkit-transform: translateY(0) rotateX(0);
+    transform: translateY(0) rotateX(0);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+  }
+  100% {
+    -webkit-transform: translateY(-100%) rotateX(-180deg);
+    transform: translateY(-100%) rotateX(-180deg);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+}
+@keyframes flip {
+  0% {
+    -webkit-transform: translateY(-100%) rotateX(-180deg);
+    transform: translateY(-100%) rotateX(-180deg);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+  100% {
+    -webkit-transform: translateY(0) rotateX(0);
+    transform: translateY(0) rotateX(0);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+  }
+}
 .topName {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 8px 4px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 8px 4px;
+  gap: 8px;
 
-    width: 123px;
-    height: 80px;
-    /* Inside auto layout */
+  width: 123px;
+  height: 80px;
+  /* Inside auto layout */
 
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .topName-content {
-    /* Bucket */
+  /* Bucket */
 
+  width: 107px;
+  height: 38px;
 
-    width: 107px;
-    height: 38px;
+  font-family: "HarmonyOS Sans SC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 38px;
+  /* identical to box height */
 
-    font-family: 'HarmonyOS Sans SC';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 38px;
-    /* identical to box height */
+  display: flex;
+  align-items: center;
 
-    display: flex;
-    align-items: center;
+  /* material-theme/sys/light/on-background */
 
-    /* material-theme/sys/light/on-background */
+  color: #1b1b1f;
 
-    color: #1B1B1F;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .top-input {
-    /* Frame 55 */
+  /* Frame 55 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    height: 56px;
-    font-size: 19px;
-    min-width: 200px;
-    border-radius: 8px;
-    /* Inside auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  height: 56px;
+  font-size: 19px;
+  min-width: 200px;
+  border-radius: 8px;
+  /* Inside auto layout */
 }
 
 .top-right {
+  /* 自动布局 */
 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
 
+  width: 450px;
+  height: 56px;
 
-    /* 自动布局 */
+  /* Inside auto layout */
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 16px;
-
-    width: 450px;
-    height: 56px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
 }
 
 .upload {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 16px;
-    gap: 8px;
-    color: #fff;
-    width: 128px;
-    height: 56px;
-    background: #3452CE;
-    border-radius: 8px;
-    font-weight: 400;
-    font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 128px;
+  height: 56px;
+  background: #3452ce;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .admin {
-    /* Frame 54 */
+  /* Frame 54 */
 
+  box-sizing: border-box;
 
-    box-sizing: border-box;
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 16px;
-    gap: 8px;
+  width: 90px;
+  height: 56px;
 
-    width: 90px;
-    height: 56px;
+  border: 2px solid #3452ce;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #3452ce;
 
+  /* Inside auto layout */
 
-    border: 2px solid #3452CE;
-    border-radius: 8px;
-    font-weight: 400;
-    font-size: 20px;
-    color: #3452CE;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .logout {
+  box-sizing: border-box;
 
-    box-sizing: border-box;
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 16px;
-    gap: 8px;
+  width: 128px;
+  height: 56px;
 
-    width: 128px;
-    height: 56px;
+  border: 2px solid #3452ce;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #3452ce;
 
-    border: 2px solid #3452CE;
-    border-radius: 8px;
-    font-weight: 400;
-    font-size: 16px;
-    color: #3452CE;
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
 }
 
 .img-logo {
-    width: 56px;
-    height: 56px;
+  width: 56px;
+  height: 56px;
 
-    background: #DDE1FF;
-    border-radius: 121px;
+  background: #dde1ff;
+  border-radius: 121px;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 3;
-    flex-grow: 0;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
 }
