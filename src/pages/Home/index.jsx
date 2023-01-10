@@ -26,7 +26,7 @@ export default function Home() {
     // console.log(window.location.pathname);
     if (window.location.pathname.length > 15) str = "bucket";
     else str = window.location.pathname.slice(6);
-    console.log(str);
+    if (str == "index") str = "bucket";
     window.sessionStorage.setItem("name", str);
     switch (str) {
       case "bucket":
