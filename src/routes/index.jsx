@@ -3,7 +3,7 @@ import Main from "../pages/Main";
 import Home from "../pages/Home/";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Index from "../pages/Index";
+import Bucket from "../pages/Bucket";
 import Site from "../pages/Site";
 import User from "../pages/User";
 import Document from "../pages/Document";
@@ -48,7 +48,7 @@ const routes = [
       {
         //主页面的主页
         path: "bucket",
-        element: <Index />,
+        element: <Bucket />,
         children: [
           {
             //主页面的主页
