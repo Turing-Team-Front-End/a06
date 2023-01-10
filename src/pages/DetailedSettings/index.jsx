@@ -7,7 +7,7 @@ export default function DetailedSettings() {
             <div className='bucket-content-detail'>
                 <div className='bucket-content-detail-content'>
                     详细设置
-                    <Link to='/home/index/basic'>跳转到基础设置</Link>
+                    <Link to='/home/bucket/basic'>跳转到基础设置</Link>
                 </div>
             </div></>
     )
