@@ -254,12 +254,15 @@ li {
   align-items: center;
   gap: 4px;
   height: 56px;
-  font-size: 19px;
+  font-size: 20px;
   min-width: 200px;
+  background-color: #dde1ff;
   border-radius: 8px;
   /* Inside auto layout */
 }
-
+.top-input > input {
+  background-color: #dde1ff;
+}
 .top-right {
   /* 自动布局 */
 

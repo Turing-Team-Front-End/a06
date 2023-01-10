@@ -82,7 +82,7 @@ export default function Home() {
     {
       img: img1,
       imgActive: img5,
-      url: "/home/bucket",
+      url: "/home/index",
       name: "bucket"
     },
     {
