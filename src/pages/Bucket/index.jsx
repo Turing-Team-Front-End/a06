@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
 import { Button, Input, Table } from "antd";
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
 
@@ -85,11 +84,18 @@ export default function Bucket() {
           dataSource={bucketData}
           pagination={{ position: ["bottomCenter"] }}
 
-          // showHeader={false}
+        // showHeader={false}
         />
       </div>
-
-      <Outlet />
+      {/* 右边区域  */}
+      <div className='bucket-content'>
+        <div className='bucket-data'>bucket-data</div>
+        <div className='bucket-mid'>
+          <div className='bucket-mid-content'>bucket-mid-content</div>
+        </div>
+        <div className='bucket-site'>基础设置
+        </div>
+      </div>
     </>
   );
 }
