@@ -9,7 +9,7 @@
   padding: 24px 16px;
   gap: 16px;
   width: 251px;
-
+  /* min-height: 100%; */
   background: #f4f5fb;
   /* Drop Shadow */
 
@@ -98,160 +98,73 @@
 .bucket-table table {
   width: 219px;
   background-color: #f4f5fb;
+  color: #73768b;
 }
 
-.bucket-table table>thead {
+.bucket-table table > thead {
   font-size: 16px;
   margin-bottom: 16px;
 }
 
-.bucket-table table>thead>tr>th {
+.bucket-table table > thead > tr > th {
   background-color: #f4f5fb !important;
-  font-weight: 400;
+  font-weight: 400 !important;
+  color: #73768b !important;
 }
-
-.bucket-table .bucket-table-column {
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 16px 12px;
-  gap: 26px;
-  height: 52px;
-
-  border-radius: 8px;
-}
-
-.bucket-side .ant-table-wrapper .ant-table-tbody>tr.ant-table-row:hover>td {
+/* .bucket-side .ant-table-wrapper .ant-table {
+  height: 68vh;
+  background-color: #f4f5fb;
+} */
+.bucket-side .ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td {
   background: #dde1ff;
 }
-
-.bucket-content {
-  /* Frame 107 */
-
-
-  /* 自动布局 */
-
+/* .bucket-side .bucket-table-pagination {
+  position: fixed !important;
+  width: 219px;
+  bottom: 24px;
+  left: 128px;
+} */
+/* .bucket-side .bucket-table-pagination .ant-pagination-prev {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
+
+  width: 40px;
+  height: 40px;
+  background: #dde1ff;
+  border-radius: 8px;
+} */
+/* .bucket-side .bucket-table-pagination .ant-pagination-item {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  padding: 0px;
-  gap: 16px;
-
-
-
-  /* Inside auto layout */
-
+  text-align: center;
+  padding: 8px;
+  gap: 8px;
+  height: 40px;
+  background-color: #f4f5fb;
+  border-color: #f4f5fb;
   flex: none;
   order: 1;
   align-self: stretch;
   flex-grow: 1;
-}
-
-.bucket-data {
+} */
+/* .bucket-side .bucket-table-pagination .ant-pagination-next {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 16px;
-  gap: 32px;
+  flex-direction: row;
 
-
-
-  background: #F4F5FB;
-  ;
-  /* Drop Shadow */
-
-  border-radius: 16px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 1;
-}
-
-.bucket-mid {
-  /* 访问域名 */
-
-
-  /* 自动布局 */
-
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
+  padding: 8px;
   gap: 8px;
 
-
-
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 1;
-}
-
-.bucket-mid-content {
-  /* Frame 89 */
-
-
-  /* 自动布局 */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 24px;
-  gap: 16px;
-
-
-
-
-  background: #F4F5FB;
-  ;
-  /* Drop Shadow */
-
-  border-radius: 16px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 1;
-}
-
-.bucket-site {
-  /* 基础设置 */
-
-
-  /* 自动布局 */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 16px;
-  gap: 8px;
-
-
-
-
-  background: #F4F5FB;
-  ;
-  /* Drop Shadow */
-
-  box-shadow: 0px 0px 18px -20px rgba(234, 234, 234, 0.8);
-  border-radius: 16px;
-
-  /* Inside auto layout */
-
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  background: #dde1ff;
+  border-radius: 8px;
   flex: none;
   order: 2;
-  align-self: stretch;
-  flex-grow: 1;
-}
+  flex-grow: 0;
+} */

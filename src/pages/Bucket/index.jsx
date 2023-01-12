@@ -7,6 +7,7 @@ const columns = [
   {
     title: "全选",
     dataIndex: "content",
+    className: "bucket-columns",
     ellipsis: true
   }
 ];
@@ -31,7 +32,6 @@ export default function Bucket() {
     },
     {
       key: 1,
-
       content: "00000000000000000000000000000000000000000000"
     },
     {
@@ -40,6 +40,42 @@ export default function Bucket() {
     },
     {
       key: 3,
+      content: "bucket114514111111"
+    },
+    {
+      key: 4,
+      content: "bucket114514111111"
+    },
+    {
+      key: 5,
+      content: "bucket114514111111"
+    },
+    {
+      key: 6,
+      content: "bucket114514111111"
+    },
+    {
+      key: 7,
+      content: "bucket114514111111"
+    },
+    {
+      key: 8,
+      content: "bucket114514111111"
+    },
+    {
+      key: 9,
+      content: "bucket114514111111"
+    },
+    {
+      key: 10,
+      content: "bucket114514111111"
+    },
+    {
+      key: 11,
+      content: "bucket114514111111"
+    },
+    {
+      key: 12,
       content: "bucket114514111111"
     }
   ];
@@ -82,9 +118,13 @@ export default function Bucket() {
           rowSelection={rowSelection}
           columns={columns}
           dataSource={bucketData}
-          pagination={{ position: ["bottomCenter"] }}
-
-        // showHeader={false}
+          pagination={{
+            position: ["bottomCenter"],
+            className: "bucket-table-pagination",
+            total: "151",
+            showSizeChanger: false
+          }}
+          // showHeader={false}
         />
       </div>
       {/* 右边区域  */}
@@ -93,8 +133,7 @@ export default function Bucket() {
         <div className='bucket-mid'>
           <div className='bucket-mid-content'>bucket-mid-content</div>
         </div>
-        <div className='bucket-site'>基础设置
-        </div>
+        <div className='bucket-site'>基础设置</div>
       </div>
     </>
   );
