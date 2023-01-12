@@ -157,6 +157,7 @@ li {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 }
+
 .side .bar .button-active {
   display: flex;
   flex-direction: row;
@@ -169,6 +170,7 @@ li {
   -webkit-animation: flip 1s;
   animation: flip 1s forwards;
 }
+
 @-webkit-keyframes flip {
   0% {
     -webkit-transform: translateY(0) rotateX(0);
@@ -176,6 +178,7 @@ li {
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
   }
+
   100% {
     -webkit-transform: translateY(-100%) rotateX(-180deg);
     transform: translateY(-100%) rotateX(-180deg);
@@ -183,6 +186,7 @@ li {
     transform-origin: 50% 100%;
   }
 }
+
 @keyframes flip {
   0% {
     -webkit-transform: translateY(-100%) rotateX(-180deg);
@@ -190,6 +194,7 @@ li {
     -webkit-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
   }
+
   100% {
     -webkit-transform: translateY(0) rotateX(0);
     transform: translateY(0) rotateX(0);
@@ -197,6 +202,7 @@ li {
     transform-origin: 50% 0%;
   }
 }
+
 .topName {
   /* 自动布局 */
 
@@ -261,9 +267,11 @@ li {
   border-radius: 8px;
   /* Inside auto layout */
 }
-.top-input > input {
+
+.top-input>input {
   background-color: #dde1ff;
 }
+
 .top-right {
   /* 自动布局 */
 
