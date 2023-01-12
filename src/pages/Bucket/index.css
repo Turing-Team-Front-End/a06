@@ -9,7 +9,7 @@
   padding: 24px 16px;
   gap: 16px;
   width: 251px;
-
+  /* min-height: 100%; */
   background: #f4f5fb;
   /* Drop Shadow */
 
@@ -90,6 +90,7 @@
 .bucket-table table {
   width: 219px;
   background-color: #f4f5fb;
+  color: #73768b;
 }
 .bucket-table table > thead {
   font-size: 16px;
@@ -97,18 +98,63 @@
 }
 .bucket-table table > thead > tr > th {
   background-color: #f4f5fb !important;
-  font-weight: 400;
+  font-weight: 400 !important;
+  color: #73768b !important;
 }
-.bucket-table .bucket-table-column {
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 16px 12px;
-  gap: 26px;
-  height: 52px;
-
-  border-radius: 8px;
-}
+/* .bucket-side .ant-table-wrapper .ant-table {
+  height: 68vh;
+  background-color: #f4f5fb;
+} */
 .bucket-side .ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td {
   background: #dde1ff;
 }
+/* .bucket-side .bucket-table-pagination {
+  position: fixed !important;
+  width: 219px;
+  bottom: 24px;
+  left: 128px;
+} */
+/* .bucket-side .bucket-table-pagination .ant-pagination-prev {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
+
+  width: 40px;
+  height: 40px;
+  background: #dde1ff;
+  border-radius: 8px;
+} */
+/* .bucket-side .bucket-table-pagination .ant-pagination-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+  gap: 8px;
+  height: 40px;
+  background-color: #f4f5fb;
+  border-color: #f4f5fb;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+} */
+/* .bucket-side .bucket-table-pagination .ant-pagination-next {
+  display: flex;
+  flex-direction: row;
+
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
+
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  background: #dde1ff;
+  border-radius: 8px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+} */
