@@ -1,0 +1,183 @@
+.bucket-side {
+  /* 二级侧边栏 */
+
+  /* 自动布局 */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 16px;
+  gap: 16px;
+  width: 251px;
+  /* min-height: 100%; */
+  background: #f4f5fb;
+  /* Drop Shadow */
+
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bucket-side .bucket-search {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 8px 0;
+  padding: 12px 16px;
+  gap: 4px;
+  font-size: 14px;
+  background-color: #f4f5fb;
+  color: #767680;
+  border: 1px solid #767680;
+  width: 219px;
+  height: 44px;
+  border-radius: 8px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.bucket-side .bucket-search input {
+  background-color: #f4f5fb;
+}
+.bucket-side .bucket-search .search-svg {
+  font-size: 24px;
+}
+
+.bucket-operating {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 13px;
+  margin-bottom: 8px;
+  width: 219px;
+  height: 44px;
+}
+
+.bucket-operating .bucket-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: #f0efff;
+  color: #c8c6ca;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bucket-operating .bucket-delete:hover {
+  background: #ba1a1a;
+  color: #fff;
+}
+
+.bucket-operating .bucket-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 8px;
+  gap: 8px;
+  width: 162px;
+  height: 44px;
+  background: #3452ce;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.bucket-operating .bucket-create:hover {
+  background-color: #e5e6f9;
+}
+
+.bucket-table table {
+  background-color: #f4f5fb;
+  color: #73768b;
+}
+
+.bucket-table table > thead > tr > th {
+  background-color: #f4f5fb !important;
+  font-weight: 400 !important;
+  color: #73768b !important;
+}
+/* .bucket-side .ant-table-wrapper .ant-table {
+    height: 68vh;
+    background-color: #f4f5fb;
+  } */
+.bucket-side .ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td {
+  background: #dde1ff;
+}
+.bucket-side
+  .ant-table-wrapper
+  table
+  tr
+  td.ant-table-selection-column
+  .ant-radio-wrapper {
+  display: none;
+}
+.bucket-side
+  .ant-table-wrapper
+  .ant-table:not(.ant-table-bordered)
+  .ant-table-tbody
+  > tr
+  > td {
+  border-top: none;
+}
+/* .bucket-side .bucket-table-pagination {
+    position: fixed !important;
+    width: 219px;
+    bottom: 24px;
+    left: 128px;
+  } */
+/* .bucket-side .bucket-table-pagination .ant-pagination-prev {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 8px;
+  
+    width: 40px;
+    height: 40px;
+    background: #dde1ff;
+    border-radius: 8px;
+  } */
+/* .bucket-side .bucket-table-pagination .ant-pagination-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    gap: 8px;
+    height: 40px;
+    background-color: #f4f5fb;
+    border-color: #f4f5fb;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+  } */
+/* .bucket-side .bucket-table-pagination .ant-pagination-next {
+    display: flex;
+    flex-direction: row;
+  
+    align-items: flex-start;
+    padding: 8px;
+    gap: 8px;
+  
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    background: #dde1ff;
+    border-radius: 8px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  } */

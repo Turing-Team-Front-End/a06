@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 100vw;
   height: 100vh;
 }
 
@@ -213,7 +212,7 @@ li {
   padding: 8px 8px 4px;
   gap: 8px;
 
-  width: 123px;
+  width: 144px;
   height: 80px;
   /* Inside auto layout */
 
@@ -251,10 +250,6 @@ li {
 }
 
 .top-input {
-  /* Frame 55 */
-
-  /* 自动布局 */
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -262,13 +257,11 @@ li {
   height: 56px;
   font-size: 20px;
   color: #767680;
-  min-width: 200px;
   background-color: #dde1ff;
   border-radius: 8px;
-  /* Inside auto layout */
 }
 
-.top-input>input {
+.top-input > input {
   background-color: #dde1ff;
 }
 
@@ -280,9 +273,8 @@ li {
   justify-content: center;
   align-items: center;
   padding: 0px;
-  gap: 16px;
+  gap: 24px;
 
-  width: 450px;
   height: 56px;
 
   /* Inside auto layout */
@@ -297,76 +289,17 @@ li {
   justify-content: center;
   align-items: center;
   color: #fff;
-  width: 128px;
+  width: 160px;
   height: 56px;
+  padding: 4px 32px;
+  gap: 8px;
   background: #3452ce;
   border-radius: 8px;
   font-weight: 400;
   font-size: 16px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
-
-.admin {
-  /* Frame 54 */
-
-  box-sizing: border-box;
-
-  /* 自动布局 */
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  gap: 8px;
-
-  width: 90px;
-  height: 56px;
-
-  border: 2px solid #3452ce;
-  border-radius: 8px;
-  font-weight: 400;
-  font-size: 20px;
-  color: #3452ce;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-
-.logout {
-  box-sizing: border-box;
-
-  /* 自动布局 */
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  gap: 8px;
-
-  width: 128px;
-  height: 56px;
-
-  border: 2px solid #3452ce;
-  border-radius: 8px;
-  font-weight: 400;
-  font-size: 16px;
-  color: #3452ce;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 2;
-  flex-grow: 0;
+.upload svg {
+  font-size: 24px;
 }
 
 .img-logo {
@@ -379,6 +312,6 @@ li {
   /* Inside auto layout */
 
   flex: none;
-  order: 3;
+  order: 1;
   flex-grow: 0;
 }
