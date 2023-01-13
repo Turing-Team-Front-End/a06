@@ -185,8 +185,6 @@ export default function Home() {
                 上传文件
               </Button>
             </Upload>
-            <Button className='admin'>admin</Button>
-            <Button className='logout'>退出登录</Button>
             <div className='img-logo'>
               <Avatar size={56} src={toby} />
             </div>

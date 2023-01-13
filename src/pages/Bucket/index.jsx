@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Input, Table } from "antd";
+import BucketList from "../../components/bucketList";
+import { Button, Input, Table, Card, Col, Row } from "antd";
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
+import document from "../../assets/document.svg";
 
 import "./index.css";
 const columns = [
@@ -81,59 +83,54 @@ export default function Bucket() {
   ];
   return (
     <>
-      <div className='bucket-side'>
-        <Input
-          className='bucket-search'
-          placeholder='搜索Bucket'
-          prefix={<SearchOutlined className='search-svg' />}
-        ></Input>
-        <div className='bucket-operating'>
-          <Button className='bucket-delete' type='text'>
-            <svg
-              viewBox='0 0 1024 1024'
-              version='1.1'
-              xmlns='http://www.w3.org/2000/svg'
-              p-id='1393'
-              width='20'
-              height='20'
-            >
-              <path
-                d='M723.2 204.8V102.4C723.2 44.8 672 0 614.4 0H409.6C352 0 300.8 44.8 300.8 102.4v102.4H96v102.4h51.2v563.2c0 83.2 70.4 153.6 153.6 153.6h416c83.2 0 153.6-70.4 153.6-153.6V307.2h57.6V204.8H723.2zM409.6 102.4h204.8v102.4H409.6V102.4z m364.8 768c0 25.6-25.6 51.2-51.2 51.2H300.8c-25.6 0-51.2-25.6-51.2-51.2V307.2h518.4v563.2h6.4z'
-                fill='currentColor'
-                p-id='1394'
-              ></path>
-              <path
-                d='M358.4 409.6h102.4v409.6H358.4zM563.2 409.6h102.4v409.6H563.2z'
-                fill='currentColor'
-                p-id='1395'
-              ></path>
-            </svg>
-          </Button>
-          <Button className='bucket-create' type='text'>
-            <PlusOutlined /> Create Bucket
-          </Button>
-        </div>
-        <Table
-          className='bucket-table'
-          rowSelection={rowSelection}
-          columns={columns}
-          dataSource={bucketData}
-          pagination={{
-            position: ["bottomCenter"],
-            className: "bucket-table-pagination",
-            total: "151",
-            showSizeChanger: false
-          }}
-          // showHeader={false}
-        />
-      </div>
+      <BucketList />
       {/* 右边区域  */}
       <div className='bucket-content'>
-        <div className='bucket-data'>bucket-data</div>
-        <div className='bucket-mid'>
-          <div className='bucket-mid-content'>bucket-mid-content</div>
+        <div className='bucket-data'>
+          <div className='bucket-content-top'>
+            <div className='bucket-title'>基础数据</div>
+            <div className='bucket-data-bucket-name'>Bucket011111</div>
+            <Button className='bucket-data-manage' type='text'>
+              <img src={document} />
+              文件管理
+            </Button>
+          </div>
+          <div className='bucket-content-bottom bucket-data-card-box'>
+            <div className='bucket-data-card' style={{ order: 0 }}>
+              <div className='bucket-data-card-title'>储存总量</div>
+              <div className='bucket-data-card-content'>
+                <div className='bucket-data-number'>0</div>
+                <div className='bucket-data-unit'>Byte</div>
+              </div>
+            </div>
+            <div className='bucket-data-card' style={{ order: 1 }}>
+              <div className='bucket-data-card-title'>本月外网流量</div>
+              <div className='bucket-data-card-content'>
+                <div className='bucket-data-number'>0</div>
+                <div className='bucket-data-unit'>Byte</div>
+              </div>
+            </div>
+            <div className='bucket-data-card' style={{ order: 2 }}>
+              <div className='bucket-data-card-title'>文件数量</div>
+              <div className='bucket-data-card-content'>
+                <div className='bucket-data-number'>0</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className='bucket-site'>基础设置</div>
+        <div className='bucket-mid'>
+          <div className='bucket-content-top'>
+            <div className='bucket-title'>访问域名</div>
+          </div>
+          <div className='bucket-content-bottom'></div>
+        </div>
+        <div className='bucket-site'>
+          <div className='bucket-content-top'>
+            <div className='bucket-title'>基础设置</div>
+            <div className='bucket-site-bucket-name'></div>
+          </div>
+          <div className='bucket-content-bottom'></div>
+        </div>
       </div>
     </>
   );
