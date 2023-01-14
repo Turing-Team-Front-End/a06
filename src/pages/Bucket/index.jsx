@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BucketList from "../../components/bucketList";
 import { Button, Input, Table, Card, Col, Row } from "antd";
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
-import document from "../../assets/document.svg";
+import document from "../../assets/Component6.svg";
 
 import "./index.css";
 const columns = [
