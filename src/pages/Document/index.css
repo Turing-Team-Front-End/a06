@@ -1,55 +1,206 @@
-.document-side {
-    /* 二级侧边栏 */
+.document-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  gap: 16px;
 
+  border-radius: 16px;
+  background: #f4f5fb;
 
-    /* 自动布局 */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 24px 16px;
-    gap: 16px;
-    box-sizing: border-box;
-    width: 251px;
-
-    background: #F4F5FB;
-    ;
-
-    /* Drop Shadow */
-
-
-    border-radius: 16px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
 }
 
-.document-content {
-    /* Frame 107 */
+.document-content .document-content-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 16px;
 
+  height: 40px;
 
-    /* 自动布局 */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.document-content .document-content-top .document-content-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    gap: 16px;
+  width: 128px;
+  height: 32px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #1b1b1f;
 
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.document-content .document-content-top .document-content-bucket-name {
+  width: 46px;
+  height: 32px;
 
-    border-radius: 16px;
-    background: #F4F5FB;
-    ;
-    /* Inside auto layout */
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  /* identical to box height */
 
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* material-theme/ref/secondary/secondary50 */
+
+  color: #73768b;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.document-content .document-content-top .document-user-manage {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 32px;
+  gap: 8px;
+
+  width: 148px;
+  height: 44px;
+
+  background: #3452ce;
+  color: #fff;
+  border-radius: 8px;
+
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.document-content .document-content-top .document-user-manage:hover {
+  color: black;
+  background-color: #e5e6f9;
+}
+.document-content .document-operation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  width: 1171px;
+  height: 60px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.document-operation .document-operation-left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px 0px;
+  gap: 8px;
+
+  width: 270px;
+  height: 60px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.document-operation .document-operation-left .document-upload {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 16px;
+  width: 120px;
+  height: 44px;
+  background: #3452ce;
+  color: #fff;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.document-upload svg {
+  font-size: 24px;
+}
+.document-operation .document-operation-left .document-download {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: #3452ce;
+  color: #fff;
+  border-radius: 8px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.document-download svg {
+  font-size: 20px;
+}
+.document-operation .document-operation-left button:hover {
+  color: black;
+  background-color: #e5e6f9;
+}
+.document-operation .document-operation-left .document-selected {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+
+  width: 90px;
+  height: 44px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #767680;
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.document-operation .document-operation-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0px;
+  gap: 8px;
+
+  width: 308px;
+  height: 60px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
