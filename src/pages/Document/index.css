@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 16px;
+  padding: 0px 0px 0px 16px;
   gap: 16px;
 
   height: 40px;
@@ -47,9 +47,6 @@
   flex-grow: 0;
 }
 .document-content .document-content-top .document-content-bucket-name {
-  width: 46px;
-  height: 32px;
-
   font-family: "Microsoft YaHei";
   font-style: normal;
   font-weight: 700;
@@ -79,7 +76,7 @@
   padding: 8px 32px;
   gap: 8px;
 
-  width: 148px;
+  /* width: 156px; */
   height: 44px;
 
   background: #3452ce;
@@ -101,11 +98,7 @@
   align-items: center;
   padding: 0px;
   gap: 8px;
-
-  width: 1171px;
   height: 60px;
-
-  /* Inside auto layout */
 
   flex: none;
   order: 1;
@@ -203,4 +196,65 @@
   flex: none;
   order: 1;
   flex-grow: 0;
+}
+.document-operation .document-operation-right .document-search {
+  box-sizing: border-box;
+
+  /* 自动布局 */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 28px;
+  gap: 4px;
+
+  width: 256px;
+  height: 44px;
+
+  /* material-theme/sys/light/outline
+
+token=md.sys.color.outline
+*/
+  border: 1px solid #767680;
+  border-radius: 46px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.document-operation .document-operation-right .document-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: #f0efff;
+  color: #c8c6ca;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.document-operation .document-operation-right .document-delete:hover {
+  background: #ba1a1a;
+  color: #fff;
+}
+.document-notselected {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 64px 0px 154px;
+  gap: 8px;
+
+  height: 658px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 1;
 }
