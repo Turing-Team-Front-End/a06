@@ -1,0 +1,86 @@
+/* .not-icon {
+  width: 221px;
+  height: 221px;
+  margin: auto;
+  text-align: center;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.not-icon .not-icon1 {
+  border: 4px solid #767680;
+  transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.not-icon .not-icon2 {
+  border: 4px solid #767680;
+  transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+.not-icon .not-icon3 {
+  height: 500px;
+  width: 500px;
+  border: 4px solid #767680;
+  border-radius: 50%;
+} */
+.not-icon {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  margin-bottom: 32px;
+  border-radius: 50%;
+  border: 4px solid #767680;
+  position: relative;
+}
+
+.not-icon::before {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #767680;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.not-icon::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #767680;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.not-text {
+  width: 150px;
+  height: 32px;
+
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* material-theme/sys/light/outline */
+
+  color: #767680;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
