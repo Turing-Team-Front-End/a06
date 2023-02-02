@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Button, message, Upload, Input, Avatar } from "antd";
+import { Button, message, Input, Avatar } from "antd";
 import { UploadOutlined, SearchOutlined } from "@ant-design/icons";
 import "./index.css";
 import logo from "../../assets/turingLogo2.svg";
 import img1 from "../../assets/Component1.svg";
 import img2 from "../../assets/Component2.svg";
-import img3 from "../../assets/Component3.svg";
 import img4 from "../../assets/Component4.svg";
 import img5 from "../../assets/Component5.svg";
 import img6 from "../../assets/Component6.svg";
-import img7 from "../../assets/Component7.svg";
 import img8 from "../../assets/Component8.svg";
 import toby from "../../assets/toby.jpg";
 export default function Home() {
-  //先这样，要用redux解决
-  //目前打开home页会白屏，原因是sessionStorage里没有值，所以无法渲染组件
-  //手动添加 Key    Value
-  //       key    /src/assets/Component5.svg
-  //       index  0
+
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -37,13 +31,8 @@ export default function Home() {
         window.sessionStorage.setItem("key", img6);
         setName("文件管理");
         break;
-      case "user":
-        window.sessionStorage.setItem("index", 2);
-        window.sessionStorage.setItem("key", img7);
-        setName("用户管理");
-        break;
       case "site":
-        window.sessionStorage.setItem("index", 3);
+        window.sessionStorage.setItem("index", 2);
         window.sessionStorage.setItem("key", img8);
         setName("设置");
         break;
@@ -59,23 +48,7 @@ export default function Home() {
     };
     buttonLightUp();
   }, []);
-  const props = {
-    name: "file",
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-    headers: {
-      authorization: "authorization-text"
-    },
-    onChange(info) {
-      if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === "done") {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    }
-  };
+
   const items = [
     {
       img: img1,
@@ -88,12 +61,6 @@ export default function Home() {
       imgActive: img6,
       url: "/home/document",
       name: "document"
-    },
-    {
-      img: img3,
-      imgActive: img7,
-      url: "/home/user",
-      name: "user"
     },
     {
       img: img4,
@@ -142,13 +109,9 @@ export default function Home() {
         setName("文件管理");
 
         break;
-      case "user":
-        window.sessionStorage.setItem("index", 2);
-        setName("用户管理");
 
-        break;
       case "site":
-        window.sessionStorage.setItem("index", 3);
+        window.sessionStorage.setItem("index", 2);
         setName("设置");
 
         break;
@@ -180,11 +143,11 @@ export default function Home() {
             prefix={<SearchOutlined />}
           />
           <div className='top-right'>
-            <Upload {...props}>
-              <Button icon={<UploadOutlined />} className='upload'>
-                上传文件
-              </Button>
-            </Upload>
+
+            <Button className='upload'>
+              任务列表
+            </Button>
+
             <div className='img-logo'>
               <Avatar size={56} src={toby} />
             </div>
@@ -194,6 +157,6 @@ export default function Home() {
           <Outlet />
         </div>
       </div>
-    </div>
+    </div >
   );
 }
