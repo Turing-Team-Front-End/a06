@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
+import Popover from "../../components/popover"
 import { Button, Input, Space } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 import document from "../../assets/Component6.svg"
@@ -120,6 +121,11 @@ export default function Bucket() {
         </div>
         <div className='bucket-content-bottom'>
           <BucketTable columns={columns} data={data} />
+          <Popover
+            name='用户管理'
+            button={true}
+            table={<BucketTable columns={columns} data={data} />}
+          />
         </div>
       </div>
     </>
