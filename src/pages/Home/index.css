@@ -223,8 +223,6 @@ li {
 }
 
 .topName-content {
-  /* Bucket */
-
   width: 107px;
   height: 38px;
 
@@ -233,55 +231,25 @@ li {
   font-weight: 700;
   font-size: 26px;
   line-height: 38px;
-  /* identical to box height */
-
   display: flex;
   align-items: center;
-
-  /* material-theme/sys/light/on-background */
-
   color: #1b1b1f;
-
-  /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
 
-.top-input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-  height: 56px;
-  font-size: 20px;
-  color: #767680;
-  background-color: #dde1ff;
-  border-radius: 8px;
-}
-
-.top-input > input {
-  background-color: #dde1ff;
-}
-
 .top-right {
-  /* 自动布局 */
-
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   padding: 0px;
   gap: 24px;
-
   height: 56px;
-
-  /* Inside auto layout */
-
   flex: none;
-  order: 2;
-  flex-grow: 0;
+  order: 1;
+  flex-grow: 1;
 }
 
 .upload {

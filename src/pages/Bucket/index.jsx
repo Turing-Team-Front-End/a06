@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
+import Popover from "../../components/popover"
 import { Button, Input, Space } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 import document from "../../assets/Component6.svg"
@@ -17,7 +18,8 @@ const columns = [
         fontSize: "20px",
         fontWeight: 400,
         color: "#73768B",
-        borderRadius: "8px"
+        borderRadius: "8px 0 0 8px",
+        borderColor: "#dde1ff"
       }
     }),
     onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
@@ -67,7 +69,7 @@ const columns = [
         fontSize: "20px",
         fontWeight: 400,
         color: "#73768B",
-        borderRadius: "8px"
+        borderRadius: "0 8px 8px 0"
       }
     }),
     onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
@@ -113,12 +115,17 @@ export default function Bucket() {
           </Button>
           <Input
             className='bucket-search'
-            placeholder='搜索文件...'
+            placeholder='搜索Bucket...'
             prefix={<SearchOutlined className='search-svg' />}
           ></Input>
         </div>
         <div className='bucket-content-bottom'>
           <BucketTable columns={columns} data={data} />
+          <Popover
+            name='用户管理'
+            button={true}
+            table={<BucketTable columns={columns} data={data} />}
+          />
         </div>
       </div>
     </>

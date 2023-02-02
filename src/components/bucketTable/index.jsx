@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Table } from "antd"
+import "./index.css"
+
 function bucketTable(props) {
   useEffect(() => {
     console.log(props)

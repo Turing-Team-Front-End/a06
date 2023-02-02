@@ -1,0 +1,93 @@
+.ant-modal {
+  background: #f4f5fb;
+  border-radius: 16px;
+  padding-bottom: 0;
+}
+.ant-modal .ant-modal-content {
+  background-color: #f4f5fb;
+  padding: 24px;
+}
+.popover-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 16px;
+  height: 44px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.popover-top .popover-button-space {
+  width: 120px;
+
+  order: 0;
+}
+.popover-top .popover-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 32px;
+  gap: 8px;
+  width: 120px;
+  height: 44px;
+  background: #3452ce;
+  color: #fff;
+  border-radius: 8px;
+}
+.popover-top .popover-title {
+  width: 96px;
+  height: 32px;
+
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+
+  color: #1b1b1f;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.popover-top .popover-close {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  width: 120px;
+  height: 44px;
+  border-radius: 8px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.popover-top .popover-close img {
+  cursor: pointer;
+}
+.popover-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  padding: 24px;
+  gap: 8px;
+  height: 684px;
+
+  background: #fefbff;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+}
