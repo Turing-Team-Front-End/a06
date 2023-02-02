@@ -5,7 +5,6 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Bucket from "../pages/Bucket";
 import Site from "../pages/Site";
-import User from "../pages/User";
 import Document from "../pages/Document";
 import Reset from "../pages/Reset";
 
@@ -53,11 +52,7 @@ const routes = [
         path: "site",
         element: <Site />
       },
-      {
-        //主页面的用户管理页
-        path: "user",
-        element: <User />
-      },
+
       {
         //主页面的文件管理页
         path: "document",
