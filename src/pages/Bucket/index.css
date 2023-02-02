@@ -107,14 +107,10 @@
   align-items: center;
   padding: 12px 28px;
   gap: 4px;
-
+  background-color: #f4f5fb;
   width: 256px;
   height: 44px;
 
-  /* material-theme/sys/light/outline
-
-token=md.sys.color.outline
-*/
   border: 1px solid #767680;
   border-radius: 46px;
 
@@ -123,4 +119,7 @@ token=md.sys.color.outline
   flex: none;
   order: 1;
   flex-grow: 0;
+}
+.bucket-content .bucket-content-mid .bucket-search input {
+  background-color: #f4f5fb;
 }
