@@ -29,7 +29,7 @@ export default function Home() {
       case "document":
         window.sessionStorage.setItem("index", 1);
         window.sessionStorage.setItem("key", img6);
-        setName("文件管理");
+        setName("统计");
         break;
       case "site":
         window.sessionStorage.setItem("index", 2);
@@ -106,7 +106,7 @@ export default function Home() {
 
       case "document":
         window.sessionStorage.setItem("index", 1);
-        setName("文件管理");
+        setName("统计");
 
         break;
 
