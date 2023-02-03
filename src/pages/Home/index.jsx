@@ -18,8 +18,11 @@ export default function Home() {
 
   useEffect(() => {
     let str
-    // console.log(window.location.pathname);
-    str = window.location.pathname.slice(6)
+    console.log(window.location.pathname);
+    if (window.location.pathname.length > 14) {
+      str = "bucket"
+    } else { str = window.location.pathname.slice(6) }
+
     window.sessionStorage.setItem("name", str)
     switch (str) {
       case "bucket":
