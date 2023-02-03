@@ -3,6 +3,8 @@ import { Outlet, useNavigate } from "react-router-dom"
 import { Button, message, Input, Avatar } from "antd"
 import { UploadOutlined, SearchOutlined } from "@ant-design/icons"
 import "./index.css"
+import Popover from "../../components/popover"
+import TaskList from "../../components/taskList"
 import logo from "../../assets/turingLogo2.svg"
 import img1 from "../../assets/Component1.svg"
 import img2 from "../../assets/Component2.svg"
@@ -137,8 +139,13 @@ export default function Home() {
             <div className='topName-content'>{name}</div>
           </div>
           <div className='top-right'>
-            <Button className='upload'>任务列表</Button>
 
+            <Popover
+              name='任务列表'
+              button={false}
+              mode={<Button className='upload'>任务列表</Button>}
+              content={<TaskList />}
+            />
             <div className='img-logo'>
               <Avatar size={56} src={toby} />
             </div>
