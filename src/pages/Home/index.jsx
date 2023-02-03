@@ -18,10 +18,12 @@ export default function Home() {
 
   useEffect(() => {
     let str
-    console.log(window.location.pathname);
+    console.log(window.location.pathname)
     if (window.location.pathname.length > 14) {
       str = "bucket"
-    } else { str = window.location.pathname.slice(6) }
+    } else {
+      str = window.location.pathname.slice(6)
+    }
 
     window.sessionStorage.setItem("name", str)
     switch (str) {
@@ -57,7 +59,7 @@ export default function Home() {
     {
       img: img1,
       imgActive: img5,
-      url: "/home/bucket",
+      url: "/home/bucket/main",
       name: "bucket"
     },
     {
@@ -142,7 +144,6 @@ export default function Home() {
             <div className='topName-content'>{name}</div>
           </div>
           <div className='top-right'>
-
             <Popover
               name='任务列表'
               button={false}
