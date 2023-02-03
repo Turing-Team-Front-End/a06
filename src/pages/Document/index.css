@@ -29,6 +29,7 @@
   align-self: stretch;
   flex-grow: 0;
 }
+
 .document-content .document-content-top .document-content-title {
   display: flex;
   flex-direction: row;
@@ -46,6 +47,7 @@
   order: 0;
   flex-grow: 0;
 }
+
 .document-content .document-content-top .document-content-bucket-name {
   font-family: "Microsoft YaHei";
   font-style: normal;
@@ -68,7 +70,8 @@
   order: 1;
   flex-grow: 0;
 }
-.document-content .document-content-top .document-user-manage {
+
+.document-user-manage {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -87,10 +90,12 @@
   order: 2;
   flex-grow: 0;
 }
-.document-content .document-content-top .document-user-manage:hover {
+
+.document-user-manage:hover {
   color: black;
   background-color: #e5e6f9;
 }
+
 .document-content .document-operation {
   display: flex;
   flex-direction: row;
@@ -105,6 +110,7 @@
   align-self: stretch;
   flex-grow: 0;
 }
+
 .document-operation .document-operation-left {
   display: flex;
   flex-direction: row;
@@ -121,6 +127,7 @@
   order: 0;
   flex-grow: 0;
 }
+
 .document-operation .document-operation-left .document-upload {
   display: flex;
   flex-direction: row;
@@ -136,9 +143,11 @@
   order: 0;
   flex-grow: 0;
 }
+
 .document-upload svg {
   font-size: 24px;
 }
+
 .document-operation .document-operation-left .document-download {
   display: flex;
   flex-direction: column;
@@ -153,13 +162,16 @@
   order: 1;
   flex-grow: 0;
 }
+
 .document-download svg {
   font-size: 20px;
 }
+
 .document-operation .document-operation-left button:hover {
   color: black;
   background-color: #e5e6f9;
 }
+
 .document-operation .document-operation-left .document-selected {
   display: flex;
   flex-direction: row;
@@ -180,6 +192,7 @@
   align-self: stretch;
   flex-grow: 0;
 }
+
 .document-operation .document-operation-right {
   display: flex;
   flex-direction: row;
@@ -197,6 +210,7 @@
   order: 1;
   flex-grow: 0;
 }
+
 .document-operation .document-operation-right .document-search {
   box-sizing: border-box;
 
@@ -224,6 +238,7 @@ token=md.sys.color.outline
   order: 0;
   flex-grow: 0;
 }
+
 .document-operation .document-operation-right .document-delete {
   display: flex;
   justify-content: center;
@@ -241,6 +256,7 @@ token=md.sys.color.outline
   background: #ba1a1a;
   color: #fff;
 }
+
 .document-notselected {
   display: flex;
   flex-direction: column;
