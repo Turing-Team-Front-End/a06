@@ -7,7 +7,7 @@ const modalBody = {
   backgroundColor: "#f4f5fb"
 }
 function popover(props) {
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const showModal = () => {
     setIsModalOpen(true)
   }
@@ -19,14 +19,15 @@ function popover(props) {
   })
   return (
     <>
-      <Button type='primary' onClick={showModal}>
+      {/* <Button type='primary' onClick={showModal}>
         Open Modal
-      </Button>
+      </Button> */}
+      <div onClick={showModal}>{props.mode}</div>
       <Modal
         // title='Basic Modal'
         bodyStyle={modalBody}
         open={isModalOpen}
-        width={"100vw"}
+        width={"70vw"}
         closable={false}
         footer={null}
       >
@@ -46,7 +47,7 @@ function popover(props) {
             <img src={closeIcon} alt='' onClick={handleCancel} />
           </div>
         </div>
-        <div className='popover-content'>{props.table}</div>
+        <div className='popover-content'>{props.content}</div>
       </Modal>
     </>
   )
