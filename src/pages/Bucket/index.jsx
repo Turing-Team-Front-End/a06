@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
+import UserManage from "../../components/userManage"
 import { Button, Input, Space } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
-import document from "../../assets/Component6.svg"
 
 import "./index.css"
+
 const columns = [
   {
     title: "Bucket名",
@@ -73,10 +74,16 @@ const columns = [
       }
     }),
     onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
-    render: (_, record) => (
+    render: (text, record, index) => (
       <Space size='middle'>
         <a style={{ color: "#3452CE" }}>文件</a>
-        <a style={{ color: "#3452CE" }}>用户管理</a>
+        <Popover
+          name='用户管理'
+          button={true}
+          record={record}
+          mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
+          content={<UserManage />}
+        />
         <a style={{ color: "#BA1A1A" }}>删除</a>
       </Space>
     )
@@ -102,6 +109,8 @@ const data = [
     number: "22"
   }
 ]
+// textDecorationLine: "underline"
+
 export default function Bucket() {
   return (
     <>
@@ -121,11 +130,12 @@ export default function Bucket() {
         </div>
         <div className='bucket-content-bottom'>
           <BucketTable columns={columns} data={data} />
-          <Popover
+          {/* <Popover
             name='用户管理'
             button={true}
+            mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
             table={<BucketTable columns={columns} data={data} />}
-          />
+          /> */}
         </div>
       </div>
     </>
