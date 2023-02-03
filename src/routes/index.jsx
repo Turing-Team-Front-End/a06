@@ -7,6 +7,8 @@ import Bucket from "../pages/Bucket";
 import Site from "../pages/Site";
 import Document from "../pages/Document";
 import Reset from "../pages/Reset";
+import BucketDetail from "../pages/BucketDetail";
+import BucketMain from "../pages/BucketMain";
 
 // 路由映射表
 const routes = [
@@ -45,7 +47,23 @@ const routes = [
       {
         //主页面的主页
         path: "bucket",
-        element: <Bucket />
+        element: <Bucket />,
+        children: [
+          {
+            path: "main",
+            element: < BucketMain />,
+          },
+          {
+            path: ":name",
+            element: <BucketDetail />,
+          },
+          {
+            //重定向到登录页面
+            path: "",
+            element: <Navigate to='main' />
+          }
+        ]
+
       },
       {
         //主页面的设置页
