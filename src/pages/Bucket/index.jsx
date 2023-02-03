@@ -6,7 +6,9 @@ import { Button, Input, Space } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 
 import "./index.css"
-
+const ToRoute = () => {
+  console.log(1);
+}
 const columns = [
   {
     title: "Bucket名",
@@ -76,7 +78,7 @@ const columns = [
     onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
     render: (text, record, index) => (
       <Space size='middle'>
-        <a style={{ color: "#3452CE" }}>文件</a>
+        <a style={{ color: "#3452CE" }} onClick={ToRoute}>文件</a>
         <Popover
           name='用户管理'
           button={true}
