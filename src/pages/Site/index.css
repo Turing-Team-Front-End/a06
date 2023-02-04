@@ -1,1029 +1,938 @@
 .site-content {
+  /* Frame 89 */
 
-    /* Frame 89 */
+  /* 自动布局 */
 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 16px;
+  gap: 8px;
 
-    /* 自动布局 */
+  background: #f4f5fb;
+  /* Drop Shadow */
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px 16px;
-    gap: 8px;
+  border-radius: 16px;
 
+  /* Inside auto layout */
 
-    background: #F4F5FB;
-    ;
-    /* Drop Shadow */
-
-    border-radius: 16px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 1;
-
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
 }
 
 .site-content-own {
-    /* Frame 72 */
+  /* Frame 72 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 16px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px 16px;
-    gap: 16px;
+  height: 40px;
 
-    height: 40px;
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .site-content-own-main {
-    /* Frame 37980 */
-
-
-    /* 自动布局 */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 8px;
-
-    width: 128px;
-    height: 32px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 4px;
+  gap: 8px;
+  height: 32px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-own-main-name {
-    /* 个人设置 */
+  height: 32px;
 
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+  color: #1b1b1f;
 
-    width: 96px;
-    height: 32px;
-
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    /* identical to box height */
-
-    display: flex;
-    align-items: center;
-
-    /* material-theme/sys/light/on-background */
-
-    color: #1B1B1F;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-own-main-icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main {
-    /* Frame 37990 */
+  /* Frame 37990 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 64px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 24px;
-    gap: 64px;
+  width: 455px;
+  /* Inside auto layout */
 
-    width: 455px;
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+  flex: none;
+  order: 1;
+  flex-grow: 1;
 }
 
 .site-content-main-img {
-    /* Frame 37981 */
-
-
-    /* 自动布局 */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 16px;
-
-    width: 180px;
-    height: 233px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 180px;
+  height: 589px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .site-content-main-img-icon {
-    /* 头像 */
-
-
-    width: 180px;
-    height: 180px;
-    background: #DDE1FF;
-    border-radius: 121px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  width: 180px;
+  height: 180px;
+  background: #dde1ff;
+  border-radius: 121px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
-
 .site-content-main-img-set {
-    /* Frame 37982 */
+  /* Frame 37982 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    gap: 8px;
+  width: 48px;
+  height: 37px;
 
-    width: 48px;
-    height: 37px;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-img-set-name {
+  /* 编辑 */
 
+  width: 32px;
+  height: 21px;
 
-    /* 编辑 */
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
 
+  /* material-theme/sys/light/outline */
 
-    width: 32px;
-    height: 21px;
+  color: #767680;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
+  /* Inside auto layout */
 
-    /* material-theme/sys/light/outline */
-
-    color: #767680;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-detail {
-    /* Frame 37989 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
 
+  width: 163px;
+  height: 589px;
 
-    /* 自动布局 */
+  /* Inside auto layout */
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-    width: 163px;
-    ;
-    height: 100%;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-name {
-    /* Frame 37986 */
+  /* Frame 37986 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
+  width: 80px;
+  height: 132px;
 
-    width: 80px;
-    height: 132px;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-name-title {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    width: 56px;
-    height: 42px;
+  width: 56px;
+  height: 42px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-name-title-content {
-    /* 名字 */
+  /* 名字 */
 
+  width: 40px;
+  height: 26px;
 
-    width: 40px;
-    height: 26px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/ref/secondary/secondary50 */
 
-    /* material-theme/ref/secondary/secondary50 */
+  color: #73768b;
 
-    color: #73768B;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-name-id {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    width: 64px;
-    height: 37px;
+  width: 64px;
+  height: 37px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-name-id-content {
-    /* 名字 */
+  /* 名字 */
 
+  width: 48px;
+  height: 21px;
 
-    width: 48px;
-    height: 21px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/ref/secondary/secondary50 */
 
-    /* material-theme/ref/secondary/secondary50 */
+  color: #73768b;
 
-    color: #73768B;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-name-change {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    width: 80px;
-    height: 37px;
+  width: 80px;
+  height: 37px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
 }
 
 .site-content-main-name-change-content {
-    /* 修改名字 */
+  /* 修改名字 */
 
+  width: 64px;
+  height: 21px;
 
-    width: 64px;
-    height: 21px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/sys/light/primary */
 
-    /* material-theme/sys/light/primary */
+  color: #3452ce;
 
-    color: #3452CE;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-email {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
 
+  width: 163px;
+  height: 132px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
+  /* Inside auto layout */
 
-    width: 163px;
-    height: 132px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-email-title {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    width: 56px;
-    height: 42px;
+  width: 56px;
+  height: 42px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-email-title-content {
-    /* 邮箱 */
+  /* 邮箱 */
 
+  width: 40px;
+  height: 26px;
 
-    width: 40px;
-    height: 26px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/ref/secondary/secondary50 */
 
-    /* material-theme/ref/secondary/secondary50 */
+  color: #73768b;
 
-    color: #73768B;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-email-id {
-    /* Frame 37984 */
+  /* Frame 37984 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  width: 163px;
+  height: 37px;
 
-    width: 163px;
-    height: 37px;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-email-id-content {
-    width: 147px;
-    height: 21px;
+  width: 147px;
+  height: 21px;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    /* material-theme/ref/secondary/secondary50 */
+  /* material-theme/ref/secondary/secondary50 */
 
-    color: #73768B;
+  color: #73768b;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-email-change {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    width: 80px;
-    height: 37px;
+  width: 80px;
+  height: 37px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
 }
 
 .site-content-main-email-change-content {
-    width: 64px;
-    height: 21px;
+  width: 64px;
+  height: 21px;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    /* material-theme/sys/light/primary */
+  /* material-theme/sys/light/primary */
 
-    color: #3452CE;
+  color: #3452ce;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-password {
-    /* Frame 37989 */
+  /* Frame 37989 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
+  width: 80px;
+  height: 87px;
 
-    width: 80px;
-    height: 87px;
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
 }
 
 .site-content-main-password-title {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    width: 56px;
-    height: 42px;
+  width: 56px;
+  height: 42px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-password-title-content {
-    width: 40px;
-    height: 26px;
+  width: 40px;
+  height: 26px;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    /* material-theme/ref/secondary/secondary50 */
+  /* material-theme/ref/secondary/secondary50 */
 
-    color: #73768B;
+  color: #73768b;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-password-change {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    width: 80px;
-    height: 37px;
+  width: 80px;
+  height: 37px;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-password-change-content {
-    /* 修改密码 */
+  /* 修改密码 */
 
+  width: 64px;
+  height: 21px;
 
-    width: 64px;
-    height: 21px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/sys/light/primary */
 
-    /* material-theme/sys/light/primary */
+  color: #3452ce;
 
-    color: #3452CE;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-admin {
+  /* 自动布局 */
 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 16px;
 
+  width: 73px;
+  height: 90px;
 
-    /* 自动布局 */
+  /* Inside auto layout */
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 16px;
-
-    width: 73px;
-    height: 90px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 3;
-    flex-grow: 0;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
 }
 
 .site-content-main-admin-title {
-    width: 40px;
-    height: 26px;
+  width: 40px;
+  height: 26px;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    /* material-theme/ref/secondary/secondary50 */
+  /* material-theme/ref/secondary/secondary50 */
 
-    color: #73768B;
+  color: #73768b;
 
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-admin-id {
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
 
-    width: 57px;
-    height: 32px;
+  width: 57px;
+  height: 32px;
 
+  border: 2px solid #3452ce;
+  border-radius: 8px;
 
-    border: 2px solid #3452CE;
-    border-radius: 8px;
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-admin-id-content {
-    /* 管理员 */
+  /* 管理员 */
 
+  width: 43px;
+  height: 18px;
 
-    width: 43px;
-    height: 18px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
+  /* material-theme/sys/light/primary */
 
-    /* material-theme/sys/light/primary */
+  color: #3452ce;
 
-    color: #3452CE;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-invite {
-    /* Frame 37988 */
+  /* Frame 37988 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
+  width: 76px;
+  height: 87px;
 
-    width: 76px;
-    height: 87px;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 4;
-    flex-grow: 0;
+  flex: none;
+  order: 4;
+  flex-grow: 0;
 }
 
 .site-content-main-invite-title {
-    /* Frame 37983 */
+  /* Frame 37983 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  width: 76px;
+  height: 42px;
 
-    width: 76px;
-    height: 42px;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-invite-title-content {
+  width: 60px;
+  height: 26px;
 
-    width: 60px;
-    height: 26px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/ref/secondary/secondary50 */
 
-    /* material-theme/ref/secondary/secondary50 */
+  color: #73768b;
 
-    color: #73768B;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-invite-id {
+  /* 自动布局 */
 
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
+  width: 73px;
+  height: 37px;
 
-    /* 自动布局 */
+  /* Inside auto layout */
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
-
-    width: 73px;
-    height: 37px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-invite-id-content {
+  width: 57px;
+  height: 21px;
 
-    width: 57px;
-    height: 21px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/sys/light/primary */
 
-    /* material-theme/sys/light/primary */
+  color: #3452ce;
 
-    color: #3452CE;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-user {
-    /* Frame 37991 */
+  /* Frame 37991 */
 
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
+  width: 80px;
+  height: 87px;
 
-    width: 80px;
-    height: 87px;
+  /* Inside auto layout */
 
-    /* Inside auto layout */
-
-    flex: none;
-    order: 5;
-    flex-grow: 0;
+  flex: none;
+  order: 5;
+  flex-grow: 0;
 }
 
 .site-content-main-user-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
+  width: 56px;
+  height: 42px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  /* Inside auto layout */
 
-    width: 56px;
-    height: 42px;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-user-title-content {
+  width: 40px;
+  height: 26px;
 
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
+  /* material-theme/ref/secondary/secondary50 */
 
-    width: 40px;
-    height: 26px;
+  color: #73768b;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* Inside auto layout */
 
-    /* material-theme/ref/secondary/secondary50 */
-
-    color: #73768B;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .site-content-main-user-id {
+  /* 自动布局 */
 
-    /* 自动布局 */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 8px;
-    gap: 8px;
+  width: 80px;
+  height: 37px;
 
-    width: 80px;
-    height: 37px;
+  /* Inside auto layout */
 
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .site-content-main-user-id-content {
+  width: 64px;
+  height: 21px;
 
-    width: 64px;
-    height: 21px;
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-    font-family: 'Microsoft YaHei';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+  /* material-theme/sys/light/error */
 
-    /* material-theme/sys/light/error */
+  color: #ba1a1a;
 
-    color: #BA1A1A;
+  /* Inside auto layout */
 
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.site-left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 64px;
+  width: 455px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.site-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
 
-    /* Inside auto layout */
+  width: calc(100vw - 726px);
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
 }
