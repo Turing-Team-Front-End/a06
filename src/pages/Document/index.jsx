@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import BucketList from "../../components/bucketList";
-import NotSelected from "../../components/notSelected";
+import React, { useEffect, useState } from "react"
+import BucketList from "../../components/bucketList"
+import NotSelected from "../../components/notSelected"
 
-import { Button, Input, Table, Card, Col, Row } from "antd";
+import { Button, Input, Table, Card, Col, Row } from "antd"
 import {
   UploadOutlined,
   DownloadOutlined,
   SearchOutlined
-} from "@ant-design/icons";
-import user from "../../assets/Component7.svg";
+} from "@ant-design/icons"
+import user from "../../assets/Component7.svg"
 
-import "./index.css";
+import "./index.css"
 export default function Document() {
   return (
     <>
@@ -74,5 +74,5 @@ export default function Document() {
         </div>
       </div>
     </>
-  );
+  )
 }
