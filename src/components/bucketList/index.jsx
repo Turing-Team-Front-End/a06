@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { Button, Input, Table, Card, Col, Row } from "antd";
-import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react"
+import { Button, Input, Table, Card, Col, Row } from "antd"
+import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 
-import "./index.css";
+import "./index.css"
 const columns = [
   {
     dataIndex: "content",
     className: "bucket-columns",
     ellipsis: true
   }
-];
+]
 export default function bucketList() {
-  // var uA = navigator;
-  // console.log(uA);
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([])
   const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
+    console.log("selectedRowKeys changed: ", newSelectedRowKeys)
+    setSelectedRowKeys(newSelectedRowKeys)
+  }
   const rowSelection = {
     type: "radio",
     selectedRowKeys,
     hideSelectAll: true,
     columnWidth: 10,
     onChange: onSelectChange
-  };
-  const hasSelected = selectedRowKeys.length > 0;
+  }
+  const hasSelected = selectedRowKeys.length > 0
   const bucketData = [
     {
       key: 0,
@@ -79,7 +77,7 @@ export default function bucketList() {
       key: 12,
       content: "bucket114514111111"
     }
-  ];
+  ]
   return (
     <div className='bucket-side'>
       <Input
@@ -104,19 +102,19 @@ export default function bucketList() {
         onRow={(record) => {
           return {
             onClick: (event) => {
-              const selecting = [...selectedRowKeys];
-              console.log(selecting);
+              const selecting = [...selectedRowKeys]
+              console.log(selecting)
               if (selecting.indexOf(record.key) >= 0) {
-                selecting.splice(selecting.indexOf(record.key), 1);
+                selecting.splice(selecting.indexOf(record.key), 1)
               } else {
-                selecting.splice(0, 1);
-                selecting.push(record.key);
+                selecting.splice(0, 1)
+                selecting.push(record.key)
               }
-              setSelectedRowKeys(selecting);
+              setSelectedRowKeys(selecting)
             }
-          };
+          }
         }}
       />
     </div>
-  );
+  )
 }

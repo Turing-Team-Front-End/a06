@@ -1,14 +1,101 @@
 import React, { useEffect, useState } from "react"
-import { Select, Input, Button } from "antd"
+import { Select, Input, Button, Table } from "antd"
 import { SearchOutlined } from "@ant-design/icons"
 
-import BucketTable from "../../components/bucketTable"
-
 import "./index.css"
+
+const columns = [
+  {
+    title: "用户",
+    dataIndex: "user"
+  },
+  {
+    title: (
+      <>
+        <p>批量修改</p>
+        <Select
+          className='dropdown'
+          defaultValue='全部'
+          bordered={false}
+          // onChange={handleChange}
+          options={[
+            {
+              value: "全部",
+              label: "全部"
+            },
+            {
+              value: "读写",
+              label: "读写"
+            },
+            {
+              value: "只读",
+              label: "只读"
+            }
+          ]}
+        />
+      </>
+    ),
+    dataIndex: "action",
+    key: "action"
+  }
+]
+const data = [
+  {
+    key: "1",
+    user: "John Brown",
+    action: (
+      <Select
+        className='dropdown'
+        defaultValue='全部'
+        bordered={false}
+        // onChange={handleChange}
+        options={[
+          {
+            value: "全部",
+            label: "全部"
+          },
+          {
+            value: "读写",
+            label: "读写"
+          },
+          {
+            value: "只读",
+            label: "只读"
+          }
+        ]}
+      />
+    )
+  },
+  {
+    key: "2",
+    user: "Jim Green"
+  },
+  {
+    key: "3",
+    user: "Joe Black"
+  },
+  {
+    key: "4",
+    user: "Disabled User"
+  }
+]
 const handleChange = (value) => {
   console.log(`selected ${value}`)
 }
 function userManage(props) {
+  const [selectedRowKeys, setSelectedRowKeys] = useState([])
+  const onSelectChange = (newSelectedRowKeys) => {
+    console.log("selectedRowKeys changed: ", newSelectedRowKeys)
+    setSelectedRowKeys(newSelectedRowKeys)
+  }
+  const rowSelection = {
+    selectedRowKeys,
+    // hideSelectAll: true,
+    columnWidth: 10,
+    onChange: onSelectChange
+  }
+  const hasSelected = selectedRowKeys.length > 0
+
   useEffect(() => {
     console.log(props)
   })
@@ -20,30 +107,27 @@ function userManage(props) {
       <div className='user-mid'>
         <div className='user-left'>
           <p>查看用户组</p>
-          <div className='dropdown'>
-            <Select
-              defaultValue='全部'
-              style={{
-                width: 120
-              }}
-              onChange={handleChange}
-              options={[
-                {
-                  value: "全部",
-                  label: "全部"
-                },
-                {
-                  value: "读写",
-                  label: "读写"
-                },
-                {
-                  value: "只读",
-                  label: "只读"
-                }
-              ]}
-            />
-          </div>
-          <p>0个已选中</p>
+          <Select
+            className='dropdown'
+            defaultValue='全部'
+            bordered={false}
+            onChange={handleChange}
+            options={[
+              {
+                value: "全部",
+                label: "全部"
+              },
+              {
+                value: "读写",
+                label: "读写"
+              },
+              {
+                value: "只读",
+                label: "只读"
+              }
+            ]}
+          />
+          <p>{selectedRowKeys.length}个已选中</p>
         </div>
         <div className='user-right'>
           <Input
@@ -74,7 +158,20 @@ function userManage(props) {
           </Button>
         </div>
       </div>
-      <div className='user-bottom'></div>
+      <div className='user-bottom'>
+        <Table
+          className='user-manage-table'
+          columns={columns}
+          dataSource={data}
+          rowSelection={rowSelection}
+          pagination={{
+            position: ["bottomCenter"],
+            className: "bucket-table-pagination",
+            total: "151",
+            showSizeChanger: false
+          }}
+        />
+      </div>
     </>
   )
 }
