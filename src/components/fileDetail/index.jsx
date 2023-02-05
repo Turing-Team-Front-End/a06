@@ -5,6 +5,6 @@ function fileDetail(props) {
   useEffect(() => {
     console.log(props)
   })
-  return <></>
+  return <><p>我是文件详细</p></>
 }
 export default fileDetail
