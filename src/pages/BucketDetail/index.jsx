@@ -2,12 +2,11 @@ import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
-import fileDetail from "../../components/fileDetail"
+import FileDetail from "../../components/fileDetail"
 import { Button, Input, Space } from "antd"
 import {
     SearchOutlined, UploadOutlined,
     DownloadOutlined,
-
 } from "@ant-design/icons"
 import arrowLeft from "../../assets/arrow-left.svg"
 import "./index.css"
@@ -87,7 +86,7 @@ export default function BucketDetail() {
                         button={false}
                         record={record}
                         mode={<a style={{ color: "#3452CE" }}>详情</a>}
-                        content={<fileDetail />}
+                        content={<FileDetail />}
                     />
                     <a style={{ color: "#3452CE" }} >链接</a>
                     <a style={{ color: "#3452CE" }} >下载</a>
