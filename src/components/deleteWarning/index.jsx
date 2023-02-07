@@ -9,7 +9,7 @@ const modalBody = {
   backgroundColor: "#fefbff"
 }
 function deleteWarning(props) {
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const showModal = () => {
     setIsModalOpen(true)
   }

@@ -87,7 +87,12 @@ export default function BucketMain() {
             文件
           </a>
           <Popover
-            name='用户管理'
+            name={
+              <>
+                用户管理
+                <div className='bucket-user-title'>/ {record.name}</div>
+              </>
+            }
             button={true}
             record={record}
             mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
@@ -96,7 +101,6 @@ export default function BucketMain() {
           <DeleteWarning
             name='提示'
             button={false}
-            record={record}
             mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
           />
         </Space>
