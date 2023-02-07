@@ -1,0 +1,94 @@
+.test .ant-modal-content {
+  background-color: #fefbff;
+}
+
+.delete-title {
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  display: flex;
+  align-items: center;
+
+  color: #1b1b1f;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.delete-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12px;
+  padding: 24px;
+  gap: 8px;
+
+  background: #fefbff;
+  border-radius: 16px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+}
+.delete-content p {
+  font-family: "Microsoft YaHei";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #1b1b1f;
+}
+.delete-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 8px;
+  gap: 16px;
+  height: 37px;
+
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.delete-bottom .delete-ok {
+  box-sizing: border-box;
+
+  /* 自动布局 */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 40px;
+  gap: 8px;
+  width: 112px;
+  height: 37px;
+  border: 1px solid #3452ce;
+  color: #3452ce;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.delete-bottom .delete-cancel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 40px;
+  gap: 8px;
+
+  width: 112px;
+  height: 37px;
+  background: #3452ce;
+  color: #fff;
+  border-radius: 8px;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}

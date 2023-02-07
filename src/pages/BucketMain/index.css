@@ -1,131 +1,134 @@
 .bucket-content {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    padding: 24px 16px;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 24px 16px;
+  gap: 32px;
 
-    background: #f4f5fb;
-    border-radius: 16px;
+  background: #f4f5fb;
+  border-radius: 16px;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 1;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
 }
-
+.bucket-user-title {
+  color: #73768b;
+  margin-left: 8px;
+}
 .bucket-content .bucket-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  height: 40px;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .bucket-content .bucket-content-top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 0px 0px 16px;
-    gap: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 0px 16px;
+  gap: 16px;
 
-    height: 44px;
+  height: 44px;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .bucket-content .bucket-content-mid {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0px;
+  gap: 8px;
 
-    height: 60px;
+  height: 60px;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .bucket-content .bucket-content-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8px;
-    flex: none;
-    order: 2;
-    align-self: stretch;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 1;
 }
 
 .bucket-content .bucket-content-mid .bucket-create {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
 
-    width: 149px;
-    height: 44px;
-    background: #3452ce;
-    color: #ffffff;
-    border-radius: 8px;
+  width: 149px;
+  height: 44px;
+  background: #3452ce;
+  color: #ffffff;
+  border-radius: 8px;
 }
 
 .bucket-content .bucket-content-mid .bucket-create:hover {
-    background-color: #e5e6f9;
+  background-color: #e5e6f9;
 }
 
 .bucket-content .bucket-content-mid .bucket-search {
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    /* 自动布局 */
+  /* 自动布局 */
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 28px;
-    gap: 4px;
-    background-color: #f4f5fb;
-    width: 256px;
-    height: 44px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 28px;
+  gap: 4px;
+  background-color: #f4f5fb;
+  width: 256px;
+  height: 44px;
 
-    border: 1px solid #767680;
-    border-radius: 46px;
+  border: 1px solid #767680;
+  border-radius: 46px;
 
-    /* Inside auto layout */
+  /* Inside auto layout */
 
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .bucket-content .bucket-content-mid .bucket-search input {
-    background-color: #f4f5fb;
+  background-color: #f4f5fb;
 }
