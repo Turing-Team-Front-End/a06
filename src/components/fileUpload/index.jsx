@@ -5,6 +5,7 @@ function fileUpload(props) {
   useEffect(() => {
     console.log(props)
   })
-  return <></>
+  return <>
+    <p>我是上传文件</p></>
 }
 export default fileUpload
