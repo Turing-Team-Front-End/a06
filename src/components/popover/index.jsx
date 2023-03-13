@@ -15,7 +15,7 @@ function popover(props) {
     setIsModalOpen(false)
   }
   useEffect(() => {
-    console.log(props, "111")
+    // console.log(props, "111")
   })
   return (
     <>
