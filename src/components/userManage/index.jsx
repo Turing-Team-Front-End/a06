@@ -7,12 +7,28 @@ import "./index.css"
 const columns = [
   {
     title: "用户",
-    dataIndex: "user"
+    dataIndex: "user",
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B"
+      }
+    })
   },
   {
     title: (
       <>
-        <p>批量修改</p>
+        <p
+          style={{
+            fontSize: "14px",
+            fontWeight: 400,
+            color: "#73768B"
+          }}
+        >
+          批量修改
+        </p>
         <Select
           className='dropdown'
           defaultValue='全部'
@@ -36,7 +52,14 @@ const columns = [
       </>
     ),
     dataIndex: "action",
-    key: "action"
+    key: "action",
+    align: "right",
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        borderRadius: "0 8px 8px 0"
+      }
+    })
   }
 ]
 const data = [
@@ -68,15 +91,81 @@ const data = [
   },
   {
     key: "2",
-    user: "Jim Green"
+    user: "Jim Green",
+    action: (
+      <Select
+        className='dropdown'
+        defaultValue='全部'
+        bordered={false}
+        // onChange={handleChange}
+        options={[
+          {
+            value: "全部",
+            label: "全部"
+          },
+          {
+            value: "读写",
+            label: "读写"
+          },
+          {
+            value: "只读",
+            label: "只读"
+          }
+        ]}
+      />
+    )
   },
   {
     key: "3",
-    user: "Joe Black"
+    user: "Joe Black",
+    action: (
+      <Select
+        className='dropdown'
+        defaultValue='全部'
+        bordered={false}
+        // onChange={handleChange}
+        options={[
+          {
+            value: "全部",
+            label: "全部"
+          },
+          {
+            value: "读写",
+            label: "读写"
+          },
+          {
+            value: "只读",
+            label: "只读"
+          }
+        ]}
+      />
+    )
   },
   {
     key: "4",
-    user: "Disabled User"
+    user: "Disabled User",
+    action: (
+      <Select
+        className='dropdown'
+        defaultValue='全部'
+        bordered={false}
+        // onChange={handleChange}
+        options={[
+          {
+            value: "全部",
+            label: "全部"
+          },
+          {
+            value: "读写",
+            label: "读写"
+          },
+          {
+            value: "只读",
+            label: "只读"
+          }
+        ]}
+      />
+    )
   }
 ]
 const handleChange = (value) => {
@@ -90,6 +179,7 @@ function userManage(props) {
   }
   const rowSelection = {
     selectedRowKeys,
+    style: { backgroundColor: "#dde1ff" },
     // hideSelectAll: true,
     columnWidth: 10,
     onChange: onSelectChange
@@ -97,7 +187,7 @@ function userManage(props) {
   const hasSelected = selectedRowKeys.length > 0
 
   useEffect(() => {
-    console.log(props)
+    // console.log(props)
   })
   return (
     <>

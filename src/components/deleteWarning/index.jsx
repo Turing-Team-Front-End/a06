@@ -17,7 +17,7 @@ function deleteWarning(props) {
     setIsModalOpen(false)
   }
   useEffect(() => {
-    console.log(props)
+    // console.log(props)
   })
   return (
     <>

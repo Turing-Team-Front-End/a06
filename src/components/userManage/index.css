@@ -1,3 +1,7 @@
+.ant-table-wrapper .ant-table-container thead tr .ant-table-selection-column {
+  background-color: #dde1ff;
+}
+
 .user-top {
   display: flex;
   flex-direction: row;
@@ -12,7 +16,7 @@
   flex-grow: 0;
 }
 .user-top .user-title {
-  width: 96px;
+  /* width: 96px; */
   height: 32px;
 
   font-family: "Microsoft YaHei";

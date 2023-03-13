@@ -39,7 +39,7 @@
   border-radius: 8px;
 }
 .popover-top .popover-title {
-  width: 96px;
+  /* width: 96px; */
   height: 32px;
 
   font-family: "Microsoft YaHei";

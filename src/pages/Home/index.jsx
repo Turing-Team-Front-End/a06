@@ -18,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     let str
-    console.log(window.location.pathname)
+    // console.log(window.location.pathname)
     if (window.location.pathname.length > 14) {
       str = "bucket"
     } else {
@@ -98,7 +98,7 @@ export default function Home() {
         window.sessionStorage.setItem("key", item.imgActive)
       }
     })
-    console.log(e)
+    // console.log(e)
     navigate(`${e.target.id}`)
     window.sessionStorage.setItem("name", e.target.name)
     window.sessionStorage.setItem("key", e.target.src)
