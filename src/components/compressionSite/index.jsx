@@ -5,6 +5,6 @@ function compressionSite(props) {
   useEffect(() => {
     console.log(props)
   })
-  return <></>
+  return <><p>我是压缩</p></>
 }
 export default compressionSite
