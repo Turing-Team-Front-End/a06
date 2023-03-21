@@ -1,11 +1,25 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import "./index.css";
+import { doLoginAPI } from "../../request/api/login"
 import { Link } from "react-router-dom";
 export default function Login() {
   let email;
   let password;
   const [form] = Form.useForm();
+  const toLogin = (values) => {
+    let data = {
+      nameOrEmail: values.email,
+      password: values.password
+    }
+    console.log(data);
+    doLoginAPI(data).then((res) => {
+      console.log(res);
+    })
+  }
+  const onFinishFailed = (errorInfo) => {
+    console.log(errorInfo);
+  }
   return (
     <div>
       <div className='login-title'>
@@ -21,8 +35,8 @@ export default function Login() {
           email: email,
           password: password
         }}
-        // onFinish={toLogin}
-        // onFinishFailed={onFinishFailed}
+        onFinish={toLogin}
+        onFinishFailed={onFinishFailed}
       >
         <p>邮箱地址</p>
         <Form.Item
@@ -63,7 +77,7 @@ export default function Login() {
         <Form.Item style={{ textAlign: "center" }}>
           <Button
             className='login-button'
-            // htmlType='submit'
+            htmlType='submit'
           >
             <p>登录 →</p>
           </Button>

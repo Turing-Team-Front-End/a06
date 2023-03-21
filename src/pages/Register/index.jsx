@@ -4,21 +4,22 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { registryAPI } from "../../request/api/login"
+import { values } from "lodash";
 export default function Register() {
-  // const [em, setem] = useState('1505994122@qq.com')
-  // const [pwd, setpwd] = useState('2002621hhw')
-  // const [name, setname] = useState('TOBY')
-  // const submit = () => {
-  //   const data = {
-  //     username: name,
-  //     email: em,
-  //     password: pwd
-  //   }
-  //   registryAPI(data).then((res) => {
-  //     console.log(res);
-  //   })
-
-  // }
+  const toRegister = (values) => {
+    const data = {
+      username: values.username,
+      email: values.email,
+      password: values.password
+    }
+    registryAPI(data).then((res) => {
+      console.log(res);
+    })
+    console.log(values);
+  }
+  const onFinishFailed = (err) => {
+    console.log(err);
+  }
   let email;
   let password;
   const [form] = Form.useForm();
@@ -44,8 +45,8 @@ export default function Register() {
           email: email,
           password: password
         }}
-      // onFinish={toRegister}
-      // onFinishFailed={onFinishFailed}
+        onFinish={toRegister}
+        onFinishFailed={onFinishFailed}
       >
         <p>邮箱地址</p>
         <Form.Item
@@ -98,8 +99,8 @@ export default function Register() {
         <Form.Item style={{ textAlign: "center", marginTop: "2rem" }}>
           <Button
             className='register-button'
-          // onClick={submit}
-          // htmlType='submit'
+
+            htmlType='submit'
           >
             <p>注册 →</p>
           </Button>
