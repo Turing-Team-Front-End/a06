@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Input } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import "./index.css";
 import { Link } from "react-router-dom";
+import { registryAPI } from "../../request/api/login"
 export default function Register() {
+  // const [em, setem] = useState('1505994122@qq.com')
+  // const [pwd, setpwd] = useState('2002621hhw')
+  // const [name, setname] = useState('TOBY')
+  // const submit = () => {
+  //   const data = {
+  //     username: name,
+  //     email: em,
+  //     password: pwd
+  //   }
+  //   registryAPI(data).then((res) => {
+  //     console.log(res);
+  //   })
+
+  // }
   let email;
   let password;
   const [form] = Form.useForm();
@@ -29,8 +44,8 @@ export default function Register() {
           email: email,
           password: password
         }}
-        // onFinish={toRegister}
-        // onFinishFailed={onFinishFailed}
+      // onFinish={toRegister}
+      // onFinishFailed={onFinishFailed}
       >
         <p>邮箱地址</p>
         <Form.Item
@@ -54,7 +69,7 @@ export default function Register() {
             }
           ]}
         >
-          <Input className='register-input' placeholder='请输入密码' />
+          <Input className='register-input' placeholder='请输入用户名' />
         </Form.Item>
         <p>密码</p>
         <Form.Item
@@ -69,6 +84,7 @@ export default function Register() {
           <Input
             className='register-input'
             type='password'
+
             placeholder='请输入密码'
           />
         </Form.Item>
@@ -82,7 +98,8 @@ export default function Register() {
         <Form.Item style={{ textAlign: "center", marginTop: "2rem" }}>
           <Button
             className='register-button'
-            // htmlType='submit'
+          // onClick={submit}
+          // htmlType='submit'
           >
             <p>注册 →</p>
           </Button>
