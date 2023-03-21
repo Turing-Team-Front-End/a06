@@ -17,10 +17,10 @@ export function registryAPI(data) {
     })
 }
 //用户登出
-export function logoutAPI(data) {
+export function logoutAPI() {
     return myAxios({
         url: "/login/logout",
         method: 'post',
-        data: data
+
     })
 }
