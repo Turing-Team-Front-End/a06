@@ -1,5 +1,4 @@
 import myAxios from "../http";
-
 //用户登录
 export function doLoginAPI(data) {
     return myAxios({
