@@ -8,11 +8,11 @@ export default function Login() {
   let password;
   const [form] = Form.useForm();
   const toLogin = (values) => {
+    console.log(values);
     let data = {
-      nameOrEmail: values.email,
+      email: values.email,
       password: values.password
     }
-    console.log(data);
     doLoginAPI(data).then((res) => {
       console.log(res);
     })
