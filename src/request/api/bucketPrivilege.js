@@ -17,11 +17,11 @@ export function bucketPrivilegeSetAPI(data) {
     })
 }
 //获取用户当前所有bucket权限信息(bucketId-权限-isOwner)格式
-export function getSimplePrivilegeInfoAPI(data) {
+export function getSimplePrivilegeInfoAPI() {
     return myAxios({
         url: "/bucket/privilege/getSimplePrivilegeInfo",
         method: 'get',
-        data: data
+
     })
 }
 //获取指定bucket的授权信息(所有or只读or读写)(需要此bucket所有权)
@@ -33,11 +33,11 @@ export function getBucketPrivilegeAPI(data) {
     })
 }
 //获取当前用户所有的bucket权限信息
-export function bucketPrivilegeGetAllAPI(data) {
+export function bucketPrivilegeGetAllAPI() {
     return myAxios({
         url: "/bucket/privilege/getAll",
         method: 'get',
-        data: data
+
     })
 }
 //删除指定权限信息(需要此bucket所有权)
