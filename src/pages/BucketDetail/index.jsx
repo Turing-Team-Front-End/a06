@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom"
 import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
 import FileDetail from "../../components/fileDetail"
+import FileUpload from "../../components/fileUpload"
+import DeleteWarning from "../../components/deleteWarning"
 import { Button, Input, Space } from "antd"
 import {
   SearchOutlined,
@@ -91,7 +93,11 @@ export default function BucketDetail() {
           />
           <a style={{ color: "#3452CE" }}>链接</a>
           <a style={{ color: "#3452CE" }}>下载</a>
-          <a style={{ color: "#BA1A1A" }}>删除</a>
+          <DeleteWarning
+            name='提示'
+            button={false}
+            mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
+          />
         </Space>
       )
     }
@@ -130,13 +136,19 @@ export default function BucketDetail() {
       </div>
       <div className='bucket-detail-mid'>
         <div className='bucket-detail-mid-left'>
-          <Button
-            icon={<UploadOutlined />}
-            className='bucket-detail-mid-left-upload'
-            type='text'
-          >
-            上传文件
-          </Button>
+          <Popover
+            name='上传文件'
+            button={false}
+            mode={<Button
+              icon={<UploadOutlined />}
+              className='bucket-detail-mid-left-upload'
+              type='text'
+            >
+              上传文件
+            </Button>}
+            content={<FileUpload />}
+          />
+
           <Button
             icon={<DownloadOutlined />}
             className='bucket-detail-mid-left-download'

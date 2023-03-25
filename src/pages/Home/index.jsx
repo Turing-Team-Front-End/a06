@@ -147,7 +147,7 @@ export default function Home() {
             <Popover
               name='任务列表'
               button={false}
-              mode={<Button className='upload'>任务列表</Button>}
+              mode={<Button type='text' className='upload'>任务列表</Button>}
               content={<TaskList />}
             />
             <div className='img-logo'>
