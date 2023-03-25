@@ -1,24 +1,32 @@
-import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-import "./index.css";
+import React from "react"
+import { Button, Checkbox, Form, Input, message } from "antd"
+import "./index.css"
 import { doLoginAPI } from "../../request/api/login"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
 export default function Login() {
-  let email;
-  let password;
-  const [form] = Form.useForm();
+  let email
+  let password
+  const [form] = Form.useForm()
+  let navigate = useNavigate()
   const toLogin = (values) => {
-    console.log(values);
+    console.log(values)
     let data = {
       email: values.email,
       password: values.password
     }
     doLoginAPI(data).then((res) => {
-      console.log(res);
+      console.log(res)
+      if (res.data.code === 200) {
+        message.success("登陆成功！")
+        navigate("/home")
+        window.sessionStorage.setItem("token", res.data.data)
+      } else if (res.data.code === 500) {
+        message.error("用户名或密码错误！")
+      }
     })
   }
   const onFinishFailed = (errorInfo) => {
-    console.log(errorInfo);
+    console.log(errorInfo)
   }
   return (
     <div>
@@ -75,10 +83,7 @@ export default function Login() {
           </Link>
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
-          <Button
-            className='login-button'
-            htmlType='submit'
-          >
+          <Button className='login-button' htmlType='submit'>
             <p>登录 →</p>
           </Button>
           {/* <Button shape='round' htmlType='button' onClick={onReset}>
@@ -90,5 +95,5 @@ export default function Login() {
         </Form.Item>
       </Form>
     </div>
-  );
+  )
 }
