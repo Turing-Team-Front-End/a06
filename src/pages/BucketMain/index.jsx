@@ -4,11 +4,26 @@ import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
 import DeleteWarning from "../../components/deleteWarning"
 import UserManage from "../../components/userManage"
-import { Button, Input, Space } from "antd"
+import { Button, Input, Space, Spin } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 import "./index.css"
+import { bucketListAPI } from "../../request/api/bucket"
 
 export default function BucketMain() {
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const getBucketData = async () => {
+    try {
+      let res = await bucketListAPI(1, 5);
+      setData(res.data.data)
+      setIsLoading(false)
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    getBucketData()
+  }, [])
   const navigate = useNavigate()
   const ToRoute = (record) => {
     console.log(record)
@@ -33,9 +48,9 @@ export default function BucketMain() {
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
     },
     {
-      title: "更新时间",
-      dataIndex: "time",
-      key: "time",
+      title: "创建时间",
+      dataIndex: "createTime",
+      key: "createTime",
       width: "calc(25vw - 43px)",
       align: "center",
       onHeaderCell: () => ({
@@ -49,9 +64,26 @@ export default function BucketMain() {
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
     },
     {
-      title: "文件数",
-      dataIndex: "number",
-      key: "number",
+      title: "总共大小",
+      dataIndex: "totalSize",
+      key: "totalSize",
+      width: "calc(25vw - 43px)",
+      align: "center",
+
+      onHeaderCell: () => ({
+        style: {
+          backgroundColor: "#dde1ff",
+          fontSize: "20px",
+          fontWeight: 400,
+          color: "#73768B"
+        }
+      }),
+      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+    },
+    {
+      title: "已使用大小",
+      dataIndex: "usedSize",
+      key: "usedSize",
       width: "calc(25vw - 43px)",
       align: "center",
 
@@ -107,26 +139,7 @@ export default function BucketMain() {
       )
     }
   ]
-  const data = [
-    {
-      key: "1",
-      name: "Bucket01",
-      time: "2002.02.02",
-      number: "22"
-    },
-    {
-      key: "2",
-      name: "11111",
-      time: "2022.02.02",
-      number: "22"
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      time: "2022.02.02",
-      number: "22"
-    }
-  ]
+
   // textDecorationLine: "underline"
   return (
     <div className='bucket-content'>
@@ -144,7 +157,10 @@ export default function BucketMain() {
         ></Input>
       </div>
       <div className='bucket-content-bottom'>
-        <BucketTable columns={columns} data={data} />
+        <Spin tip="Loading" spinning={isLoading}>
+          <BucketTable columns={columns} data={data} />
+        </Spin>
+
         {/* <Popover
             name='用户管理'
             button={true}
