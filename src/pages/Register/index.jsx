@@ -1,21 +1,32 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import "./index.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registryAPI } from "../../request/api/login"
 import { values } from "lodash";
 export default function Register() {
-  const toRegister = (values) => {
+  let navigate = useNavigate()
+  const toRegister = async (values) => {
     const data = {
       username: values.username,
       email: values.email,
       password: values.password
     }
-    registryAPI(data).then((res) => {
+    try {
+      let res = await registryAPI(data);
       console.log(res);
-    })
-    console.log(values);
+      if (res.data.code === 200) {
+        message.success(res.data.msg)
+        navigate("/main/login")
+      } else if (res.data.code === 500) {
+        message.error(res.data.msg)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
+
   }
   const onFinishFailed = (err) => {
     console.log(err);

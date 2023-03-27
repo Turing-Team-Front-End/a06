@@ -8,14 +8,14 @@ export default function Login() {
   let password
   const [form] = Form.useForm()
   let navigate = useNavigate()
-  const toLogin = (values) => {
-    console.log(values)
+  const toLogin = async (values) => {
     let data = {
       email: values.email,
       password: values.password
     }
-    doLoginAPI(data).then((res) => {
-      console.log(res)
+    try {
+      let res = await doLoginAPI(data);
+      console.log(res);
       if (res.data.code === 200) {
         message.success("登陆成功！")
         navigate("/home")
@@ -23,7 +23,9 @@ export default function Login() {
       } else if (res.data.code === 500) {
         message.error("用户名或密码错误！")
       }
-    })
+    } catch (error) {
+      console.error(error);
+    }
   }
   const onFinishFailed = (errorInfo) => {
     console.log(errorInfo)
