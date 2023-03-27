@@ -3,7 +3,7 @@ import { message } from "antd"
 
 function myAxios(axiosConfig) {
   const service = axios.create({
-    baseURL: "http://pve.lycoris.site:10089", // 设置统一的请求前缀
+    baseURL: "/api", // 设置统一的请求前缀
     timeout: 10000 // 设置统一的超时时长
   })
 
@@ -38,7 +38,7 @@ function myAxios(axiosConfig) {
 
 export function myAxios2(axiosConfig) {
   const service = axios.create({
-    baseURL: "http://pve.lycoris.site:10089", // 设置统一的请求前缀
+    baseURL: "/api", // 设置统一的请求前缀
     timeout: 10000, // 设置统一的超时时长
     headers: {
       token: window.sessionStorage.getItem("token")
