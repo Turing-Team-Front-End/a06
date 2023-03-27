@@ -2,7 +2,11 @@ import React from "react"
 import BucketTable from "../../components/bucketTable"
 
 import "./index.css"
-import { Avatar, Space } from "antd"
+import { logoutAPI } from "../../request/api/login"
+
+import { Avatar, message, Space } from "antd"
+import { useNavigate } from "react-router-dom"
+
 import icon from "../../assets/refresh-cw.svg"
 import toby from "../../assets/toby.jpg"
 export default function Site() {
@@ -133,6 +137,25 @@ export default function Site() {
       equipment: "mac"
     }
   ]
+  let navigate = useNavigate()
+  const logout = (values) => {
+    console.log(values)
+    let data = {
+      email: values.email,
+      password: values.password
+    }
+    logoutAPI(data).then((res) => {
+      console.log(res)
+      if (res.data.code === 200) {
+        message.success("登出成功！")
+        sessionStorage.removeItem("token")
+        navigate("/main/login")
+      } else if (res.data.code === 401) {
+        message.error("用户未登录！")
+        navigate("/main/login")
+      }
+    })
+  }
   return (
     <>
       <div className='site-content'>
@@ -224,8 +247,11 @@ export default function Site() {
                   </div>
                 </div>
                 <div className='site-content-main-user-id'>
-                  <div className='site-content-main-user-id-content'>
-                    删除账号
+                  <div
+                    onClick={logout}
+                    className='site-content-main-user-id-content'
+                  >
+                    退出登录
                   </div>
                 </div>
               </div>

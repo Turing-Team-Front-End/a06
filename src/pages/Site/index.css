@@ -901,13 +901,14 @@
 
   /* material-theme/sys/light/error */
 
-  color: #ba1a1a;
+  color: #3452ce;
 
   /* Inside auto layout */
 
   flex: none;
   order: 0;
   flex-grow: 0;
+  cursor: pointer;
 }
 .site-left {
   display: flex;
