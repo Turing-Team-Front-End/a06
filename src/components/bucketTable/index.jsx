@@ -10,9 +10,7 @@ function bucketTable(props) {
     <Table
       className='table-components'
       columns={props.columns}
-      pagination={{
-        position: ["bottomCenter"]
-      }}
+      pagination={false}
       dataSource={props.data}
     />
   )
