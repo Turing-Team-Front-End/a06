@@ -48,3 +48,11 @@ export function bucketDeleteAPI(data) {
         data: data
     })
 }
+//获取bucket总数
+export function bucketCountAPI() {
+    return myAxios2({
+        url: "/bucket/get/count",
+        method: 'get',
+
+    })
+}

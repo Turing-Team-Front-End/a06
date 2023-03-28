@@ -4,26 +4,43 @@ import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
 import DeleteWarning from "../../components/deleteWarning"
 import UserManage from "../../components/userManage"
-import { Button, Input, Space, Spin } from "antd"
+import { Button, Input, Space, Spin, Pagination } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 import "./index.css"
-import { bucketListAPI } from "../../request/api/bucket"
+import { bucketListAPI, bucketCountAPI } from "../../request/api/bucket"
 
 export default function BucketMain() {
   const [data, setData] = useState([])
+  const [current, setCurrent] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
+  const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const getBucketData = async () => {
     try {
-      let res = await bucketListAPI(1, 5);
+      let res = await bucketListAPI(current - 1, pageSize);
       setData(res.data.data)
       setIsLoading(false)
+      console.log(res);
     } catch (error) {
       console.error(error);
     }
   }
+  const getTotalData = async () => {
+    try {
+      let res = await bucketCountAPI();
+      setTotal(res.data.data)
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  const changePage = (page) => {
+    setCurrent(page)
+  }
   useEffect(() => {
     getBucketData()
-  }, [])
+    getTotalData()
+  }, [current, total])
   const navigate = useNavigate()
   const ToRoute = (record) => {
     console.log(record)
@@ -159,6 +176,12 @@ export default function BucketMain() {
       <div className='bucket-content-bottom'>
         <Spin tip="Loading" spinning={isLoading}>
           <BucketTable columns={columns} data={data} />
+          <Pagination current={current}
+            total={total}
+            pageSize={pageSize}
+            onChange={changePage}
+            style={{ position: ["bottomCenter"] }}
+          />
         </Spin>
 
         {/* <Popover
