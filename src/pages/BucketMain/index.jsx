@@ -4,6 +4,7 @@ import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
 import DeleteWarning from "../../components/deleteWarning"
 import UserManage from "../../components/userManage"
+import CreateBucket from "../../components/createBucket"
 import { Button, Input, Space, Spin, Pagination } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 import "./index.css"
@@ -164,9 +165,15 @@ export default function BucketMain() {
         <div className='bucket-title'>所有Bucket</div>
       </div>
       <div className='bucket-content-mid'>
-        <Button className='bucket-create' type='text'>
-          <PlusOutlined /> Create Bucket
-        </Button>
+
+        <Popover
+          name='创建bucket'
+          button={false}
+          mode={<Button className='bucket-create' type='text'>
+            <PlusOutlined /> Create Bucket
+          </Button>}
+          content={<CreateBucket />}
+        />
         <Input
           className='bucket-search'
           placeholder='搜索Bucket...'
