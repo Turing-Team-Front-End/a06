@@ -17,7 +17,7 @@ export default function BucketMain() {
   const [isLoading, setIsLoading] = useState(true)
   const getBucketData = async () => {
     try {
-      let res = await bucketListAPI(current - 1, pageSize);
+      let res = await bucketListAPI(current, pageSize);
       setData(res.data.data)
       setIsLoading(false)
       console.log(res);
@@ -180,7 +180,7 @@ export default function BucketMain() {
             total={total}
             pageSize={pageSize}
             onChange={changePage}
-            style={{ position: ["bottomCenter"] }}
+            style={{ position: "bottomCenter" }}
           />
         </Spin>
 
