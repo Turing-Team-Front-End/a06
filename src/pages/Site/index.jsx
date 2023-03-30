@@ -1,15 +1,55 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
 
 import "./index.css"
 import { logoutAPI } from "../../request/api/login"
-
-import { Avatar, message, Space } from "antd"
+import { userGetAPI, getLoginRecordAPI } from "../../request/api/user"
+import { Avatar, message, Space, Spin, Pagination } from "antd"
 import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
 import toby from "../../assets/toby.jpg"
+// import { size } from "lodash"
+const data = [
+]
 export default function Site() {
+  const [id, setId] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [data, setData] = useState([])
+  const [current, setCurrent] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
+  const [total, setTotal] = useState(50)
+  const [isLoading, setIsLoading] = useState(true)
+  const getUserData = async () => {
+    try {
+      let res = await userGetAPI();
+      setId(res.data.data.id)
+      setEmail(res.data.data.email)
+      setUsername(res.data.data.username)
+      console.log(id, email, username);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  const getUserLoginData = async () => {
+    try {
+      let res = await getLoginRecordAPI(current, pageSize);
+      setData(res.data.data)
+      setIsLoading(false)
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  const changePage = (page) => {
+    setCurrent(page)
+  }
+  useEffect(() => {
+    getUserData()
+    getUserLoginData()
+  }, [current])
   const columns = [
     {
       title: "时间",
@@ -30,8 +70,8 @@ export default function Site() {
     },
     {
       title: "IP地址",
-      dataIndex: "address",
-      key: "address",
+      dataIndex: "ip",
+      key: "ip",
       width: "calc(25vw - 43px)",
       align: "center",
       onHeaderCell: () => ({
@@ -63,8 +103,8 @@ export default function Site() {
     },
     {
       title: "设备",
-      dataIndex: "equipment",
-      key: "equipment",
+      dataIndex: "device",
+      key: "device",
       width: "calc(25vw - 43px)",
       align: "center",
 
@@ -79,64 +119,7 @@ export default function Site() {
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
     }
   ]
-  const data = [
-    {
-      key: "1",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "2",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "3",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "4",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "5",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "6",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "7",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "8",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    }
-  ]
+
   let navigate = useNavigate()
   const logout = (values) => {
     console.log(values)
@@ -185,7 +168,7 @@ export default function Site() {
                   </div>
                 </div>
                 <div className='site-content-main-name-id'>
-                  <div className='site-content-main-name-id-content'>TOBY</div>
+                  <div className='site-content-main-name-id-content'>{username}</div>
                 </div>
                 <div className='site-content-main-name-change'>
                   <div className='site-content-main-name-change-content'>
@@ -200,7 +183,7 @@ export default function Site() {
                   </div>
                 </div>
                 <div className='site-content-main-email-id'>
-                  <div className='site-content-main-email-id-content'>123</div>
+                  <div className='site-content-main-email-id-content'>{email}</div>
                 </div>
                 <div className='site-content-main-email-change'>
                   <div className='site-content-main-email-change-content'>
@@ -258,7 +241,15 @@ export default function Site() {
             </div>
           </div>
           <div className='site-right'>
-            <BucketTable columns={columns} data={data} />
+            <Spin tip="Loading" spinning={isLoading}>
+              <BucketTable columns={columns} data={data} />
+              <Pagination current={current}
+                total={total}
+                pageSize={pageSize}
+                onChange={changePage}
+                style={{ position: "bottomCenter" }}
+              />
+            </Spin>
           </div>
         </div>
       </div>
