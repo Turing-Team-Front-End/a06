@@ -10,8 +10,6 @@ import { useNavigate } from "react-router-dom"
 import icon from "../../assets/refresh-cw.svg"
 import toby from "../../assets/toby.jpg"
 // import { size } from "lodash"
-const data = [
-]
 export default function Site() {
   const [id, setId] = useState('')
   const [email, setEmail] = useState('')
@@ -48,6 +46,10 @@ export default function Site() {
   }
   useEffect(() => {
     getUserData()
+
+  }, [])
+  useEffect(() => {
+
     getUserLoginData()
   }, [current])
   const columns = [
