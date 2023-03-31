@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
-
+import Popover from "../../components/popover"
+import UpdateUsername from "../../components/updateUsername"
+import UpdateEmail from "../../components/updateEmail"
 import "./index.css"
 import { logoutAPI } from "../../request/api/login"
 import { userGetAPI, getLoginRecordAPI } from "../../request/api/user"
-import { Avatar, message, Space, Spin, Pagination } from "antd"
+import { Avatar, message, Space, Spin, Pagination, Button } from "antd"
 import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
@@ -174,7 +176,14 @@ export default function Site() {
                 </div>
                 <div className='site-content-main-name-change'>
                   <div className='site-content-main-name-change-content'>
-                    修改名字
+                    <Popover
+                      name='修改用户名'
+                      button={false}
+                      mode={<Button className='' type='text'>
+                        修改用户名
+                      </Button>}
+                      content={< UpdateUsername />}
+                    />
                   </div>
                 </div>
               </div>
@@ -189,7 +198,14 @@ export default function Site() {
                 </div>
                 <div className='site-content-main-email-change'>
                   <div className='site-content-main-email-change-content'>
-                    修改邮箱
+                    <Popover
+                      name='修改邮箱'
+                      button={false}
+                      mode={<Button className='' type='text'>
+                        修改邮箱
+                      </Button>}
+                      content={< UpdateEmail />}
+                    />
                   </div>
                 </div>
               </div>
