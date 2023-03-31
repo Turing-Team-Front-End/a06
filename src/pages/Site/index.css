@@ -325,7 +325,7 @@
 
   width: 64px;
   height: 21px;
-
+  cursor: pointer;
   font-family: "Microsoft YaHei";
   font-style: normal;
   font-weight: 400;
@@ -475,7 +475,7 @@
 .site-content-main-email-change-content {
   width: 64px;
   height: 21px;
-
+  cursor: pointer;
   font-family: "Microsoft YaHei";
   font-style: normal;
   font-weight: 400;
@@ -584,7 +584,7 @@
 
   width: 64px;
   height: 21px;
-
+  cursor: pointer;
   font-family: "Microsoft YaHei";
   font-style: normal;
   font-weight: 400;
@@ -910,6 +910,7 @@
   flex-grow: 0;
   cursor: pointer;
 }
+
 .site-left {
   display: flex;
   flex-direction: row;
@@ -921,6 +922,7 @@
   order: 0;
   flex-grow: 0;
 }
+
 .site-right {
   display: flex;
   flex-direction: column;

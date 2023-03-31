@@ -2,22 +2,21 @@ import React from "react"
 import { Button, Form, Input, message } from "antd"
 import { updatepasswordAPI } from "../../request/api/user"
 export default function updatePassword() {
-    let name
-    let totalSize
+    let oldPassword
+    let newPassword
     const [form] = Form.useForm()
-    const toCreate = async (values) => {
+    const toUpdate = async (values) => {
         let data = {
-            name: values.name,
-            totalSize: values.totalSize
+            oldPassword: values.oldPassword,
+            newPassword: values.newPassword
         }
         try {
-            let res = await bucketAPI(data);
+            let res = await updatepasswordAPI(data);
             console.log(res);
             if (res.data.code === 200) {
-                message.success("创建成功！")
-
+                message.success("更新密码成功！")
             } else if (res.data.code === 500) {
-                message.error("创建失败！")
+                message.error("更新密码失败！")
             }
         } catch (error) {
             console.error(error);
@@ -29,7 +28,7 @@ export default function updatePassword() {
     return (
         <div>
             <div className='login-title'>
-                <p>createBucket</p>
+                <p>updatePassword</p>
             </div>
             <Form
                 style={{ margin: "auto", paddingTop: 40, width: 600 }}
@@ -38,43 +37,42 @@ export default function updatePassword() {
                 className='login-form'
                 initialValues={{
                     remember: true,
-                    name: name,
-                    totalSize: totalSize
+                    oldPassword: oldPassword,
+                    newPassword: newPassword
                 }}
-                onFinish={toCreate}
+                onFinish={toUpdate}
                 onFinishFailed={onFinishFailed}
             >
-                <p>name</p>
+                <p>oldPassword</p>
                 <Form.Item
-                    name='name'
+                    name='oldPassword'
                     rules={[
                         {
                             required: true,
-                            message: "name不能为空"
+                            message: "oldPassword不能为空"
                         }
                     ]}
                 >
-                    <Input className='login-input' placeholder='请输入name' />
+                    <Input className='login-input' placeholder='请输入oldPassword' />
                 </Form.Item>
-                <p>totalSize</p>
+                <p>newPassword</p>
                 <Form.Item
-                    name='totalSize'
+                    name='newPassword'
                     rules={[
                         {
                             required: true,
-                            message: "totalSize不能为空"
+                            message: "newPassword不能为空"
                         }
                     ]}
                 >
                     <Input
                         className='login-input'
-
-                        placeholder='请输入totalSize'
+                        placeholder='请输入newPassword'
                     />
                 </Form.Item>
                 <Form.Item style={{ textAlign: "center" }}>
                     <Button className='login-button' htmlType='submit'>
-                        <p>Create →</p>
+                        <p>Update →</p>
                     </Button>
                     {/* <Button shape='round' htmlType='button' onClick={onReset}>
             重置

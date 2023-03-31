@@ -12,10 +12,10 @@ export default function updateUsername() {
             let res = await updateAPI(data);
             console.log(res);
             if (res.data.code === 200) {
-                message.success("创建成功！")
+                message.success("更新成功！")
 
             } else if (res.data.code === 500) {
-                message.error("创建失败！")
+                message.error("更新失败！")
             }
         } catch (error) {
             console.error(error);
