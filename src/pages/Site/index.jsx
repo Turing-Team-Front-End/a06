@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
 import toby from "../../assets/toby.jpg"
+import logo1 from "../../assets/turingLogo.svg"
 // import { size } from "lodash"
 export default function Site() {
   const [id, setId] = useState('')
@@ -37,8 +38,17 @@ export default function Site() {
   const getUserLoginData = async () => {
     try {
       let res = await getLoginRecordAPI(current, pageSize);
-      console.log(res, "1231232131231231");
-      setData(res.data.data)
+      //处理数据
+      res.data.data.forEach((item, idnex) => {
+        if (JSON.parse(item.city).hasOwnProperty('result')) {
+          item.city = JSON.parse(item.city).result.ad_info.nation + '-' +
+            JSON.parse(item.city).result.ad_info.province + '-' +
+            JSON.parse(item.city).result.ad_info.city
+        } else {
+          item.city = JSON.parse(item.city).message
+        }
+        setData(res.data.data)
+      });
       setIsLoading(false)
     }
     catch (error) {
