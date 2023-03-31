@@ -50,10 +50,8 @@ export default function Site() {
   }
   useEffect(() => {
     getUserData()
-
   }, [])
   useEffect(() => {
-
     getUserLoginData()
   }, [current])
   const columns = [
