@@ -5,7 +5,7 @@ export function updateAPI(data) {
     return myAxios2({
         url: "/user/update",
         method: 'post',
-        data: data
+        params: data
     })
 }
 //更新当前用户密码
@@ -13,7 +13,7 @@ export function updatepasswordAPI(data) {
     return myAxios2({
         url: "/user/update/password",
         method: 'post',
-        data: data
+        params: data
     })
 }
 //获取当前用户信息(id,用户名,邮箱)
