@@ -19,9 +19,9 @@ export default function BucketMain() {
   const getBucketData = async () => {
     try {
       let res = await bucketListAPI(current, pageSize);
-      setData(res.data.data)
+      setData(res.data.data.records)
       setIsLoading(false)
-      console.log(res);
+      console.log('aaaaaa', res);
     } catch (error) {
       console.error(error);
     }

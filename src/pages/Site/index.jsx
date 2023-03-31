@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
-
+import Popover from "../../components/popover"
+import UpdateUsername from "../../components/updateUsername"
+import UpdateEmail from "../../components/updateEmail"
+import UpdatePassword from "../../components/updatePassword"
 import "./index.css"
 import { logoutAPI } from "../../request/api/login"
 import { userGetAPI, getLoginRecordAPI } from "../../request/api/user"
-import { Avatar, message, Space, Spin, Pagination } from "antd"
+import { Avatar, message, Space, Spin, Pagination, Button } from "antd"
 import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
@@ -34,6 +37,7 @@ export default function Site() {
   const getUserLoginData = async () => {
     try {
       let res = await getLoginRecordAPI(current, pageSize);
+      console.log(res, "1231232131231231");
       setData(res.data.data)
       setIsLoading(false)
     }
@@ -159,7 +163,7 @@ export default function Site() {
                 <Avatar size={180} src={toby} />
               </div>
               <div className='site-content-main-img-set'>
-                <div className='site-content-main-img-set-name'>编辑</div>{" "}
+                {/* <div className='site-content-main-img-set-name'>编辑</div>{" "} */}
               </div>
             </div>
             <div className='site-content-main-detail'>
@@ -173,9 +177,15 @@ export default function Site() {
                   <div className='site-content-main-name-id-content'>{username}</div>
                 </div>
                 <div className='site-content-main-name-change'>
-                  <div className='site-content-main-name-change-content'>
-                    修改名字
-                  </div>
+                  <Popover
+                    name='修改用户名'
+                    button={false}
+                    mode={<div className='site-content-main-name-change-content'>
+                      修改名字
+                    </div>}
+                    content={< UpdateUsername />}
+                  />
+
                 </div>
               </div>
               <div className='site-content-main-email'>
@@ -188,24 +198,37 @@ export default function Site() {
                   <div className='site-content-main-email-id-content'>{email}</div>
                 </div>
                 <div className='site-content-main-email-change'>
-                  <div className='site-content-main-email-change-content'>
-                    修改邮箱
-                  </div>
+                  <Popover
+                    name='修改邮箱'
+                    button={false}
+                    mode={<div className='site-content-main-email-change-content'>
+                      修改邮箱
+                    </div>}
+                    content={< UpdateEmail />}
+                  />
+
                 </div>
               </div>
               <div className='site-content-main-password'>
                 <div className='site-content-main-password-title'>
+
                   <div className='site-content-main-password-title-content'>
                     密码
                   </div>
                 </div>
                 <div className='site-content-main-password-change'>
-                  <div className='site-content-main-password-change-content'>
-                    修改密码
-                  </div>
+                  <Popover
+                    name='修改密码'
+                    button={false}
+                    mode={<div className='site-content-main-password-change-content'>
+                      修改密码
+                    </div>}
+                    content={< UpdatePassword />}
+                  />
+
                 </div>
               </div>
-              <div className='site-content-main-admin'>
+              {/* <div className='site-content-main-admin'>
                 <div className='site-content-main-admin-title'>权限</div>
                 <div className='site-content-main-admin-id'>
                   <div className='site-content-main-admin-id-content'>
@@ -224,7 +247,7 @@ export default function Site() {
                     114514
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className='site-content-main-user'>
                 <div className='site-content-main-user-title'>
                   <div className='site-content-main-user-title-content'>
