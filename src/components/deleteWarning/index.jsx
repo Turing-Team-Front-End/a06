@@ -13,7 +13,6 @@ function deleteWarning(props) {
   const toDeleteBucket = async () => {
     try {
       let res = await bucketDeleteAPI(props.record.id);
-      console.log(res);
       if (res.data.code === 200) {
         message.success("删除成功！")
       } else if (res.data.code === 500) {
@@ -34,7 +33,7 @@ function deleteWarning(props) {
     setIsModalOpen(false)
   }
   useEffect(() => {
-    console.log(props)
+
   })
   return (
     <>
