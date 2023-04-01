@@ -20,27 +20,27 @@ export default function BucketMain() {
     try {
       let res = await bucketListAPI(current, pageSize);
       setData(res.data.data.records)
+      setTotal(res.data.data.total)
       setIsLoading(false)
-      console.log('aaaaaa', res);
     } catch (error) {
       console.error(error);
     }
   }
-  const getTotalData = async () => {
-    try {
-      let res = await bucketCountAPI();
-      setTotal(res.data.data)
-      console.log(res);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  // const getTotalData = async () => {
+  //   try {
+  //     let res = await bucketCountAPI();
+  //     setTotal(res.data.data)
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
   const changePage = (page) => {
     setCurrent(page)
   }
   useEffect(() => {
     getBucketData()
-    getTotalData()
+    // getTotalData()
   }, [current, total])
   const navigate = useNavigate()
   const ToRoute = (record) => {

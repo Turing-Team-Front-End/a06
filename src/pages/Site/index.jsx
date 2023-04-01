@@ -29,7 +29,6 @@ export default function Site() {
       setId(res.data.data.id)
       setEmail(res.data.data.email)
       setUsername(res.data.data.username)
-      console.log(id, email, username);
     }
     catch (error) {
       console.error(error);
@@ -38,7 +37,6 @@ export default function Site() {
   const getUserLoginData = async () => {
     try {
       let res = await getLoginRecordAPI(current, pageSize);
-      console.log(res, "11111111111111111111s");
       //处理数据
       res.data.data.records.forEach((item, idnex) => {
         if (JSON.parse(item.city).hasOwnProperty('result')) {
