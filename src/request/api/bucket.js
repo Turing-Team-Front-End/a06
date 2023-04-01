@@ -41,11 +41,10 @@ export function bucketGetAPI(data) {
     })
 }
 //删除bucket
-export function bucketDeleteAPI(data) {
+export function bucketDeleteAPI(bid) {
     return myAxios2({
-        url: "/bucket/delete",
+        url: `/bucket/delete/${bid}`,
         method: 'delete',
-        data: data
     })
 }
 //获取bucket总数

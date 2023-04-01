@@ -21,7 +21,7 @@ export default function Site() {
   const [data, setData] = useState([])
   const [current, setCurrent] = useState(1)
   const [pageSize, setPageSize] = useState(5)
-  const [total, setTotal] = useState(50)
+  const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const getUserData = async () => {
     try {
@@ -38,8 +38,9 @@ export default function Site() {
   const getUserLoginData = async () => {
     try {
       let res = await getLoginRecordAPI(current, pageSize);
+      console.log(res, "11111111111111111111s");
       //处理数据
-      res.data.data.forEach((item, idnex) => {
+      res.data.data.records.forEach((item, idnex) => {
         if (JSON.parse(item.city).hasOwnProperty('result')) {
           item.city = JSON.parse(item.city).result.ad_info.nation + '-' +
             JSON.parse(item.city).result.ad_info.province + '-' +
@@ -47,7 +48,8 @@ export default function Site() {
         } else {
           item.city = JSON.parse(item.city).message
         }
-        setData(res.data.data)
+        setData(res.data.data.records)
+        setTotal(res.data.data.total)
       });
       setIsLoading(false)
     }

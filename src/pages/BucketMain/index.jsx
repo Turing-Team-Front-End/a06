@@ -151,6 +151,7 @@ export default function BucketMain() {
           <DeleteWarning
             name='提示'
             button={false}
+            record={record}
             mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
           />
         </Space>
