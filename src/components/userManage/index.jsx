@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { Select, Input, Button, Table } from "antd"
+import { Select, Input, Button, Table, message } from "antd"
 import { SearchOutlined } from "@ant-design/icons"
-
+import Popover from "../popover"
+import SetUserPrivilege from "../setUserPrivilege"
+import { getBucketPrivilegeAPI } from "../../request/api/bucketPrivilege"
 import "./index.css"
 
 const columns = [
@@ -173,6 +175,14 @@ const handleChange = (value) => {
 }
 function userManage(props) {
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
+  const getBucketPrivilegeData = async () => {
+    try {
+      let res = await getBucketPrivilegeAPI(props.record.id, 1, 5);
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   const onSelectChange = (newSelectedRowKeys) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys)
     setSelectedRowKeys(newSelectedRowKeys)
@@ -187,12 +197,24 @@ function userManage(props) {
   const hasSelected = selectedRowKeys.length > 0
 
   useEffect(() => {
-    // console.log(props)
-  })
+    // console.log(props.record.id)
+    getBucketPrivilegeData()
+  }, [])
   return (
     <>
       <div className='user-top'>
         <div className='user-title'>所有用户</div>
+        <Popover
+          name="设定用户权限"
+          mode={<Button
+            className='user-button'
+            type='text'
+          >
+            设定用户权限
+          </Button>}
+          content={<SetUserPrivilege bid={props.record.id} />}
+        />
+
       </div>
       <div className='user-mid'>
         <div className='user-left'>

@@ -143,10 +143,9 @@ export default function BucketMain() {
                 <div className='bucket-user-title'>/ {record.name}</div>
               </>
             }
-            button={true}
             record={record}
             mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
-            content={<UserManage />}
+            content={<UserManage record={record} />}
           />
           <DeleteWarning
             name='提示'
