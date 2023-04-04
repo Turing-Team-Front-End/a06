@@ -43,7 +43,8 @@ export function myAxios2(axiosConfig) {
     headers: {
       token: window.sessionStorage.getItem("token")
     }
-  })
+  }
+  )
 
   // 添加请求拦截器
   service.interceptors.request.use(

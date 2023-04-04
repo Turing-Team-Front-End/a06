@@ -38,7 +38,7 @@ export function checkAPI(data) {
     return myAxios({
         url: "/upload/check",
         method: 'post',
-        data: data
+        data
     })
 }
 //放弃上传任务
@@ -46,7 +46,7 @@ export function abortAPI(data) {
     return myAxios({
         url: "/upload/abort",
         method: 'post',
-        data: data
+        data
     })
 }
 
