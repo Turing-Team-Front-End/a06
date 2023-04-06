@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
@@ -15,6 +15,11 @@ import arrowLeft from "../../assets/arrow-left.svg"
 import "./index.css"
 export default function BucketDetail() {
   const params = useParams()
+
+  useEffect(() => {
+    // console.log(params)
+  })
+
   const columns = [
     {
       title: "文件名",
@@ -139,14 +144,16 @@ export default function BucketDetail() {
           <Popover
             name='上传文件'
             button={false}
-            mode={<Button
-              icon={<UploadOutlined />}
-              className='bucket-detail-mid-left-upload'
-              type='text'
-            >
-              上传文件
-            </Button>}
-            content={<FileUpload />}
+            mode={
+              <Button
+                icon={<UploadOutlined />}
+                className='bucket-detail-mid-left-upload'
+                type='text'
+              >
+                上传文件
+              </Button>
+            }
+            content={<FileUpload bid={params.bid} />}
           />
 
           <Button

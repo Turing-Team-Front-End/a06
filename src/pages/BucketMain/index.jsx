@@ -18,12 +18,13 @@ export default function BucketMain() {
   const [isLoading, setIsLoading] = useState(true)
   const getBucketData = async () => {
     try {
-      let res = await bucketListAPI(current, pageSize);
+      let res = await bucketListAPI(current, pageSize)
+      console.log(res)
       setData(res.data.data.records)
       setTotal(res.data.data.total)
       setIsLoading(false)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
   // const getTotalData = async () => {
@@ -45,7 +46,7 @@ export default function BucketMain() {
   const navigate = useNavigate()
   const ToRoute = (record) => {
     console.log(record)
-    navigate(`/home/bucket/${record.name}`)
+    navigate(`/home/bucket/${record.id}/${record.name}`)
   }
   const columns = [
     {
@@ -165,13 +166,14 @@ export default function BucketMain() {
         <div className='bucket-title'>所有Bucket</div>
       </div>
       <div className='bucket-content-mid'>
-
         <Popover
           name='创建bucket'
           button={false}
-          mode={<Button className='bucket-create' type='text'>
-            <PlusOutlined /> Create Bucket
-          </Button>}
+          mode={
+            <Button className='bucket-create' type='text'>
+              <PlusOutlined /> Create Bucket
+            </Button>
+          }
           content={<CreateBucket />}
         />
         <Input
@@ -181,9 +183,10 @@ export default function BucketMain() {
         ></Input>
       </div>
       <div className='bucket-content-bottom'>
-        <Spin tip="Loading" spinning={isLoading}>
+        <Spin tip='Loading' spinning={isLoading}>
           <BucketTable columns={columns} data={data} />
-          <Pagination current={current}
+          <Pagination
+            current={current}
             total={total}
             pageSize={pageSize}
             onChange={changePage}
