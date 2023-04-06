@@ -1,50 +1,57 @@
 import myAxios from "../http";
-
+import { myAxios2 } from "../http"
 //为当前登录用户创建bucket
 export function bucketAPI(data) {
-    return myAxios({
+    return myAxios2({
         url: "/bucket",
         method: 'put',
-        data: data
+        data
     })
 }
 //更新bucket信息
 export function bucketUpdateAPI(data) {
-    return myAxios({
+    return myAxios2({
         url: "/bucket/update",
         method: 'post',
-        data: data
+        data
     })
 }
 //获取登录用户的所有有权限的bucket
 export function bucketListAllAPI(data) {
-    return myAxios({
+    return myAxios2({
         url: "/bucket/listAll",
         method: 'post',
-        data: data
+        data
     })
 }
 //获取登录用户的所有bucket
-export function bucketListAPI(data) {
-    return myAxios({
-        url: "/bucket/list",
+export function bucketListAPI(page, size) {
+    return myAxios2({
+        url: `/bucket/list/${page}/${size}`,
         method: 'post',
-        data: data
+
     })
 }
 //获取bucket信息
 export function bucketGetAPI(data) {
-    return myAxios({
+    return myAxios2({
         url: "/bucket/get",
         method: 'get',
-        data: data
+        data
     })
 }
 //删除bucket
-export function bucketDeleteAPI(data) {
-    return myAxios({
-        url: "/bucket/delete",
+export function bucketDeleteAPI(bid) {
+    return myAxios2({
+        url: `/bucket/delete/${bid}`,
         method: 'delete',
-        data: data
+    })
+}
+//获取bucket总数
+export function bucketCountAPI() {
+    return myAxios2({
+        url: "/bucket/get/count",
+        method: 'get',
+
     })
 }

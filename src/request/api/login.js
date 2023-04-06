@@ -5,7 +5,7 @@ export function doLoginAPI(data) {
   return myAxios({
     url: "/login/doLogin",
     method: "post",
-    data: data
+    data
   })
 }
 //用户注册
@@ -13,7 +13,7 @@ export function registryAPI(data) {
   return myAxios({
     url: "/login/registry",
     method: "post",
-    data: data
+    data
   })
 }
 //用户登出

@@ -1,15 +1,69 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
-
+import Popover from "../../components/popover"
+import UpdateUsername from "../../components/updateUsername"
+import UpdateEmail from "../../components/updateEmail"
+import UpdatePassword from "../../components/updatePassword"
 import "./index.css"
 import { logoutAPI } from "../../request/api/login"
-
-import { Avatar, message, Space } from "antd"
+import { userGetAPI, getLoginRecordAPI } from "../../request/api/user"
+import { Avatar, message, Space, Spin, Pagination, Button } from "antd"
 import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
 import toby from "../../assets/toby.jpg"
+import logo1 from "../../assets/turingLogo.svg"
+// import { size } from "lodash"
 export default function Site() {
+  const [id, setId] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [data, setData] = useState([])
+  const [current, setCurrent] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
+  const [total, setTotal] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+  const getUserData = async () => {
+    try {
+      let res = await userGetAPI();
+      setId(res.data.data.id)
+      setEmail(res.data.data.email)
+      setUsername(res.data.data.username)
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  const getUserLoginData = async () => {
+    try {
+      let res = await getLoginRecordAPI(current, pageSize);
+      //处理数据
+      res.data.data.records.forEach((item, idnex) => {
+        if (JSON.parse(item.city).hasOwnProperty('result')) {
+          item.city = JSON.parse(item.city).result.ad_info.nation + '-' +
+            JSON.parse(item.city).result.ad_info.province + '-' +
+            JSON.parse(item.city).result.ad_info.city
+        } else {
+          item.city = JSON.parse(item.city).message
+        }
+        setData(res.data.data.records)
+        setTotal(res.data.data.total)
+      });
+      setIsLoading(false)
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  const changePage = (page) => {
+    setCurrent(page)
+  }
+  useEffect(() => {
+    getUserData()
+  }, [])
+  useEffect(() => {
+    getUserLoginData()
+  }, [current])
   const columns = [
     {
       title: "时间",
@@ -30,8 +84,8 @@ export default function Site() {
     },
     {
       title: "IP地址",
-      dataIndex: "address",
-      key: "address",
+      dataIndex: "ip",
+      key: "ip",
       width: "calc(25vw - 43px)",
       align: "center",
       onHeaderCell: () => ({
@@ -63,8 +117,8 @@ export default function Site() {
     },
     {
       title: "设备",
-      dataIndex: "equipment",
-      key: "equipment",
+      dataIndex: "device",
+      key: "device",
       width: "calc(25vw - 43px)",
       align: "center",
 
@@ -79,64 +133,7 @@ export default function Site() {
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
     }
   ]
-  const data = [
-    {
-      key: "1",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "2",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "3",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "4",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "5",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "6",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "7",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    },
-    {
-      key: "8",
-      time: "2023.01.01",
-      address: "16.179.33.148",
-      city: "广东广州",
-      equipment: "mac"
-    }
-  ]
+
   let navigate = useNavigate()
   const logout = (values) => {
     console.log(values)
@@ -174,7 +171,7 @@ export default function Site() {
                 <Avatar size={180} src={toby} />
               </div>
               <div className='site-content-main-img-set'>
-                <div className='site-content-main-img-set-name'>编辑</div>{" "}
+                {/* <div className='site-content-main-img-set-name'>编辑</div>{" "} */}
               </div>
             </div>
             <div className='site-content-main-detail'>
@@ -185,12 +182,18 @@ export default function Site() {
                   </div>
                 </div>
                 <div className='site-content-main-name-id'>
-                  <div className='site-content-main-name-id-content'>TOBY</div>
+                  <div className='site-content-main-name-id-content'>{username}</div>
                 </div>
                 <div className='site-content-main-name-change'>
-                  <div className='site-content-main-name-change-content'>
-                    修改名字
-                  </div>
+                  <Popover
+                    name='修改用户名'
+                    button={false}
+                    mode={<div className='site-content-main-name-change-content'>
+                      修改名字
+                    </div>}
+                    content={< UpdateUsername />}
+                  />
+
                 </div>
               </div>
               <div className='site-content-main-email'>
@@ -200,27 +203,40 @@ export default function Site() {
                   </div>
                 </div>
                 <div className='site-content-main-email-id'>
-                  <div className='site-content-main-email-id-content'>123</div>
+                  <div className='site-content-main-email-id-content'>{email}</div>
                 </div>
                 <div className='site-content-main-email-change'>
-                  <div className='site-content-main-email-change-content'>
-                    修改邮箱
-                  </div>
+                  <Popover
+                    name='修改邮箱'
+                    button={false}
+                    mode={<div className='site-content-main-email-change-content'>
+                      修改邮箱
+                    </div>}
+                    content={< UpdateEmail />}
+                  />
+
                 </div>
               </div>
               <div className='site-content-main-password'>
                 <div className='site-content-main-password-title'>
+
                   <div className='site-content-main-password-title-content'>
                     密码
                   </div>
                 </div>
                 <div className='site-content-main-password-change'>
-                  <div className='site-content-main-password-change-content'>
-                    修改密码
-                  </div>
+                  <Popover
+                    name='修改密码'
+                    button={false}
+                    mode={<div className='site-content-main-password-change-content'>
+                      修改密码
+                    </div>}
+                    content={< UpdatePassword />}
+                  />
+
                 </div>
               </div>
-              <div className='site-content-main-admin'>
+              {/* <div className='site-content-main-admin'>
                 <div className='site-content-main-admin-title'>权限</div>
                 <div className='site-content-main-admin-id'>
                   <div className='site-content-main-admin-id-content'>
@@ -239,7 +255,7 @@ export default function Site() {
                     114514
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className='site-content-main-user'>
                 <div className='site-content-main-user-title'>
                   <div className='site-content-main-user-title-content'>
@@ -258,7 +274,15 @@ export default function Site() {
             </div>
           </div>
           <div className='site-right'>
-            <BucketTable columns={columns} data={data} />
+            <Spin tip="Loading" spinning={isLoading}>
+              <BucketTable columns={columns} data={data} />
+              <Pagination current={current}
+                total={total}
+                pageSize={pageSize}
+                onChange={changePage}
+                style={{ position: "bottomCenter" }}
+              />
+            </Spin>
           </div>
         </div>
       </div>

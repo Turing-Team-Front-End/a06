@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { Button, Modal } from "antd"
+import { Button, Modal, message } from "antd"
 import closeIcon from "../../assets/close.svg"
 import deleteIcon from "../../assets/delete-warning.svg"
-
+import { bucketDeleteAPI } from "../../request/api/bucket"
 import "./index.css"
 
 const modalBody = {
@@ -10,14 +10,30 @@ const modalBody = {
 }
 function deleteWarning(props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const toDeleteBucket = async () => {
+    try {
+      let res = await bucketDeleteAPI(props.record.id);
+      if (res.data.code === 200) {
+        message.success("删除成功！")
+      } else if (res.data.code === 500) {
+        message.error("删除失败！")
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   const showModal = () => {
     setIsModalOpen(true)
   }
   const handleCancel = () => {
     setIsModalOpen(false)
   }
+  const handleCommit = () => {
+    toDeleteBucket()
+    setIsModalOpen(false)
+  }
   useEffect(() => {
-    // console.log(props)
+
   })
   return (
     <>
@@ -52,7 +68,7 @@ function deleteWarning(props) {
           <p>确认要进行此操作吗?</p>
         </div>
         <div className='delete-bottom'>
-          <Button className='delete-ok' type='text' onClick={handleCancel}>
+          <Button className='delete-ok' type='text' onClick={handleCommit}>
             确认
           </Button>
           <Button className='delete-cancel' type='text' onClick={handleCancel}>

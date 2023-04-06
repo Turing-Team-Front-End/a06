@@ -4,16 +4,16 @@ import "./index.css"
 
 function bucketTable(props) {
   useEffect(() => {
-    // console.log(props)
+
   })
+
   return (
     <Table
       className='table-components'
       columns={props.columns}
-      pagination={{
-        position: ["bottomCenter"]
-      }}
+      pagination={false}
       dataSource={props.data}
+      rowKey={(record) => record.id}
     />
   )
 }
