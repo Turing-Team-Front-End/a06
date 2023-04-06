@@ -10,23 +10,27 @@ import SparkMD5 from "spark-md5"
 
 function fileUpload(props) {
   useEffect(() => {})
-  const toUpload = async (file) => {
-    let data = new FormData()
-    console.log(FileReader.readAsBinaryString(file))
-    data.append("bid", props.bid)
-    data.append("md5", SparkMD5.hash(fileReader.readAsBinaryString(file)))
-    data.append("file", file)
-    try {
-      let res = await smallFileUploadAPI(data)
-      console.log(res)
-      if (res.data.code === 200) {
-        message.success("上传成功！")
-      } else if (res.data.code === 500) {
-        message.error(res.data.msg)
-      }
-    } catch (error) {
-      console.error(error)
+  const fileToMd5 = async (file) => {
+    var fileReader = new FileReader()
+    var md5 = ""
+    fileReader.readAsBinaryString(file)
+    fileReader.onload = (e) => {
+      md5 = SparkMD5.hashBinary(e.target.result)
+      let data = new FormData()
+      data.append("bid", props.bid)
+      data.append("md5", md5)
+      data.append("file", file)
+      smallFileUploadAPI(data).then((res) => {
+        if (res.data.code === 200) {
+          message.success("上传成功！")
+        } else if (res.data.code === 500) {
+          message.error(res.data.msg)
+        }
+      })
     }
+  }
+  const toUpload = (file) => {
+    fileToMd5(file)
     return false //拦截组件默认的请求
   }
   const columns = [
