@@ -4,11 +4,35 @@ import BucketTable from "../bucketTable"
 import DeleteWarning from "../deleteWarning"
 import CompressionSite from "../compressionSite"
 import Popover from "../popover"
-import { Button, Space } from "antd"
+import { Button, Space, Upload, message } from "antd"
+import { smallFileUploadAPI } from "../../request/api/upload"
+import SparkMD5 from "spark-md5"
+
 function fileUpload(props) {
-  useEffect(() => {
-    console.log(props)
-  })
+  useEffect(() => {})
+  const fileToMd5 = async (file) => {
+    var fileReader = new FileReader()
+    var md5 = ""
+    fileReader.readAsBinaryString(file)
+    fileReader.onload = (e) => {
+      md5 = SparkMD5.hashBinary(e.target.result)
+      let data = new FormData()
+      data.append("bid", props.bid)
+      data.append("md5", md5)
+      data.append("file", file)
+      smallFileUploadAPI(data).then((res) => {
+        if (res.data.code === 200) {
+          message.success("上传成功！")
+        } else if (res.data.code === 500) {
+          message.error(res.data.msg)
+        }
+      })
+    }
+  }
+  const toUpload = (file) => {
+    fileToMd5(file)
+    return false //拦截组件默认的请求
+  }
   const columns = [
     {
       title: "文件名",
@@ -59,7 +83,8 @@ function fileUpload(props) {
         }
       }),
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    }, {
+    },
+    {
       title: "状态",
       dataIndex: "state",
       key: "state",
@@ -74,7 +99,9 @@ function fileUpload(props) {
           color: "#73768B"
         }
       }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb", color: '#3452CE' } })
+      onCell: () => ({
+        style: { backgroundColor: "#f4f5fb", color: "#3452CE" }
+      })
     },
     {
       title: "操作",
@@ -94,7 +121,6 @@ function fileUpload(props) {
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
       render: (text, record, index) => (
         <Space size='middle'>
-
           <DeleteWarning
             name='提示'
             button={false}
@@ -111,7 +137,6 @@ function fileUpload(props) {
       size: "22KB",
       type: "JPG",
       state: "已扫描"
-
     },
     {
       key: "2",
@@ -128,36 +153,61 @@ function fileUpload(props) {
       state: "已扫描"
     }
   ]
-  return <>
-    <div className="fileUpload">
-      <div className="fileUpload-top">
-        <div className="fileUpload-top-main">
-          <Button type='text' className="fileUpload-top-main-btn">当前目录</Button>
-          <div className="fileUpload-top-data">11111</div>
+  return (
+    <>
+      <div className='fileUpload'>
+        <div className='fileUpload-top'>
+          <div className='fileUpload-top-main'>
+            <Button type='text' className='fileUpload-top-main-btn'>
+              当前目录
+            </Button>
+            <div className='fileUpload-top-data'>11111</div>
+          </div>
         </div>
-      </div>
-      <div className="fileUpload-content">
-        <div className="fileUpload-content-top">
-          <Button type='text' className="fileUpload-content-top-btn">选择文件</Button>
-        </div>
-        <div className="fileUpload-content-main">
-          <BucketTable columns={columns} data={data} />
-        </div>
-        <div className="fileUpload-content-foot">
-          <Button className="fileUpload-content-foot-btn">取消</Button>
-          <div className="fileUpload-content-foot-right">
-            <Popover
-              name='压缩设置'
-              button={false}
-              mode={<Button type='text' className="fileUpload-content-foot-right-btn">压缩设置</Button>}
-              content={<CompressionSite />}
-            />
-            <Button type='text' className="fileUpload-content-foot-right-btn">上传文件</Button>
+        <div className='fileUpload-content'>
+          <div className='fileUpload-content-top'>
+            <Button type='text' className='fileUpload-content-top-btn'>
+              选择文件
+            </Button>
+          </div>
+          <div className='fileUpload-content-main'>
+            <BucketTable columns={columns} data={data} />
+          </div>
+          <div className='fileUpload-content-foot'>
+            <Button className='fileUpload-content-foot-btn'>取消</Button>
+            <div className='fileUpload-content-foot-right'>
+              <Popover
+                name='压缩设置'
+                button={false}
+                mode={
+                  <Button
+                    type='text'
+                    className='fileUpload-content-foot-right-btn'
+                  >
+                    压缩设置
+                  </Button>
+                }
+                content={<CompressionSite />}
+              />
+
+              <Upload
+                beforeUpload={(file) => {
+                  toUpload(file)
+                }}
+                showUploadList={false}
+              >
+                <Button
+                  type='text'
+                  className='fileUpload-content-foot-right-btn'
+                >
+                  上传文件
+                </Button>
+              </Upload>
+            </div>
           </div>
         </div>
       </div>
-
-    </div>
-  </>
+    </>
+  )
 }
 export default fileUpload

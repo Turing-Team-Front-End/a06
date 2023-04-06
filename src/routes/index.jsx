@@ -1,14 +1,14 @@
-import { Navigate } from "react-router-dom";
-import Main from "../pages/Main";
-import Home from "../pages/Home/";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Bucket from "../pages/Bucket";
-import Site from "../pages/Site";
-import Document from "../pages/Document";
-import Reset from "../pages/Reset";
-import BucketDetail from "../pages/BucketDetail";
-import BucketMain from "../pages/BucketMain";
+import { Navigate } from "react-router-dom"
+import Main from "../pages/Main"
+import Home from "../pages/Home/"
+import Login from "../pages/Login"
+import Register from "../pages/Register"
+import Bucket from "../pages/Bucket"
+import Site from "../pages/Site"
+import Document from "../pages/Document"
+import Reset from "../pages/Reset"
+import BucketDetail from "../pages/BucketDetail"
+import BucketMain from "../pages/BucketMain"
 
 // 路由映射表
 const routes = [
@@ -51,11 +51,11 @@ const routes = [
         children: [
           {
             path: "main",
-            element: < BucketMain />,
+            element: <BucketMain />
           },
           {
-            path: ":name",
-            element: <BucketDetail />,
+            path: ":bid/:name",
+            element: <BucketDetail />
           },
           {
             //重定向到登录页面
@@ -63,7 +63,6 @@ const routes = [
             element: <Navigate to='main' />
           }
         ]
-
       },
       {
         //主页面的设置页
@@ -88,5 +87,5 @@ const routes = [
     path: "/",
     element: <Navigate to='/main' />
   }
-];
-export default routes;
+]
+export default routes
