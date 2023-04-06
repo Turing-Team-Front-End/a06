@@ -6,7 +6,7 @@ export function smallFileUploadAPI(data) {
   return myAxios2({
     url: `/upload/smallFileUpload`,
     method: "post",
-    data: data
+    data
   })
 }
 

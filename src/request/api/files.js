@@ -9,11 +9,13 @@ export function downloadAPI(data) {
     })
 }
 //删除文件
-export function filesDeleteAPI(data) {
+export function filesDeleteAPI(bid, id) {
     return myAxios2({
-        url: "/files/delete",
+        url: `/files/delete/${bid}/${id}`,
         method: 'delete',
-        data
+        headers: {
+            token: window.sessionStorage.getItem("token")
+        }
     })
 }
 //获取bucket下所有文件
