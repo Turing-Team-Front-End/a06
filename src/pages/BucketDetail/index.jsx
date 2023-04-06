@@ -1,11 +1,12 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
 import FileDetail from "../../components/fileDetail"
 import FileUpload from "../../components/fileUpload"
 import DeleteWarning from "../../components/deleteWarning"
-import { Button, Input, Space } from "antd"
+import { filesListallAPI } from "../../request/api/files"
+import { Button, Input, Space, Spin, Pagination, message } from "antd"
 import {
   SearchOutlined,
   UploadOutlined,
@@ -15,16 +16,35 @@ import arrowLeft from "../../assets/arrow-left.svg"
 import "./index.css"
 export default function BucketDetail() {
   const params = useParams()
-
+  const [data, setData] = useState([])
+  const [current, setCurrent] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
+  const [total, setTotal] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+  const getFilesData = async () => {
+    try {
+      let res = await filesListallAPI(params.bid, current, pageSize);
+      console.log(res, 114514);
+      setData(res.data.data.records)
+      setTotal(res.data.data.total)
+      setIsLoading(false)
+    }
+    catch (error) {
+      console.error(error);
+    }
+  }
+  const changePage = (page) => {
+    setCurrent(page)
+  }
   useEffect(() => {
-    // console.log(params)
-  })
+    getFilesData()
+  }, [current])
 
   const columns = [
     {
       title: "文件名",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "fileName",
+      key: "fileName",
       width: "calc(25vw - 43px)",
       onHeaderCell: () => ({
         style: {
@@ -39,9 +59,9 @@ export default function BucketDetail() {
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
     },
     {
-      title: "更新时间",
-      dataIndex: "time",
-      key: "time",
+      title: "创建时间",
+      dataIndex: "createTime",
+      key: "createTime",
       width: "calc(25vw - 43px)",
       align: "center",
       onHeaderCell: () => ({
@@ -56,8 +76,8 @@ export default function BucketDetail() {
     },
     {
       title: "文件大小",
-      dataIndex: "number",
-      key: "number",
+      dataIndex: "fileSize",
+      key: "fileSize",
       width: "calc(25vw - 43px)",
       align: "center",
 
@@ -105,26 +125,6 @@ export default function BucketDetail() {
           />
         </Space>
       )
-    }
-  ]
-  const data = [
-    {
-      key: "1",
-      name: "111111",
-      time: "2002.02.02",
-      number: "22MB"
-    },
-    {
-      key: "2",
-      name: "111111",
-      time: "2022.02.02",
-      number: "22MB"
-    },
-    {
-      key: "3",
-      name: "111111",
-      time: "2022.02.02",
-      number: "22MB"
     }
   ]
   return (
@@ -193,7 +193,15 @@ export default function BucketDetail() {
         ></Input>
       </div>
       <div className='bucket-detail-bottom'>
-        <BucketTable columns={columns} data={data} />
+        <Spin tip="Loading" spinning={isLoading}>
+          <BucketTable columns={columns} data={data} />
+          <Pagination current={current}
+            total={total}
+            pageSize={pageSize}
+            onChange={changePage}
+            style={{ position: "bottomCenter" }}
+          />
+        </Spin>
       </div>
     </div>
   )

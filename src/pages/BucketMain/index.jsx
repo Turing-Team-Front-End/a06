@@ -45,7 +45,7 @@ export default function BucketMain() {
   }, [current, total])
   const navigate = useNavigate()
   const ToRoute = (record) => {
-    console.log(record)
+    console.log(record, 111)
     navigate(`/home/bucket/${record.id}/${record.name}`)
   }
   const columns = [
