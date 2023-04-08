@@ -4,8 +4,9 @@ import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
 import FileDetail from "../../components/fileDetail"
 import FileUpload from "../../components/fileUpload"
+import ShareFile from "../../components/shareFile"
 import DeleteWarning from "../../components/deleteWarning"
-import { filesListallAPI } from "../../request/api/files"
+import { filesListallAPI, downloadAPI } from "../../request/api/files"
 import { Button, Input, Space, Spin, Pagination, message } from "antd"
 import {
   SearchOutlined,
@@ -35,6 +36,25 @@ export default function BucketDetail() {
   }
   const changePage = (page) => {
     setCurrent(page)
+  }
+  const download = async (record) => {
+    try {
+      let res = await downloadAPI(record.fileName, record.bid);
+      console.log(res);
+      res = res.data
+      let blob = new Blob([res], { type: res.type });
+      let downloadElement = document.createElement("a");
+      let href = window.URL.createObjectURL(blob);
+      downloadElement.href = href;
+      downloadElement.download = record.fileName
+      document.body.appendChild(downloadElement);
+      downloadElement.click();
+      document.body.removeChild(downloadElement);
+      window.URL.revokeObjectURL(href);
+    }
+    catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => {
     getFilesData()
@@ -116,8 +136,13 @@ export default function BucketDetail() {
             mode={<a style={{ color: "#3452CE" }}>详情</a>}
             content={<FileDetail />}
           />
-          <a style={{ color: "#3452CE" }}>链接</a>
-          <a style={{ color: "#3452CE" }}>下载</a>
+          <Popover
+            name='分享链接'
+            button={false}
+            mode={<a style={{ color: "#3452CE" }} >链接</a>}
+            content={<ShareFile record={record} />}
+          />
+          <a style={{ color: "#3452CE" }} onClick={() => download(record)}>下载</a>
           <DeleteWarning
             name='提示'
             button={false}

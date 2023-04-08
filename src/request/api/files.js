@@ -1,11 +1,13 @@
 import myAxios2 from "../http";
 
 //文件下载
-export function downloadAPI(data) {
+export function downloadAPI(filename, bid) {
     return myAxios2({
-        url: "/download",
+        url: `/download/${filename}?bid=${bid}`,
         method: 'get',
-        data
+        headers: {
+            token: window.sessionStorage.getItem("token")
+        }
     })
 }
 //删除文件
@@ -26,5 +28,17 @@ export function filesListallAPI(bid, page, size) {
         headers: {
             token: window.sessionStorage.getItem("token")
         }
+    })
+}
+//分享文件链接
+export function shareFileAPI(data) {
+    return myAxios2({
+        url: `/share/generateSharePath`,
+        method: 'get',
+        data,
+        headers: {
+            token: window.sessionStorage.getItem("token")
+        }
+
     })
 }
