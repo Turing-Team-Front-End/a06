@@ -3,6 +3,7 @@ import { Button, Modal, message } from "antd"
 import closeIcon from "../../assets/close.svg"
 import deleteIcon from "../../assets/delete-warning.svg"
 import { bucketDeleteAPI } from "../../request/api/bucket"
+import { filesDeleteAPI } from "../../request/api/files"
 import "./index.css"
 
 const modalBody = {
@@ -22,6 +23,19 @@ function deleteWarning(props) {
       console.error(error);
     }
   }
+  const toDeleteFile = async () => {
+    try {
+      let res = await filesDeleteAPI(props.record.bid, props.record.id);
+      console.log(res);
+      if (res.data.code === 200) {
+        message.success("删除文件成功！")
+      } else if (res.data.code === 500) {
+        message.error("删除文件失败！")
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   const showModal = () => {
     setIsModalOpen(true)
   }
@@ -29,11 +43,15 @@ function deleteWarning(props) {
     setIsModalOpen(false)
   }
   const handleCommit = () => {
-    toDeleteBucket()
+    if (props.record.bid && props.record.id) {
+      toDeleteFile()
+    } else {
+      toDeleteBucket()
+    }
     setIsModalOpen(false)
   }
   useEffect(() => {
-
+    // console.log(props.record);
   })
   return (
     <>

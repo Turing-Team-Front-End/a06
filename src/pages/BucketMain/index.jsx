@@ -45,7 +45,7 @@ export default function BucketMain() {
   }, [current, total])
   const navigate = useNavigate()
   const ToRoute = (record) => {
-    console.log(record)
+    console.log(record, 111)
     navigate(`/home/bucket/${record.id}/${record.name}`)
   }
   const columns = [
@@ -53,7 +53,7 @@ export default function BucketMain() {
       title: "Bucket名",
       dataIndex: "name",
       key: "name",
-      width: "calc(25vw - 43px)",
+      width: "calc(20vw - 43px)",
       onHeaderCell: () => ({
         style: {
           backgroundColor: "#dde1ff",
@@ -70,7 +70,7 @@ export default function BucketMain() {
       title: "创建时间",
       dataIndex: "createTime",
       key: "createTime",
-      width: "calc(25vw - 43px)",
+      width: "calc(20vw - 43px)",
       align: "center",
       onHeaderCell: () => ({
         style: {
@@ -86,7 +86,7 @@ export default function BucketMain() {
       title: "总共大小",
       dataIndex: "totalSize",
       key: "totalSize",
-      width: "calc(25vw - 43px)",
+      width: "calc(20vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
@@ -103,7 +103,7 @@ export default function BucketMain() {
       title: "已使用大小",
       dataIndex: "usedSize",
       key: "usedSize",
-      width: "calc(25vw - 43px)",
+      width: "calc(20vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
@@ -119,7 +119,7 @@ export default function BucketMain() {
     {
       title: "操作",
       key: "operation",
-      width: "calc(25vw - 43px)",
+      width: "calc(20vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
