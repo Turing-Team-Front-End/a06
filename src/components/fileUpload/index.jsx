@@ -5,14 +5,55 @@ import DeleteWarning from "../deleteWarning"
 import CompressionSite from "../compressionSite"
 import Popover from "../popover"
 import { Button, Space, Upload, message } from "antd"
-import { smallFileUploadAPI } from "../../request/api/upload"
+import {
+  smallFileUploadAPI,
+  secUploadAPI,
+  initMultipartUploadAPI,
+  uploadChunkAPI,
+  checkAPI
+} from "../../request/api/upload"
 import SparkMD5 from "spark-md5"
 
 function fileUpload(props) {
   useEffect(() => {})
+  const checkSecUpload = (file) => {
+    var fileReader = new FileReader()
+    var md5 = ""
+    fileReader.readAsBinaryString(file)
+    fileReader.onload = (e) => {
+      md5 = SparkMD5.hashBinary(e.target.result)
+      secUploadAPI(md5, props.bid).then((res) => {
+        console.log(res)
+        if (res.data.code === 200) {
+          if (res.data.data === true) {
+            message.success("上传成功！")
+          } else {
+            checkSize(file)
+          }
+        } else if (res.data.code === 500) {
+          message.error(res.data.msg)
+        }
+      })
+    }
+    data.append("md5", md5)
+    data.append("bid", props.bid)
+    secUploadAPI(data).then((res) => {
+      if (res.data.code === 200) {
+        message.success("上传成功！")
+      } else if (res.data.code === 500) {
+        message.error(res.data.msg)
+      }
+    })
+  }
+  const checkSize = (file) => {
+    if (file.size > 10 * 1024 * 1024) {
+      toUploadLargeFile(file)
+    } else toUpload(file)
+  }
   const fileToMd5 = async (file) => {
     var fileReader = new FileReader()
     var md5 = ""
+    console.log(file)
     fileReader.readAsBinaryString(file)
     fileReader.onload = (e) => {
       md5 = SparkMD5.hashBinary(e.target.result)
@@ -23,6 +64,37 @@ function fileUpload(props) {
       smallFileUploadAPI(data).then((res) => {
         if (res.data.code === 200) {
           message.success("上传成功！")
+        } else if (res.data.code === 500) {
+          message.error(res.data.msg)
+        }
+      })
+    }
+  }
+  const toUploadLargeFile = (file) => {
+    var fileReader = new FileReader()
+    var md5 = ""
+    fileReader.readAsBinaryString(file)
+    fileReader.onload = (e) => {
+      md5 = SparkMD5.hashBinary(e.target.result)
+      let data = new FormData()
+      data.append("bid", props.bid)
+      data.append("chunks", Math.ceil(file.size / 10 / 1024 / 1024))
+      data.append("size", file.size)
+      data.append("name", file.name)
+      data.append("md5", md5)
+      initMultipartUploadAPI(data).then((res) => {
+        console.log(res)
+        if (res.data.code === 200) {
+          if (res.data.data === true) {
+            message.success("初始化成功！")
+            checkAPI(md5).then((res) => {
+              if (res.data.code === 200) {
+                message.success("上传成功！")
+              } else if (res.data.code === 500) {
+                message.error(res.data.msg)
+              }
+            })
+          }
         } else if (res.data.code === 500) {
           message.error(res.data.msg)
         }
@@ -192,7 +264,7 @@ function fileUpload(props) {
 
               <Upload
                 beforeUpload={(file) => {
-                  toUpload(file)
+                  checkSecUpload(file)
                 }}
                 showUploadList={false}
               >
