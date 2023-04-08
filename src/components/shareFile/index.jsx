@@ -14,6 +14,12 @@ export default function shareFile(props) {
         try {
             let res = await shareFileAPI(data);
             console.log(res);
+            if (res.data.code === 200) {
+                message.success("获取分享链接成功！")
+
+            } else if (res.data.code === 500) {
+                message.error(res.data.msg)
+            }
         } catch (error) {
             console.error(error);
         }

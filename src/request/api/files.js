@@ -35,7 +35,7 @@ export function shareFileAPI(data) {
     return myAxios2({
         url: `/share/generateSharePath`,
         method: 'get',
-        data,
+        params: data,
         headers: {
             token: window.sessionStorage.getItem("token")
         }
