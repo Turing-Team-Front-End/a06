@@ -13,27 +13,28 @@ function deleteWarning(props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const toDeleteBucket = async () => {
     try {
-      let res = await bucketDeleteAPI(props.record.id);
+      let res = await bucketDeleteAPI(props.record.id)
+      console.log(res)
       if (res.data.code === 200) {
         message.success("删除成功！")
       } else if (res.data.code === 500) {
         message.error("删除失败！")
       }
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
   const toDeleteFile = async () => {
     try {
-      let res = await filesDeleteAPI(props.record.bid, props.record.id);
-      console.log(res);
+      let res = await filesDeleteAPI(props.record.bid, props.record.id)
+      console.log(res)
       if (res.data.code === 200) {
         message.success("删除文件成功！")
       } else if (res.data.code === 500) {
         message.error("删除文件失败！")
       }
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
   const showModal = () => {
