@@ -23,7 +23,7 @@ function fileUpload(props) {
     fileReader.onload = (e) => {
       md5 = SparkMD5.hashBinary(e.target.result)
       secUploadAPI(md5, props.bid).then((res) => {
-        console.log(res)
+        // console.log(res)
         if (res.data.code === 200) {
           if (res.data.data === true) {
             message.success("上传成功！")
@@ -70,36 +70,80 @@ function fileUpload(props) {
       })
     }
   }
+  const checkChunksNum = (md5) => {
+    checkAPI(md5).then((res) => {
+      console.log(res)
+      // console.log(res.data.data.length)
+      if (res.data.code === 200) {
+        return res.data.data.length
+      } else if (res.data.code === 500) {
+        message.error(res.data.msg)
+      }
+    })
+  }
   const toUploadLargeFile = (file) => {
-    var fileReader = new FileReader()
+    let chunkSize = 10 * 1024 * 1024
+    let chunks = Math.ceil(file.size / chunkSize)
+    let currentChunk = 0
+    let fileReader = new FileReader()
     var md5 = ""
     fileReader.readAsBinaryString(file)
+
     fileReader.onload = (e) => {
-      md5 = SparkMD5.hashBinary(e.target.result)
       let data = new FormData()
       data.append("bid", props.bid)
-      data.append("chunks", Math.ceil(file.size / 10 / 1024 / 1024))
+      data.append("chunks", chunks)
       data.append("size", file.size)
       data.append("name", file.name)
       data.append("md5", md5)
       initMultipartUploadAPI(data).then((res) => {
-        console.log(res)
+        // console.log(res)
         if (res.data.code === 200) {
           if (res.data.data === true) {
             message.success("初始化成功！")
-            checkAPI(md5).then((res) => {
-              if (res.data.code === 200) {
-                message.success("上传成功！")
-              } else if (res.data.code === 500) {
-                message.error(res.data.msg)
-              }
-            })
+            toUploadChunk(
+              props.bid,
+              chunks,
+              currentChunk,
+              file.size,
+              file.name,
+              md5,
+              file
+            )
           }
         } else if (res.data.code === 500) {
           message.error(res.data.msg)
         }
       })
     }
+  }
+  const toUploadChunk = (bid, chunks, currentChunk, size, name, md5, file) => {
+    let blobSlice =
+      File.prototype.slice ||
+      File.prototype.mozSlice ||
+      File.prototype.webkitSlice
+    let chunkSize = 10 * 1024 * 1024
+    let start = currentChunk * chunkSize
+    let end = start + chunkSize >= file.size ? file.size : start + chunkSize
+    let temporaryFile = blobSlice.call(file, start, end)
+    let data = new FormData()
+    data.append("bid", bid)
+    data.append("chunks", chunks)
+    data.append("chunk", currentChunk)
+    data.append("size", size)
+    data.append("name", name)
+    data.append("md5", md5)
+    data.append("file", temporaryFile)
+    uploadChunkAPI(data).then((res) => {
+      console.log(res)
+      if (res.data.code === 200) {
+        if (currentChunk < chunks) {
+          toUploadChunk(bid, chunks, currentChunk + 1, size, name, md5, file)
+        }
+      } else if (res.data.code === 500) {
+        message.error(res.data.msg)
+      }
+    })
   }
   const toUpload = (file) => {
     fileToMd5(file)
