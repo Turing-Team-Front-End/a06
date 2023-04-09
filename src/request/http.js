@@ -39,12 +39,11 @@ function myAxios(axiosConfig) {
 export function myAxios2(axiosConfig) {
   const service = axios.create({
     baseURL: "/api", // 设置统一的请求前缀
-    timeout: 10000, // 设置统一的超时时长
+    timeout: 100000, // 设置统一的超时时长
     headers: {
       token: window.sessionStorage.getItem("token")
     }
-  }
-  )
+  })
 
   // 添加请求拦截器
   service.interceptors.request.use(
