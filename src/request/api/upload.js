@@ -41,10 +41,9 @@ export function checkAPI(md5) {
   })
 }
 //放弃上传任务
-export function abortAPI(data) {
+export function abortAPI(md5) {
   return myAxios2({
-    url: "/upload/abort",
-    method: "post",
-    data
+    url: `/upload/abort/${md5}`,
+    method: "post"
   })
 }
