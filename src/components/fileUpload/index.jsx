@@ -10,7 +10,8 @@ import {
   secUploadAPI,
   initMultipartUploadAPI,
   uploadChunkAPI,
-  checkAPI
+  checkAPI,
+  abortAPI
 } from "../../request/api/upload"
 import SparkMD5 from "spark-md5"
 
@@ -75,7 +76,7 @@ function fileUpload(props) {
       console.log(res)
       // console.log(res.data.data.length)
       if (res.data.code === 200) {
-        return res.data.data.length
+        // return res.data.data.length
       } else if (res.data.code === 500) {
         message.error(res.data.msg)
       }
@@ -84,12 +85,13 @@ function fileUpload(props) {
   const toUploadLargeFile = (file) => {
     let chunkSize = 10 * 1024 * 1024
     let chunks = Math.ceil(file.size / chunkSize)
-    let currentChunk = 0
+    let currentChunk = 1
     let fileReader = new FileReader()
     var md5 = ""
     fileReader.readAsBinaryString(file)
 
     fileReader.onload = (e) => {
+      md5 = SparkMD5.hashBinary(e.target.result)
       let data = new FormData()
       data.append("bid", props.bid)
       data.append("chunks", chunks)
@@ -113,6 +115,7 @@ function fileUpload(props) {
           }
         } else if (res.data.code === 500) {
           message.error(res.data.msg)
+          toAbortUploadLargeFile(md5)
         }
       })
     }
@@ -123,15 +126,19 @@ function fileUpload(props) {
       File.prototype.mozSlice ||
       File.prototype.webkitSlice
     let chunkSize = 10 * 1024 * 1024
-    let start = currentChunk * chunkSize
+    let start = (currentChunk - 1) * chunkSize
     let end = start + chunkSize >= file.size ? file.size : start + chunkSize
-    let temporaryFile = blobSlice.call(file, start, end)
+    let temporaryBlob = blobSlice.call(file, start, end)
+    let temporaryFile = new File([temporaryBlob], name, {
+      type: file.type
+    })
+    // console.log(temporaryFile)
     let data = new FormData()
     data.append("bid", bid)
     data.append("chunks", chunks)
     data.append("chunk", currentChunk)
     data.append("size", size)
-    data.append("name", name)
+    data.append("name", name + currentChunk)
     data.append("md5", md5)
     data.append("file", temporaryFile)
     uploadChunkAPI(data).then((res) => {
@@ -139,7 +146,21 @@ function fileUpload(props) {
       if (res.data.code === 200) {
         if (currentChunk < chunks) {
           toUploadChunk(bid, chunks, currentChunk + 1, size, name, md5, file)
+        } else {
+          checkChunksNum(md5)
+          // toAbortUploadLargeFile(md5)
         }
+      } else if (res.data.code === 500) {
+        message.error(res.data.msg)
+        // toAbortUploadLargeFile(md5)
+      }
+    })
+  }
+  const toAbortUploadLargeFile = (md5) => {
+    abortAPI(md5).then((res) => {
+      console.log(res)
+      if (res.data.code === 200) {
+        message.success("上传已取消！")
       } else if (res.data.code === 500) {
         message.error(res.data.msg)
       }

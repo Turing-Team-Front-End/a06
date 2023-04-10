@@ -4,7 +4,7 @@ import { message } from "antd"
 function myAxios(axiosConfig) {
   const service = axios.create({
     baseURL: "/api", // 设置统一的请求前缀
-    timeout: 10000 // 设置统一的超时时长
+    timeout: 300000 // 设置统一的超时时长
   })
 
   // 添加请求拦截器
@@ -39,7 +39,7 @@ function myAxios(axiosConfig) {
 export function myAxios2(axiosConfig) {
   const service = axios.create({
     baseURL: "/api", // 设置统一的请求前缀
-    timeout: 100000, // 设置统一的超时时长
+    timeout: 300000, // 设置统一的超时时长
     headers: {
       token: window.sessionStorage.getItem("token")
     }
