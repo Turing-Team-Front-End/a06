@@ -312,11 +312,11 @@ export default function Site() {
             <Spin tip='Loading' spinning={isLoading}>
               <BucketTable columns={columns} data={data} />
               <Pagination
+              className="site-pagination"
                 current={current}
                 total={total}
                 pageSize={pageSize}
                 onChange={changePage}
-                style={{ position: "bottomCenter" }}
               />
             </Spin>
           </div>

@@ -943,3 +943,10 @@
   align-self: stretch;
   flex-grow: 0;
 }
+.site-pagination {
+  display: flex;
+  margin-top: 24px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}

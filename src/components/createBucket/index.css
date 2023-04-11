@@ -1,0 +1,10 @@
+.create-button {
+  padding: 0px;
+  gap: 8px;
+  margin: 24px 0;
+  width: 149px;
+  height: 44px;
+  background: #3452ce;
+  color: #ffffff;
+  border-radius: 8px;
+}

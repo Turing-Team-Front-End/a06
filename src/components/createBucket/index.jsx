@@ -28,11 +28,8 @@ export default function createBucket() {
   }
   return (
     <div>
-      <div className='login-title'>
-        <p>createBucket</p>
-      </div>
       <Form
-        style={{ margin: "auto", paddingTop: 40, width: 600 }}
+        style={{ margin: "auto", paddingTop: 40, width: "40vw" }}
         form={form}
         layout='horizontal'
         className='login-form'
@@ -44,37 +41,37 @@ export default function createBucket() {
         onFinish={toCreate}
         onFinishFailed={onFinishFailed}
       >
-        <p>name</p>
+        <p>Bucket名</p>
         <Form.Item
           name='name'
           rules={[
             {
               required: true,
-              message: "name不能为空"
+              message: "Bucket名不能为空"
             }
           ]}
         >
-          <Input className='login-input' placeholder='请输入name' />
+          <Input className='login-input' placeholder='请输入Bucket名' />
         </Form.Item>
-        <p>totalSize</p>
+        <p>Bucket容量</p>
         <Form.Item
           name='totalSize'
           rules={[
             {
               required: true,
-              message: "totalSize不能为空"
+              message: "Bucket容量不能为空"
             }
           ]}
         >
-          <Input className='login-input' placeholder='请输入totalSize' />
+          <Input
+            className='login-input'
+            placeholder='请输入Bucket容量（单位为byte）'
+          />
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
-          <Button className='login-button' htmlType='submit'>
-            <p>Create →</p>
+          <Button className='create-button' htmlType='submit'>
+            <p>创建Bucket</p>
           </Button>
-          {/* <Button shape='round' htmlType='button' onClick={onReset}>
-            重置
-          </Button> */}
         </Form.Item>
       </Form>
     </div>

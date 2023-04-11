@@ -77,9 +77,9 @@
   flex-direction: column;
   align-items: center;
   margin-top: 24px;
-  padding: 24px;
+  padding: 24px 24px 0 24px;
   gap: 8px;
-  height: 684px;
+  max-height: 684px;
 
   background: #fefbff;
   border-radius: 16px;
