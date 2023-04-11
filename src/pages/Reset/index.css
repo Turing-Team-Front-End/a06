@@ -5,11 +5,6 @@
   padding: 8px;
   gap: 8px;
 
-  width: 656px;
-  /* height: 56px; */
-
-  /* Inside auto layout */
-
   flex: none;
   order: 0;
   align-self: stretch;
