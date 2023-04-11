@@ -7,10 +7,10 @@ import Popover from "../../components/popover"
 import TaskList from "../../components/taskList"
 import logo from "../../assets/turingLogo2.svg"
 import img1 from "../../assets/Component1.svg"
-import img2 from "../../assets/Component2.svg"
+
 import img4 from "../../assets/Component4.svg"
 import img5 from "../../assets/Component5.svg"
-import img6 from "../../assets/Component6.svg"
+
 import img8 from "../../assets/Component8.svg"
 import toby from "../../assets/toby.jpg"
 export default function Home() {
@@ -32,13 +32,8 @@ export default function Home() {
         window.sessionStorage.setItem("key", img5)
         setName("Bucket")
         break
-      case "document":
-        window.sessionStorage.setItem("index", 1)
-        window.sessionStorage.setItem("key", img6)
-        setName("统计")
-        break
       case "site":
-        window.sessionStorage.setItem("index", 2)
+        window.sessionStorage.setItem("index", 1)
         window.sessionStorage.setItem("key", img8)
         setName("设置")
         break
@@ -61,12 +56,6 @@ export default function Home() {
       imgActive: img5,
       url: "/home/bucket/main",
       name: "bucket"
-    },
-    {
-      img: img2,
-      imgActive: img6,
-      url: "/home/document",
-      name: "document"
     },
     {
       img: img4,
@@ -109,15 +98,8 @@ export default function Home() {
         setName("Bucket")
 
         break
-
-      case "document":
-        window.sessionStorage.setItem("index", 1)
-        setName("统计")
-
-        break
-
       case "site":
-        window.sessionStorage.setItem("index", 2)
+        window.sessionStorage.setItem("index", 1)
         setName("设置")
 
         break
@@ -144,12 +126,12 @@ export default function Home() {
             <div className='topName-content'>{name}</div>
           </div>
           <div className='top-right'>
-            <Popover
+            {/* <Popover
               name='任务列表'
               button={false}
               mode={<Button type='text' className='upload'>任务列表</Button>}
               content={<TaskList />}
-            />
+            /> */}
             <div className='img-logo'>
               <Avatar size={56} src={toby} />
             </div>

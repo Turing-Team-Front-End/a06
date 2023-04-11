@@ -5,7 +5,6 @@ import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Bucket from "../pages/Bucket"
 import Site from "../pages/Site"
-import Document from "../pages/Document"
 import Reset from "../pages/Reset"
 import BucketDetail from "../pages/BucketDetail"
 import BucketMain from "../pages/BucketMain"
@@ -68,12 +67,6 @@ const routes = [
         //主页面的设置页
         path: "site",
         element: <Site />
-      },
-
-      {
-        //主页面的文件管理页
-        path: "document",
-        element: <Document />
       },
       {
         //主页面的重定向
