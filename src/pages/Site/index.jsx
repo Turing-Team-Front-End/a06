@@ -7,13 +7,83 @@ import UpdatePassword from "../../components/updatePassword"
 import "./index.css"
 import { logoutAPI } from "../../request/api/login"
 import { userGetAPI, getLoginRecordAPI } from "../../request/api/user"
-import { Avatar, message, Space, Spin, Pagination, Button } from "antd"
+import { Avatar, message, Space, Spin, Pagination, Button, Popconfirm, Typography } from "antd"
+const { Text } = Typography;
 import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
 import toby from "../../assets/toby.jpg"
 import logo1 from "../../assets/turingLogo.svg"
 // import { size } from "lodash"
+const columns = [
+  {
+    title: "时间",
+    dataIndex: "time",
+    key: "time",
+    width: "calc(25vw - 43px)",
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B",
+        borderRadius: "8px 0 0 8px",
+        borderColor: "#dde1ff"
+      }
+    }),
+    onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+  },
+  {
+    title: "IP地址",
+    dataIndex: "ip",
+    key: "ip",
+    width: "calc(25vw - 43px)",
+    align: "center",
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B"
+      }
+    }),
+    onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+  },
+  {
+    title: "城市",
+    dataIndex: "city",
+    key: "city",
+    width: "calc(25vw - 43px)",
+    align: "center",
+
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B"
+      }
+    }),
+    onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+  },
+  {
+    title: "设备",
+    dataIndex: "device",
+    key: "device",
+    width: "calc(25vw - 43px)",
+    align: "center",
+
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B"
+      }
+    }),
+    onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+  }
+]
 export default function Site() {
   const [id, setId] = useState('')
   const [email, setEmail] = useState('')
@@ -64,83 +134,9 @@ export default function Site() {
   useEffect(() => {
     getUserLoginData()
   }, [current])
-  const columns = [
-    {
-      title: "时间",
-      dataIndex: "time",
-      key: "time",
-      width: "calc(25vw - 43px)",
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B",
-          borderRadius: "8px 0 0 8px",
-          borderColor: "#dde1ff"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    },
-    {
-      title: "IP地址",
-      dataIndex: "ip",
-      key: "ip",
-      width: "calc(25vw - 43px)",
-      align: "center",
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    },
-    {
-      title: "城市",
-      dataIndex: "city",
-      key: "city",
-      width: "calc(25vw - 43px)",
-      align: "center",
-
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    },
-    {
-      title: "设备",
-      dataIndex: "device",
-      key: "device",
-      width: "calc(25vw - 43px)",
-      align: "center",
-
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    }
-  ]
 
   let navigate = useNavigate()
-  const logout = (values) => {
-    console.log(values)
-    let data = {
-      email: values.email,
-      password: values.password
-    }
+  const logout = () => {
     logoutAPI(data).then((res) => {
       console.log(res)
       if (res.data.code === 200) {
@@ -153,6 +149,14 @@ export default function Site() {
       }
     })
   }
+  const confirm = (e) => {
+    console.log(e);
+    logout()
+  };
+  const cancel = (e) => {
+    console.log(e);
+    message.error('Click on No');
+  };
   return (
     <>
       <div className='site-content'>
@@ -178,19 +182,17 @@ export default function Site() {
               <div className='site-content-main-name'>
                 <div className='site-content-main-name-title'>
                   <div className='site-content-main-name-title-content'>
-                    名字
+                    名称
                   </div>
                 </div>
                 <div className='site-content-main-name-id'>
-                  <div className='site-content-main-name-id-content'>{username}</div>
+                  <Text mark className='site-content-main-name-id-content'>{username}</Text>
                 </div>
                 <div className='site-content-main-name-change'>
                   <Popover
                     name='修改用户名'
                     button={false}
-                    mode={<div className='site-content-main-name-change-content'>
-                      修改名字
-                    </div>}
+                    mode={<Button type="link" className='site-content-main-name-change-content'>修改名称</Button>}
                     content={< UpdateUsername />}
                   />
 
@@ -203,15 +205,13 @@ export default function Site() {
                   </div>
                 </div>
                 <div className='site-content-main-email-id'>
-                  <div className='site-content-main-email-id-content'>{email}</div>
+                  <Text mark className='site-content-main-email-id-content'>{email}</Text>
                 </div>
                 <div className='site-content-main-email-change'>
                   <Popover
                     name='修改邮箱'
                     button={false}
-                    mode={<div className='site-content-main-email-change-content'>
-                      修改邮箱
-                    </div>}
+                    mode={<Button type="link" className='site-content-main-email-change-content'>修改邮箱</Button>}
                     content={< UpdateEmail />}
                   />
 
@@ -228,9 +228,7 @@ export default function Site() {
                   <Popover
                     name='修改密码'
                     button={false}
-                    mode={<div className='site-content-main-password-change-content'>
-                      修改密码
-                    </div>}
+                    mode={<Button type="link" className='site-content-main-password-change-content'>修改密码</Button>}
                     content={< UpdatePassword />}
                   />
 
@@ -263,12 +261,16 @@ export default function Site() {
                   </div>
                 </div>
                 <div className='site-content-main-user-id'>
-                  <div
-                    onClick={logout}
-                    className='site-content-main-user-id-content'
+                  <Popconfirm
+                    title="是否要退出登录？"
+                    description="是否要退出登录？"
+                    onConfirm={confirm}
+                    onCancel={cancel}
+                    okText="Yes"
+                    cancelText="No"
                   >
-                    退出登录
-                  </div>
+                    <Button type="link" className='site-content-main-user-id-content'>退出登录</Button>
+                  </Popconfirm>
                 </div>
               </div>
             </div>
