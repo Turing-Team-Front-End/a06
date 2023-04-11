@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Button, Form, Input, message } from "antd";
-import { ArrowLeftOutlined } from "@ant-design/icons";
-import "./index.css";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react"
+import { Button, Form, Input, message } from "antd"
+import { ArrowLeftOutlined } from "@ant-design/icons"
+import "./index.css"
+import { Link, useNavigate } from "react-router-dom"
 import { registryAPI } from "../../request/api/login"
-import { values } from "lodash";
+import { values } from "lodash"
 export default function Register() {
   let navigate = useNavigate()
   const toRegister = async (values) => {
@@ -14,8 +14,8 @@ export default function Register() {
       password: values.password
     }
     try {
-      let res = await registryAPI(data);
-      console.log(res);
+      let res = await registryAPI(data)
+      console.log(res)
       if (res.data.code === 200) {
         message.success(res.data.msg)
         navigate("/main/login")
@@ -23,17 +23,15 @@ export default function Register() {
         message.error(res.data.msg)
       }
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-
-
   }
   const onFinishFailed = (err) => {
-    console.log(err);
+    console.log(err)
   }
-  let email;
-  let password;
-  const [form] = Form.useForm();
+  let email
+  let password
+  const [form] = Form.useForm()
   return (
     <div>
       <div className='return'>
@@ -47,7 +45,7 @@ export default function Register() {
         <p>注册</p>
       </div>
       <Form
-        style={{ margin: "auto", paddingTop: 40, width: 600 }}
+        style={{ margin: "auto", paddingTop: 40, width: "30vw" }}
         form={form}
         layout='horizontal'
         className='register-form'
@@ -96,7 +94,6 @@ export default function Register() {
           <Input
             className='register-input'
             type='password'
-
             placeholder='请输入密码'
           />
         </Form.Item>
@@ -108,15 +105,11 @@ export default function Register() {
           />
         </Form.Item>
         <Form.Item style={{ textAlign: "center", marginTop: "2rem" }}>
-          <Button
-            className='register-button'
-
-            htmlType='submit'
-          >
+          <Button className='register-button' htmlType='submit'>
             <p>注册 →</p>
           </Button>
         </Form.Item>
       </Form>
     </div>
-  );
+  )
 }

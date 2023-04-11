@@ -14,8 +14,8 @@ export default function Login() {
       password: values.password
     }
     try {
-      let res = await doLoginAPI(data);
-      console.log(res);
+      let res = await doLoginAPI(data)
+      console.log(res)
       if (res.data.code === 200) {
         message.success("登陆成功！")
         navigate("/home")
@@ -24,7 +24,7 @@ export default function Login() {
         message.error("用户名或密码错误！")
       }
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
   const onFinishFailed = (errorInfo) => {
@@ -36,7 +36,7 @@ export default function Login() {
         <p>登录</p>
       </div>
       <Form
-        style={{ margin: "auto", paddingTop: 40, width: 600 }}
+        style={{ margin: "auto", paddingTop: 40, width: "30vw" }}
         form={form}
         layout='horizontal'
         className='login-form'

@@ -2,14 +2,8 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 8px;
   gap: 8px;
-
-  width: 656px;
-  /* height: 56px; */
-
-  /* Inside auto layout */
-
+  display: block;
   flex: none;
   order: 0;
   align-self: stretch;
@@ -34,10 +28,7 @@
   align-items: center;
   padding: 0.5rem;
   gap: 0.5rem;
-
   height: 4.375rem;
-
-  /* Inside auto layout */
 
   flex: none;
   order: 0;
