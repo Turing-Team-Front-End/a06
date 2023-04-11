@@ -37,7 +37,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 700px;
+  /* min-height: 700px; */
   /* Inside auto layout */
   flex: none;
   order: 1;

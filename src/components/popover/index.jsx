@@ -19,12 +19,10 @@ function popover(props) {
   })
   return (
     <>
-      {/* <Button type='primary' onClick={showModal}>
-        Open Modal
-      </Button> */}
       <div onClick={showModal}>{props.mode}</div>
       <Modal
         // title='Basic Modal'
+        centered
         bodyStyle={modalBody}
         open={isModalOpen}
         width={"70vw"}

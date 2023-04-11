@@ -182,24 +182,18 @@ export default function BucketMain() {
           prefix={<SearchOutlined className='search-svg' />}
         ></Input>
       </div>
-      <div className='bucket-content-bottom'>
+      <div className='bucket-content-midBottom'>
         <Spin tip='Loading' spinning={isLoading}>
           <BucketTable columns={columns} data={data} />
-          <Pagination
-            current={current}
-            total={total}
-            pageSize={pageSize}
-            onChange={changePage}
-            style={{ position: "bottomCenter" }}
-          />
         </Spin>
-
-        {/* <Popover
-            name='用户管理'
-            button={true}
-            mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
-            table={<BucketTable columns={columns} data={data} />}
-          /> */}
+      </div>
+      <div className='bucket-content-bottom'>
+        <Pagination
+          current={current}
+          total={total}
+          pageSize={pageSize}
+          onChange={changePage}
+        />
       </div>
     </div>
   )

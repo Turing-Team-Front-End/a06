@@ -74,10 +74,11 @@
   flex-grow: 0;
 }
 
-.bucket-content .bucket-content-bottom {
+.bucket-content .bucket-content-midBottom {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   padding: 0px;
   gap: 8px;
   flex: none;
@@ -86,6 +87,19 @@
   flex-grow: 1;
 }
 
+.bucket-content .bucket-content-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
 .bucket-content .bucket-content-mid .bucket-create {
   display: flex;
   flex-direction: row;
