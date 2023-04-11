@@ -138,7 +138,7 @@ function fileUpload(props) {
     data.append("chunks", chunks)
     data.append("chunk", currentChunk)
     data.append("size", size)
-    data.append("name", name + currentChunk)
+    data.append("name", name)
     data.append("md5", md5)
     data.append("file", temporaryFile)
     uploadChunkAPI(data).then((res) => {
