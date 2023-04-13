@@ -53,7 +53,7 @@ const routes = [
             element: <BucketMain />
           },
           {
-            path: ":bid/:name",
+            path: ":bid/:name/:privilege",
             element: <BucketDetail />
           },
           {

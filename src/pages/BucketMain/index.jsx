@@ -8,7 +8,7 @@ import CreateBucket from "../../components/createBucket"
 import { Button, Input, Space, Spin, Pagination } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 import "./index.css"
-import { bucketListAPI, bucketCountAPI } from "../../request/api/bucket"
+import { bucketListAPI, bucketListAllAPI } from "../../request/api/bucket"
 
 export default function BucketMain() {
   const [data, setData] = useState([])
@@ -18,8 +18,8 @@ export default function BucketMain() {
   const [isLoading, setIsLoading] = useState(true)
   const getBucketData = async () => {
     try {
-      let res = await bucketListAPI(current, pageSize)
-      console.log(res)
+      let res = await bucketListAllAPI(current, pageSize)
+      console.log(res, 88888888888)
       setData(res.data.data.records)
       setTotal(res.data.data.total)
       setIsLoading(false)
@@ -46,7 +46,7 @@ export default function BucketMain() {
   const navigate = useNavigate()
   const ToRoute = (record) => {
     console.log(record, 111)
-    navigate(`/home/bucket/${record.id}/${record.name}`)
+    navigate(`/home/bucket/${record.id}/${record.name}/${record.privilege}`)
   }
   const columns = [
     {
@@ -137,7 +137,7 @@ export default function BucketMain() {
           <a style={{ color: "#3452CE" }} onClick={() => ToRoute(record)}>
             文件
           </a>
-          <Popover
+          {record.privilege === 'rw' ? <Popover
             name={
               <>
                 用户管理
@@ -147,13 +147,13 @@ export default function BucketMain() {
             record={record}
             mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
             content={<UserManage record={record} />}
-          />
-          <DeleteWarning
+          /> : ''}
+          {record.privilege === 'rw' ? <DeleteWarning
             name='提示'
             button={false}
             record={record}
             mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
-          />
+          /> : ''}
         </Space>
       )
     }

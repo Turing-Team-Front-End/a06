@@ -58,6 +58,7 @@ export default function BucketDetail() {
   }
   useEffect(() => {
     getFilesData()
+    console.log(params.privilege, 5555555555555);
   }, [current])
 
   const columns = [
@@ -143,12 +144,13 @@ export default function BucketDetail() {
             content={<ShareFile record={record} />}
           />
           <a style={{ color: "#3452CE" }} onClick={() => download(record)}>下载</a>
-          <DeleteWarning
+          {params.privilege === 'rw' ? <DeleteWarning
             name='提示'
             button={false}
             record={record}
             mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
-          />
+          /> : ''}
+
         </Space>
       )
     }
@@ -167,7 +169,7 @@ export default function BucketDetail() {
       </div>
       <div className='bucket-detail-mid'>
         <div className='bucket-detail-mid-left'>
-          <Popover
+          {params.privilege === 'rw' ? <Popover
             name='上传文件'
             button={false}
             mode={
@@ -180,7 +182,8 @@ export default function BucketDetail() {
               </Button>
             }
             content={<FileUpload bid={params.bid} />}
-          />
+          /> : ''}
+
 
           <Button
             icon={<DownloadOutlined />}

@@ -17,11 +17,10 @@ export function bucketUpdateAPI(data) {
     })
 }
 //获取登录用户的所有有权限的bucket
-export function bucketListAllAPI(data) {
+export function bucketListAllAPI(page, size) {
     return myAxios2({
-        url: "/bucket/listAll",
+        url: `/bucket/listAll/${page}/${size}`,
         method: 'post',
-        data
     })
 }
 //获取登录用户的所有bucket
