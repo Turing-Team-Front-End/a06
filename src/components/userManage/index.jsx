@@ -3,13 +3,18 @@ import { Select, Input, Button, Table, message } from "antd"
 import { SearchOutlined } from "@ant-design/icons"
 import Popover from "../popover"
 import SetUserPrivilege from "../setUserPrivilege"
-import { getBucketPrivilegeAPI } from "../../request/api/bucketPrivilege"
+import {
+  getBucketPrivilegeAPI,
+  setBucketPrivilegeAPI
+} from "../../request/api/bucketPrivilege"
 import "./index.css"
-
+const handleChange = (value) => {
+  console.log(`${value.value}`)
+}
 const columns = [
   {
     title: "用户",
-    dataIndex: "user",
+    dataIndex: "username",
     onHeaderCell: () => ({
       style: {
         backgroundColor: "#dde1ff",
@@ -33,20 +38,24 @@ const columns = [
         </p>
         <Select
           className='dropdown'
-          defaultValue='全部'
+          defaultValue={{
+            value: "全部",
+            label: "全部"
+          }}
           bordered={false}
-          // onChange={handleChange}
+          labelInValue
+          onChange={handleChange}
           options={[
             {
-              value: "全部",
+              value: "all 全部",
               label: "全部"
             },
             {
-              value: "读写",
+              value: "all 读写",
               label: "读写"
             },
             {
-              value: "只读",
+              value: "all 只读",
               label: "只读"
             }
           ]}
@@ -64,123 +73,48 @@ const columns = [
     })
   }
 ]
-const data = [
-  {
-    key: "1",
-    user: "John Brown",
-    action: (
-      <Select
-        className='dropdown'
-        defaultValue='全部'
-        bordered={false}
-        // onChange={handleChange}
-        options={[
-          {
-            value: "全部",
-            label: "全部"
-          },
-          {
-            value: "读写",
-            label: "读写"
-          },
-          {
-            value: "只读",
-            label: "只读"
-          }
-        ]}
-      />
-    )
-  },
-  {
-    key: "2",
-    user: "Jim Green",
-    action: (
-      <Select
-        className='dropdown'
-        defaultValue='全部'
-        bordered={false}
-        // onChange={handleChange}
-        options={[
-          {
-            value: "全部",
-            label: "全部"
-          },
-          {
-            value: "读写",
-            label: "读写"
-          },
-          {
-            value: "只读",
-            label: "只读"
-          }
-        ]}
-      />
-    )
-  },
-  {
-    key: "3",
-    user: "Joe Black",
-    action: (
-      <Select
-        className='dropdown'
-        defaultValue='全部'
-        bordered={false}
-        // onChange={handleChange}
-        options={[
-          {
-            value: "全部",
-            label: "全部"
-          },
-          {
-            value: "读写",
-            label: "读写"
-          },
-          {
-            value: "只读",
-            label: "只读"
-          }
-        ]}
-      />
-    )
-  },
-  {
-    key: "4",
-    user: "Disabled User",
-    action: (
-      <Select
-        className='dropdown'
-        defaultValue='全部'
-        bordered={false}
-        // onChange={handleChange}
-        options={[
-          {
-            value: "全部",
-            label: "全部"
-          },
-          {
-            value: "读写",
-            label: "读写"
-          },
-          {
-            value: "只读",
-            label: "只读"
-          }
-        ]}
-      />
-    )
-  }
-]
-const handleChange = (value) => {
-  console.log(`selected ${value}`)
-}
+
 function userManage(props) {
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
+  const [data, setData] = useState([])
+
   const getBucketPrivilegeData = async () => {
     try {
-      let res = await getBucketPrivilegeAPI(props.record.id, 1, 5);
-      console.log(res);
+      let res = await getBucketPrivilegeAPI(props.record.id, 1, 5)
+      const newData = res.data.data.records.map((record) => ({
+        ...record,
+        key: record.uid,
+        action: (
+          <Select
+            className='dropdown'
+            defaultValue={{
+              value: `${record.uid} 全部`,
+              label: "全部"
+            }}
+            bordered={false}
+            labelInValue
+            onChange={handleChange}
+            options={[
+              {
+                value: `${record.uid} 全部`,
+                label: "全部"
+              },
+              {
+                value: `${record.uid} 读写`,
+                label: "读写"
+              },
+              {
+                value: `${record.uid} 只读`,
+                label: "只读"
+              }
+            ]}
+          />
+        )
+      }))
+      // console.log(newData)
+      setData(newData)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
   const onSelectChange = (newSelectedRowKeys) => {
@@ -197,7 +131,7 @@ function userManage(props) {
   const hasSelected = selectedRowKeys.length > 0
 
   useEffect(() => {
-    // console.log(props.record.id)
+    console.log(props)
     getBucketPrivilegeData()
   }, [])
   return (
@@ -205,16 +139,14 @@ function userManage(props) {
       <div className='user-top'>
         <div className='user-title'>所有用户</div>
         <Popover
-          name="设定用户权限"
-          mode={<Button
-            className='user-button'
-            type='text'
-          >
-            设定用户权限
-          </Button>}
+          name='设定用户权限'
+          mode={
+            <Button className='user-button' type='text'>
+              设定用户权限
+            </Button>
+          }
           content={<SetUserPrivilege bid={props.record.id} />}
         />
-
       </div>
       <div className='user-mid'>
         <div className='user-left'>
@@ -223,7 +155,8 @@ function userManage(props) {
             className='dropdown'
             defaultValue='全部'
             bordered={false}
-            onChange={handleChange}
+            labelInValue
+            // onChange={handleChange}
             options={[
               {
                 value: "全部",
