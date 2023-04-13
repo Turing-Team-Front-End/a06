@@ -15,7 +15,8 @@ export default function shareFile(props) {
       let res = await shareFileAPI(data)
       console.log(res)
       if (res.data.code === 200) {
-        message.success("获取分享链接成功！")
+        navigator.clipboard.writeText(res.data.data)
+        message.success("获取分享链接成功,已复制到剪切板！")
       } else if (res.data.code === 500) {
         message.error(res.data.msg)
       }
