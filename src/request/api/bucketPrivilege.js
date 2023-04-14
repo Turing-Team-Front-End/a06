@@ -3,7 +3,7 @@ import { myAxios2 } from "../http"
 //更新授权信息,只可更新权限(需要此bucket所有权)
 export function updateBucketPrivilegeAPI(id, privilege) {
   return myAxios2({
-    url: `/bucket/privilege/update${id}/${privilege}`,
+    url: `/bucket/privilege/update/${id}/${privilege}`,
     method: "post"
   })
 }
@@ -37,10 +37,9 @@ export function bucketPrivilegeGetAllAPI() {
   })
 }
 //删除指定权限信息(需要此bucket所有权)
-export function bucketPrivilegeDeleteAPI(data) {
+export function deleteBucketPrivilegeAPI(id) {
   return myAxios2({
-    url: "/bucket/privilege/delete",
-    method: "delete",
-    data
+    url: `/bucket/privilege/delete/${id}`,
+    method: "delete"
   })
 }
