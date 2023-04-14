@@ -1,4 +1,3 @@
-import myAxios from "../http"
 import { myAxios2 } from "../http"
 
 //小文件上传

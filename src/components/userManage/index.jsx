@@ -5,106 +5,158 @@ import Popover from "../popover"
 import SetUserPrivilege from "../setUserPrivilege"
 import {
   getBucketPrivilegeAPI,
-  setBucketPrivilegeAPI
+  updateBucketPrivilegeAPI,
+  deleteBucketPrivilegeAPI
 } from "../../request/api/bucketPrivilege"
 import "./index.css"
-const handleChange = (value) => {
-  console.log(`${value.value}`)
-}
-const columns = [
-  {
-    title: "用户",
-    dataIndex: "username",
-    onHeaderCell: () => ({
-      style: {
-        backgroundColor: "#dde1ff",
-        fontSize: "20px",
-        fontWeight: 400,
-        color: "#73768B"
-      }
-    })
-  },
-  {
-    title: (
-      <>
-        <p
-          style={{
-            fontSize: "14px",
-            fontWeight: 400,
-            color: "#73768B"
-          }}
-        >
-          批量修改
-        </p>
-        <Select
-          className='dropdown'
-          defaultValue={{
-            value: "全部",
-            label: "全部"
-          }}
-          bordered={false}
-          labelInValue
-          onChange={handleChange}
-          options={[
-            {
-              value: "all 全部",
-              label: "全部"
-            },
-            {
-              value: "all 读写",
-              label: "读写"
-            },
-            {
-              value: "all 只读",
-              label: "只读"
-            }
-          ]}
-        />
-      </>
-    ),
-    dataIndex: "action",
-    key: "action",
-    align: "right",
-    onHeaderCell: () => ({
-      style: {
-        backgroundColor: "#dde1ff",
-        borderRadius: "0 8px 8px 0"
-      }
-    })
+const handleChange = async (value) => {
+  // console.log(`${value.value}`)
+  const arr = value.value.split(" ")
+  const id = arr[0]
+  let privilege
+  if (privilege == "只读") privilege = "r"
+  else privilege = "rw"
+  // console.log(id)
+  try {
+    let res = await updateBucketPrivilegeAPI(id, privilege)
+    console.log(res)
+    if (res.data.code === 200) {
+      message.success("修改成功")
+    } else if (res.data.code === 500) {
+      message.error(res.data.msg)
+    }
+  } catch (error) {
+    message.error("修改失败:", error)
   }
-]
+}
+
+const deletePrivilege = async (id) => {
+  try {
+    let res = await deleteBucketPrivilegeAPI(id)
+    console.log(res)
+    if (res.data.code === 200) {
+      message.success("删除成功")
+    } else if (res.data.code === 500) {
+      message.error(res.data.msg)
+    }
+  } catch (error) {
+    message.error("删除失败:", error)
+  }
+}
 
 function userManage(props) {
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
   const [data, setData] = useState([])
+  const hasSelected = selectedRowKeys.length > 0
+  const batchChange = async (value) => {
+    console.log(value)
+    if (!hasSelected) {
+      message.error("请选择需要修改的用户")
+      return
+    }
+    for (const key of selectedRowKeys) {
+      const arr = key.split(" ")
+      const id = arr[0]
+      const uid = Number(arr[1])
+      if (uid === props.record.uid) continue
+      try {
+        let res = await updateBucketPrivilegeAPI(id, value.value)
+        // console.log(res)
+        if (res.data.code === 200) {
+          message.success("修改成功")
+        } else if (res.data.code === 500) {
+          message.error(res.data.msg)
+        }
+      } catch (error) {
+        message.error("修改失败:", error)
+      }
+    }
+  }
+  const columns = [
+    {
+      title: "用户",
+      dataIndex: "username",
+      onHeaderCell: () => ({
+        style: {
+          backgroundColor: "#dde1ff",
+          fontSize: "20px",
+          fontWeight: 400,
+          color: "#73768B"
+        }
+      })
+    },
+    {
+      title: (
+        <>
+          <p
+            style={{
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "#73768B"
+            }}
+          >
+            批量修改(选中左侧复选框)
+          </p>
+          <Select
+            className='dropdown'
+            defaultValue={{
+              value: "r",
+              label: "只读"
+            }}
+            bordered={false}
+            labelInValue
+            onChange={batchChange}
+            options={[
+              {
+                value: "rw",
+                label: "读写"
+              },
+              {
+                value: "r",
+                label: "只读"
+              }
+            ]}
+          />
+        </>
+      ),
+      dataIndex: "action",
+      key: "action",
+      align: "right",
+      onHeaderCell: () => ({
+        style: {
+          backgroundColor: "#dde1ff",
+          borderRadius: "0 8px 8px 0"
+        }
+      })
+    }
+  ]
 
   const getBucketPrivilegeData = async () => {
     try {
       let res = await getBucketPrivilegeAPI(props.record.id, 1, 5)
+      console.log(res.data.data.records)
       const newData = res.data.data.records.map((record) => ({
         ...record,
-        key: record.uid,
+        key: record.id + " " + record.uid,
         action: (
           <Select
             className='dropdown'
-            defaultValue={{
-              value: `${record.uid} 全部`,
-              label: "全部"
-            }}
+            defaultValue={
+              record.privilege === "rw"
+                ? { value: `${record.id} 读写`, label: "读写" }
+                : { value: `${record.id} 只读`, label: "只读" }
+            }
             bordered={false}
             labelInValue
+            disabled={props.record.uid === record.uid ? true : false}
             onChange={handleChange}
             options={[
               {
-                value: `${record.uid} 全部`,
-                label: "全部"
-              },
-              {
-                value: `${record.uid} 读写`,
+                value: `${record.id} 读写`,
                 label: "读写"
               },
               {
-                value: `${record.uid} 只读`,
+                value: `${record.id} 只读`,
                 label: "只读"
               }
             ]}
@@ -118,7 +170,7 @@ function userManage(props) {
     }
   }
   const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys)
+    // console.log("selectedRowKeys changed: ", newSelectedRowKeys)
     setSelectedRowKeys(newSelectedRowKeys)
   }
   const rowSelection = {
@@ -128,7 +180,6 @@ function userManage(props) {
     columnWidth: 10,
     onChange: onSelectChange
   }
-  const hasSelected = selectedRowKeys.length > 0
 
   useEffect(() => {
     console.log(props)

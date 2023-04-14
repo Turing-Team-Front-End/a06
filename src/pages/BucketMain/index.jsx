@@ -19,7 +19,7 @@ export default function BucketMain() {
   const getBucketData = async () => {
     try {
       let res = await bucketListAllAPI(current, pageSize)
-      console.log(res, 88888888888)
+      // console.log(res, 88888888888)
       setData(res.data.data.records)
       setTotal(res.data.data.total)
       setIsLoading(false)
@@ -137,23 +137,27 @@ export default function BucketMain() {
           <a style={{ color: "#3452CE" }} onClick={() => ToRoute(record)}>
             文件
           </a>
-          {record.privilege === 'rw' ? <Popover
-            name={
-              <>
-                用户管理
-                <div className='bucket-user-title'>/ {record.name}</div>
-              </>
-            }
-            record={record}
-            mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
-            content={<UserManage record={record} />}
-          /> : ''}
-          {record.privilege === 'rw' ? <DeleteWarning
-            name='提示'
-            button={false}
-            record={record}
-            mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
-          /> : ''}
+          {record.privilege === "rw" ? (
+            <Popover
+              name={
+                <>
+                  用户管理
+                  <div className='bucket-user-title'>/ {record.name}</div>
+                </>
+              }
+              record={record}
+              mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
+              content={<UserManage record={record} />}
+            />
+          ) : null}
+          {record.privilege === "rw" ? (
+            <DeleteWarning
+              name='提示'
+              button={false}
+              record={record}
+              mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
+            />
+          ) : null}
         </Space>
       )
     }
