@@ -211,7 +211,7 @@ function userManage(props) {
       <div className='user-mid'>
         <div className='user-left'>
           <p>查看用户组</p>
-          <Select
+          {/* <Select
             className='dropdown'
             defaultValue='全部'
             bordered={false}
@@ -231,10 +231,10 @@ function userManage(props) {
                 label: "只读"
               }
             ]}
-          />
+          /> */}
           <p>{selectedRowKeys.length}个已选中</p>
         </div>
-        <div className='user-right'>
+        {/* <div className='user-right'>
           <Input
             className='user-search'
             placeholder='搜索Bucket...'
@@ -261,7 +261,7 @@ function userManage(props) {
               ></path>
             </svg>
           </Button>
-        </div>
+        </div> */}
       </div>
       <div className='user-bottom'>
         <Spin tip='Loading' spinning={isLoading}>
