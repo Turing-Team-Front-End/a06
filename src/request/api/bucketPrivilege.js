@@ -1,12 +1,10 @@
-import myAxios from "../http"
-import myAxios2 from "../http"
+import { myAxios2 } from "../http"
 
 //更新授权信息,只可更新权限(需要此bucket所有权)
-export function bucketPrivilegeUpdateAPI(data) {
+export function updateBucketPrivilegeAPI(id, privilege) {
   return myAxios2({
-    url: "/bucket/privilege/update",
-    method: "post",
-    data
+    url: `/bucket/privilege/update${id}/${privilege}`,
+    method: "post"
   })
 }
 //设定特定用户特定bucket的读写权限,权限类型只能为r或rw(需要此bucket所有权)
@@ -14,10 +12,7 @@ export function setBucketPrivilegeAPI(username, data) {
   return myAxios2({
     url: `/bucket/privilege/set/${username}`,
     method: "post",
-    data,
-    headers: {
-      token: window.sessionStorage.getItem("token")
-    }
+    data
   })
 }
 //获取用户当前所有bucket权限信息(bucketId-权限-isOwner)格式
@@ -31,10 +26,7 @@ export function getSimplePrivilegeInfoAPI() {
 export function getBucketPrivilegeAPI(bid, page, size) {
   return myAxios2({
     url: `bucket/privilege/getBucketPrivilege/${bid}/${page}/${size}`,
-    method: "get",
-    headers: {
-      token: window.sessionStorage.getItem("token")
-    }
+    method: "get"
   })
 }
 //获取当前用户所有的bucket权限信息
