@@ -8,7 +8,7 @@ import CreateBucket from "../../components/createBucket"
 import { Button, Input, Space, Spin, Pagination } from "antd"
 import { SearchOutlined, PlusOutlined } from "@ant-design/icons"
 import "./index.css"
-import { bucketListAPI, bucketListAllAPI } from "../../request/api/bucket"
+import { bucketListAllAPI } from "../../request/api/bucket"
 
 export default function BucketMain() {
   const [data, setData] = useState([])
