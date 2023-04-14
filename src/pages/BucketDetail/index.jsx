@@ -37,7 +37,10 @@ export default function BucketDetail() {
     setCurrent(page)
   }
   const download = async (record) => {
+    let loadingMessage = null
     try {
+      loadingMessage = message.loading("正在下载...", 0)
+
       let res = await downloadAPI(record.fileName, record.bid)
       console.log(res)
       const { data } = res
@@ -51,10 +54,22 @@ export default function BucketDetail() {
       downloadElement.click()
       document.body.removeChild(downloadElement)
       window.URL.revokeObjectURL(href)
-      messageApi.then(() => message.success("Loading finished", 2.5))
+      setTimeout(() => {
+        if (loadingMessage) {
+          loadingMessage()
+          loadingMessage = null
+          message.success("下载成功", 3)
+        }
+      }, 0)
     } catch (error) {
       console.error(error)
-      message.error("下载失败,", error)
+      setTimeout(() => {
+        if (loadingMessage) {
+          loadingMessage()
+          loadingMessage = null
+          message.error(`下载失败: ${error}`, 3)
+        }
+      }, 0)
     }
   }
   useEffect(() => {
