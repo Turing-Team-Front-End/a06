@@ -207,12 +207,12 @@ export default function BucketDetail() {
             ""
           )}
 
-          <Button
+          {/* <Button
             icon={<DownloadOutlined />}
             className='bucket-detail-mid-left-download'
             type='text'
-          ></Button>
-          <Button className='bucket-detail-mid-left-delete' type='text'>
+          ></Button> */}
+          {/* <Button className='bucket-detail-mid-left-delete' type='text'>
             <svg
               viewBox='0 0 1024 1024'
               version='1.1'
@@ -232,16 +232,16 @@ export default function BucketDetail() {
                 p-id='1395'
               ></path>
             </svg>
-          </Button>
-          <div className='bucket-detail-mid-left-selected'>0个已选中</div>
+          </Button> */}
+          {/* <div className='bucket-detail-mid-left-selected'>0个已选中</div> */}
         </div>
-        <Input
+        {/* <Input
           className='bucket-detail-mid-right-input'
           placeholder='搜索文件...'
           prefix={
             <SearchOutlined className='bucket-detail-mid-right-input-svg' />
           }
-        ></Input>
+        ></Input> */}
       </div>
       <div className='bucket-detail-bottom'>
         <Spin tip='Loading' spinning={isLoading}>
