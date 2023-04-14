@@ -19,7 +19,9 @@ export default function BucketMain() {
   const getBucketData = async () => {
     try {
       let res = await bucketListAllAPI(current, pageSize)
-      // console.log(res, 88888888888)
+      if (res.data.data === null) {
+        setIsLoading(false)
+      }
       setData(res.data.data.records)
       setTotal(res.data.data.total)
       setIsLoading(false)
@@ -43,6 +45,7 @@ export default function BucketMain() {
     getBucketData()
     // getTotalData()
   }, [current, total])
+
   const navigate = useNavigate()
   const ToRoute = (record) => {
     console.log(record, 111)
