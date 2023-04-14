@@ -146,13 +146,13 @@ export default function BucketDetail() {
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
       render: (text, record, index) => (
         <Space size='middle'>
-          <Popover
+          {/* <Popover
             name='文件详情'
             button={false}
             record={record}
             mode={<a style={{ color: "#3452CE" }}>详情</a>}
             content={<FileDetail />}
-          />
+          /> */}
           <Popover
             name='分享链接'
             button={false}
