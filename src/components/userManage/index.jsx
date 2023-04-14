@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Select, Input, Button, Table, message } from "antd"
+import { Select, Input, Button, Table, message, Spin, Pagination } from "antd"
 import { SearchOutlined } from "@ant-design/icons"
 import Popover from "../popover"
 import SetUserPrivilege from "../setUserPrivilege"
@@ -47,6 +47,10 @@ const deletePrivilege = async (id) => {
 function userManage(props) {
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
   const [data, setData] = useState([])
+  const [current, setCurrent] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
+  const [total, setTotal] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
   const hasSelected = selectedRowKeys.length > 0
   const batchChange = async (value) => {
     console.log(value)
@@ -133,7 +137,7 @@ function userManage(props) {
 
   const getBucketPrivilegeData = async () => {
     try {
-      let res = await getBucketPrivilegeAPI(props.record.id, 1, 5)
+      let res = await getBucketPrivilegeAPI(props.record.id, current, pageSize)
       console.log(res.data.data.records)
       const newData = res.data.data.records.map((record) => ({
         ...record,
@@ -165,6 +169,8 @@ function userManage(props) {
       }))
       // console.log(newData)
       setData(newData)
+      setTotal(res.data.data.total)
+      setIsLoading(false)
     } catch (error) {
       console.error(error)
     }
@@ -172,6 +178,9 @@ function userManage(props) {
   const onSelectChange = (newSelectedRowKeys) => {
     // console.log("selectedRowKeys changed: ", newSelectedRowKeys)
     setSelectedRowKeys(newSelectedRowKeys)
+  }
+  const changePage = (page) => {
+    setCurrent(page)
   }
   const rowSelection = {
     selectedRowKeys,
@@ -182,9 +191,9 @@ function userManage(props) {
   }
 
   useEffect(() => {
-    console.log(props)
+
     getBucketPrivilegeData()
-  }, [])
+  }, [current, total])
   return (
     <>
       <div className='user-top'>
@@ -255,18 +264,21 @@ function userManage(props) {
         </div>
       </div>
       <div className='user-bottom'>
-        <Table
-          className='user-manage-table'
-          columns={columns}
-          dataSource={data}
-          rowSelection={rowSelection}
-          pagination={{
-            position: ["bottomCenter"],
-            className: "bucket-table-pagination",
-            total: "151",
-            showSizeChanger: false
-          }}
-        />
+        <Spin tip='Loading' spinning={isLoading}>
+          <Table
+            className='user-manage-table'
+            columns={columns}
+            dataSource={data}
+            rowSelection={rowSelection}
+            pagination={false}
+          />
+          <Pagination
+            current={current}
+            total={total}
+            pageSize={pageSize}
+            onChange={changePage}
+          />
+        </Spin>
       </div>
     </>
   )
