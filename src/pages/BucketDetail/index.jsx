@@ -24,14 +24,13 @@ export default function BucketDetail() {
   const [isLoading, setIsLoading] = useState(true)
   const getFilesData = async () => {
     try {
-      let res = await filesListallAPI(params.bid, current, pageSize);
-      console.log(res, 114514);
+      let res = await filesListallAPI(params.bid, current, pageSize)
+      // console.log(res, 114514)
       setData(res.data.data.records)
       setTotal(res.data.data.total)
       setIsLoading(false)
-    }
-    catch (error) {
-      console.error(error);
+    } catch (error) {
+      console.error(error)
     }
   }
   const changePage = (page) => {
@@ -39,26 +38,28 @@ export default function BucketDetail() {
   }
   const download = async (record) => {
     try {
-      let res = await downloadAPI(record.fileName, record.bid);
-      console.log(res);
-      res = res.data
-      let blob = new Blob([res], { type: res.type });
-      let downloadElement = document.createElement("a");
-      let href = window.URL.createObjectURL(blob);
-      downloadElement.href = href;
+      let res = await downloadAPI(record.fileName, record.bid)
+      console.log(res)
+      const { data } = res
+      let blob = new Blob([data], { type: data.type })
+      let downloadElement = document.createElement("a")
+      let href = window.URL.createObjectURL(blob)
+      downloadElement.href = href
       downloadElement.download = record.fileName
-      document.body.appendChild(downloadElement);
-      downloadElement.click();
-      document.body.removeChild(downloadElement);
-      window.URL.revokeObjectURL(href);
-    }
-    catch (error) {
-      console.error(error);
+      downloadElement.style.display = "none"
+      document.body.appendChild(downloadElement)
+      downloadElement.click()
+      document.body.removeChild(downloadElement)
+      window.URL.revokeObjectURL(href)
+      messageApi.then(() => message.success("Loading finished", 2.5))
+    } catch (error) {
+      console.error(error)
+      message.error("下载失败,", error)
     }
   }
   useEffect(() => {
     getFilesData()
-    console.log(params.privilege, 5555555555555);
+    // console.log(params.privilege, 5555555555555)
   }, [current])
 
   const columns = [
@@ -140,17 +141,20 @@ export default function BucketDetail() {
           <Popover
             name='分享链接'
             button={false}
-            mode={<a style={{ color: "#3452CE" }} >链接</a>}
+            mode={<a style={{ color: "#3452CE" }}>链接</a>}
             content={<ShareFile record={record} />}
           />
-          <a style={{ color: "#3452CE" }} onClick={() => download(record)}>下载</a>
-          {params.privilege === 'rw' ? <DeleteWarning
-            name='提示'
-            button={false}
-            record={record}
-            mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
-          /> : ''}
-
+          <a style={{ color: "#3452CE" }} onClick={() => download(record)}>
+            下载
+          </a>
+          {params.privilege === "rw" ? (
+            <DeleteWarning
+              name='提示'
+              button={false}
+              record={record}
+              mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
+            />
+          ) : null}
         </Space>
       )
     }
@@ -169,21 +173,24 @@ export default function BucketDetail() {
       </div>
       <div className='bucket-detail-mid'>
         <div className='bucket-detail-mid-left'>
-          {params.privilege === 'rw' ? <Popover
-            name='上传文件'
-            button={false}
-            mode={
-              <Button
-                icon={<UploadOutlined />}
-                className='bucket-detail-mid-left-upload'
-                type='text'
-              >
-                上传文件
-              </Button>
-            }
-            content={<FileUpload bid={params.bid} />}
-          /> : ''}
-
+          {params.privilege === "rw" ? (
+            <Popover
+              name='上传文件'
+              button={false}
+              mode={
+                <Button
+                  icon={<UploadOutlined />}
+                  className='bucket-detail-mid-left-upload'
+                  type='text'
+                >
+                  上传文件
+                </Button>
+              }
+              content={<FileUpload bid={params.bid} />}
+            />
+          ) : (
+            ""
+          )}
 
           <Button
             icon={<DownloadOutlined />}
@@ -222,9 +229,10 @@ export default function BucketDetail() {
         ></Input>
       </div>
       <div className='bucket-detail-bottom'>
-        <Spin tip="Loading" spinning={isLoading}>
+        <Spin tip='Loading' spinning={isLoading}>
           <BucketTable columns={columns} data={data} />
-          <Pagination current={current}
+          <Pagination
+            current={current}
             total={total}
             pageSize={pageSize}
             onChange={changePage}
