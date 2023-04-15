@@ -56,7 +56,7 @@ export default function BucketMain() {
       title: "Bucket名",
       dataIndex: "name",
       key: "name",
-      width: "calc(20vw - 43px)",
+      width: "calc(15vw - 43px)",
       onHeaderCell: () => ({
         style: {
           backgroundColor: "#dde1ff",
@@ -122,7 +122,7 @@ export default function BucketMain() {
     {
       title: "操作",
       key: "operation",
-      width: "calc(20vw - 43px)",
+      width: "calc(27.5vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
@@ -136,32 +136,35 @@ export default function BucketMain() {
       }),
       onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
       render: (text, record, index) => (
-        <Space size='middle'>
-          <a style={{ color: "#3452CE" }} onClick={() => ToRoute(record)}>
-            文件
-          </a>
-          {record.privilege === "rw" ? (
-            <Popover
-              name={
-                <>
-                  用户管理
-                  <div className='bucket-user-title'>/ {record.name}</div>
-                </>
-              }
-              record={record}
-              mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
-              content={<UserManage record={record} />}
-            />
-          ) : null}
-          {record.privilege === "rw" ? (
-            <DeleteWarning
-              name='提示'
-              button={false}
-              record={record}
-              mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
-            />
-          ) : null}
-        </Space>
+        console.log(record.privilege),
+        (
+          <Space size='middle'>
+            <a style={{ color: "#3452CE" }} onClick={() => ToRoute(record)}>
+              文件
+            </a>
+            {record.privilege === "rw" ? (
+              <Popover
+                name={
+                  <>
+                    用户管理
+                    <div className='bucket-user-title'>/ {record.name}</div>
+                  </>
+                }
+                record={record}
+                mode={<a style={{ color: "#3452CE" }}>用户管理</a>}
+                content={<UserManage record={record} />}
+              />
+            ) : null}
+            {record.privilege === "rw" ? (
+              <DeleteWarning
+                name='提示'
+                button={false}
+                record={record}
+                mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
+              />
+            ) : null}
+          </Space>
+        )
       )
     }
   ]
