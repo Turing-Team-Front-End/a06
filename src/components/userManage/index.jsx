@@ -191,7 +191,6 @@ function userManage(props) {
   }
 
   useEffect(() => {
-
     getBucketPrivilegeData()
   }, [current, total])
   return (
@@ -211,7 +210,7 @@ function userManage(props) {
       <div className='user-mid'>
         <div className='user-left'>
           <p>查看用户组</p>
-          {/* <Select
+          <Select
             className='dropdown'
             defaultValue='全部'
             bordered={false}
@@ -231,7 +230,7 @@ function userManage(props) {
                 label: "只读"
               }
             ]}
-          /> */}
+          />
           <p>{selectedRowKeys.length}个已选中</p>
         </div>
         {/* <div className='user-right'>
