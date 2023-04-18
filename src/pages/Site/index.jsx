@@ -21,9 +21,8 @@ const { Text } = Typography
 import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
-import toby from "../../assets/toby.jpg"
+import caster from "../../assets/caster.jpg"
 import logo1 from "../../assets/turingLogo.svg"
-// import { size } from "lodash"
 const columns = [
   {
     title: "时间",
@@ -179,7 +178,7 @@ export default function Site() {
           <div className='site-left'>
             <div className='site-content-main-img'>
               <div className='site-content-main-img-icon'>
-                <Avatar size={180} src={toby} />
+                <Avatar size={180} src={caster} />
               </div>
               <div className='site-content-main-img-set'>
                 {/* <div className='site-content-main-img-set-name'>编辑</div>{" "} */}
@@ -312,7 +311,7 @@ export default function Site() {
             <Spin tip='Loading' spinning={isLoading}>
               <BucketTable columns={columns} data={data} />
               <Pagination
-              className="site-pagination"
+                className='site-pagination'
                 current={current}
                 total={total}
                 pageSize={pageSize}
