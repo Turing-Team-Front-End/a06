@@ -12,7 +12,7 @@ import img4 from "../../assets/Component4.svg"
 import img5 from "../../assets/Component5.svg"
 
 import img8 from "../../assets/Component8.svg"
-import toby from "../../assets/toby.jpg"
+import caster from "../../assets/caster.jpg"
 export default function Home() {
   const [name, setName] = useState("")
 
@@ -133,7 +133,7 @@ export default function Home() {
               content={<TaskList />}
             /> */}
             <div className='img-logo'>
-              <Avatar size={56} src={toby} />
+              <Avatar size={56} src={caster} />
             </div>
           </div>
         </div>
