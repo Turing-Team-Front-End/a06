@@ -1,11 +1,12 @@
 import { myAxios2 } from "../http"
 
 //小文件上传
-export function smallFileUploadAPI(data) {
+export function smallFileUploadAPI(data, config) {
   return myAxios2({
     url: `/upload/smallFileUpload`,
     method: "post",
-    data
+    data,
+    onUploadProgress: config.onUploadProgress
   })
 }
 

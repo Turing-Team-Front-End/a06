@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "./index.css"
-import BucketTable from "../bucketTable"
 import DeleteWarning from "../deleteWarning"
 import CompressionSite from "../compressionSite"
+import UploadList from "../uploadList"
 import Popover from "../popover"
 import { Button, Space, Upload, message } from "antd"
 import {
@@ -17,6 +17,30 @@ import SparkMD5 from "spark-md5"
 
 function fileUpload(props) {
   useEffect(() => {})
+  const [uploadData, setUploadData] = useState([
+    {
+      name: "111",
+      percent: 0
+    },
+    {
+      name: "111",
+      percent: 100
+    },
+    {
+      name: "111",
+      percent: 50
+    }
+  ])
+  const test = () => {
+    const x = [
+      ...uploadData,
+      {
+        name: "111",
+        percent: 0
+      }
+    ]
+    setUploadData(x)
+  }
   const checkSecUpload = (file) => {
     var fileReader = new FileReader()
     var md5 = ""
@@ -52,9 +76,16 @@ function fileUpload(props) {
     } else toUpload(file)
   }
   const fileToMd5 = async (file) => {
+    const x = [
+      ...uploadData,
+      {
+        name: file.name,
+        percent: 0
+      }
+    ]
+    setUploadData(x)
     var fileReader = new FileReader()
     var md5 = ""
-    console.log(file)
     fileReader.readAsBinaryString(file)
     fileReader.onload = (e) => {
       md5 = SparkMD5.hashBinary(e.target.result)
@@ -62,11 +93,39 @@ function fileUpload(props) {
       data.append("bid", props.bid)
       data.append("md5", md5)
       data.append("file", file)
-      smallFileUploadAPI(data).then((res) => {
+      const config = {
+        onUploadProgress: (progressEvent) => {
+          const progressPercent = Number(
+            ((progressEvent.loaded / progressEvent.total) * 100).toFixed(1)
+          )
+          const updatedData = x.map((item) => {
+            if (item.name === file.name) {
+              return {
+                ...item,
+                percent: progressPercent
+              }
+            }
+            return item
+          })
+          setUploadData(updatedData)
+        }
+      }
+
+      smallFileUploadAPI(data, config).then((res) => {
         if (res.data.code === 200) {
           message.success("上传成功！")
         } else if (res.data.code === 500) {
           message.error(res.data.msg)
+          const updatedData = x.map((item) => {
+            if (item.name === file.name) {
+              return {
+                ...item,
+                exception: true
+              }
+            }
+            return item
+          })
+          setUploadData(updatedData)
         }
       })
     }
@@ -170,148 +229,17 @@ function fileUpload(props) {
     fileToMd5(file)
     return false //拦截组件默认的请求
   }
-  const columns = [
-    {
-      title: "文件名",
-      dataIndex: "name",
-      key: "name",
-      width: "calc(25vw - 43px)",
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B",
-          borderRadius: "8px 0 0 8px",
-          borderColor: "#dde1ff"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    },
-    {
-      title: "大小",
-      dataIndex: "size",
-      key: "size",
-      width: "calc(25vw - 43px)",
-      align: "center",
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    },
-    {
-      title: "类型",
-      dataIndex: "type",
-      key: "type",
-      width: "calc(25vw - 43px)",
-      align: "center",
-
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    },
-    {
-      title: "状态",
-      dataIndex: "state",
-      key: "state",
-      width: "calc(25vw - 43px)",
-      align: "center",
-
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B"
-        }
-      }),
-      onCell: () => ({
-        style: { backgroundColor: "#f4f5fb", color: "#3452CE" }
-      })
-    },
-    {
-      title: "操作",
-      key: "operation",
-      width: "calc(25vw - 43px)",
-      align: "center",
-
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B",
-          borderRadius: "0 8px 8px 0"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
-      render: (text, record, index) => (
-        <Space size='middle'>
-          <DeleteWarning
-            name='提示'
-            button={false}
-            mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
-          />
-        </Space>
-      )
-    }
-  ]
-  const data = [
-    {
-      key: "1",
-      name: "1111.jpg",
-      size: "22KB",
-      type: "JPG",
-      state: "已扫描"
-    },
-    {
-      key: "2",
-      name: "1111.jpg",
-      size: "22KB",
-      type: "JPG",
-      state: "已扫描"
-    },
-    {
-      key: "3",
-      name: "1111.jpg",
-      size: "22KB",
-      type: "JPG",
-      state: "已扫描"
-    }
-  ]
   return (
     <>
       <div className='fileUpload'>
-        <div className='fileUpload-top'>
-          <div className='fileUpload-top-main'>
-            <Button type='text' className='fileUpload-top-main-btn'>
-              当前目录
-            </Button>
-            <div className='fileUpload-top-data'>11111</div>
-          </div>
-        </div>
         <div className='fileUpload-content'>
-          <div className='fileUpload-content-top'>
-            <Button type='text' className='fileUpload-content-top-btn'>
-              选择文件
-            </Button>
-          </div>
           <div className='fileUpload-content-main'>
-            <BucketTable columns={columns} data={data} />
+            <UploadList data={uploadData} />
           </div>
           <div className='fileUpload-content-foot'>
-            <Button className='fileUpload-content-foot-btn'>取消</Button>
+            <Button className='fileUpload-content-foot-btn' onClick={test}>
+              取消
+            </Button>
             <div className='fileUpload-content-foot-right'>
               <Popover
                 name='压缩设置'
