@@ -138,38 +138,42 @@ function userManage(props) {
   const getBucketPrivilegeData = async () => {
     try {
       let res = await getBucketPrivilegeAPI(props.record.id, current, pageSize)
-      console.log(res.data.data.records)
-      const newData = res.data.data.records.map((record) => ({
-        ...record,
-        key: record.id + " " + record.uid,
-        action: (
-          <Select
-            className='dropdown'
-            defaultValue={
-              record.privilege === "rw"
-                ? { value: `${record.id} 读写`, label: "读写" }
-                : { value: `${record.id} 只读`, label: "只读" }
-            }
-            bordered={false}
-            labelInValue
-            disabled={props.record.uid === record.uid ? true : false}
-            onChange={handleChange}
-            options={[
-              {
-                value: `${record.id} 读写`,
-                label: "读写"
-              },
-              {
-                value: `${record.id} 只读`,
-                label: "只读"
+      // console.log(res)
+      if (res.data.code === 200) {
+        const newData = res.data.data.records.map((record) => ({
+          ...record,
+          key: record.id + " " + record.uid,
+          action: (
+            <Select
+              className='dropdown'
+              defaultValue={
+                record.privilege === "rw"
+                  ? { value: `${record.id} 读写`, label: "读写" }
+                  : { value: `${record.id} 只读`, label: "只读" }
               }
-            ]}
-          />
-        )
-      }))
-      // console.log(newData)
-      setData(newData)
-      setTotal(res.data.data.total)
+              bordered={false}
+              labelInValue
+              disabled={props.record.uid === record.uid ? true : false}
+              onChange={handleChange}
+              options={[
+                {
+                  value: `${record.id} 读写`,
+                  label: "读写"
+                },
+                {
+                  value: `${record.id} 只读`,
+                  label: "只读"
+                }
+              ]}
+            />
+          )
+        }))
+        // console.log(newData)
+        setData(newData)
+        setTotal(res.data.data.total)
+      } else {
+        message.error(res.data.msg)
+      }
       setIsLoading(false)
     } catch (error) {
       console.error(error)
