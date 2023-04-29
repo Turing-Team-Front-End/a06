@@ -16,21 +16,11 @@ import {
 import SparkMD5 from "spark-md5"
 
 function fileUpload(props) {
-  useEffect(() => {})
-  const [uploadData, setUploadData] = useState([
-    {
-      name: "111",
-      percent: 0
-    },
-    {
-      name: "111",
-      percent: 100
-    },
-    {
-      name: "111",
-      percent: 50
-    }
-  ])
+  const [uploadData, setUploadData] = useState([])
+  useEffect(() => {
+    console.log(uploadData)
+  }, [uploadData])
+
   const test = () => {
     const x = [
       ...uploadData,
@@ -41,16 +31,38 @@ function fileUpload(props) {
     ]
     setUploadData(x)
   }
+  function handleDataUpdate(updatedData) {
+    console.log(updatedData)
+    setUploadData(updatedData)
+  }
   const checkSecUpload = (file) => {
     var fileReader = new FileReader()
     var md5 = ""
     fileReader.readAsBinaryString(file)
     fileReader.onload = (e) => {
       md5 = SparkMD5.hashBinary(e.target.result)
+      const x = [
+        ...uploadData,
+        {
+          name: file.name,
+          percent: 0,
+          md5: md5
+        }
+      ]
+      setUploadData(x)
       secUploadAPI(md5, props.bid).then((res) => {
-        // console.log(res)
         if (res.data.code === 200) {
           if (res.data.data === true) {
+            const updatedData = x.map((item) => {
+              if (item.name === file.name) {
+                return {
+                  ...item,
+                  percent: 100
+                }
+              }
+              return item
+            })
+            setUploadData(updatedData)
             message.success("上传成功！")
           } else {
             checkSize(file)
@@ -76,19 +88,20 @@ function fileUpload(props) {
     } else toUpload(file)
   }
   const fileToMd5 = async (file) => {
-    const x = [
-      ...uploadData,
-      {
-        name: file.name,
-        percent: 0
-      }
-    ]
-    setUploadData(x)
     var fileReader = new FileReader()
     var md5 = ""
     fileReader.readAsBinaryString(file)
     fileReader.onload = (e) => {
       md5 = SparkMD5.hashBinary(e.target.result)
+      const x = [
+        ...uploadData,
+        {
+          name: file.name,
+          percent: 0,
+          md5: md5
+        }
+      ]
+      setUploadData(x)
       let data = new FormData()
       data.append("bid", props.bid)
       data.append("md5", md5)
@@ -151,6 +164,17 @@ function fileUpload(props) {
 
     fileReader.onload = (e) => {
       md5 = SparkMD5.hashBinary(e.target.result)
+      const x = [
+        ...uploadData,
+        {
+          name: file.name,
+          percent: 0,
+          md5: md5
+        }
+      ]
+      setUploadData(x)
+      console.log(x)
+      console.log(uploadData)
       let data = new FormData()
       data.append("bid", props.bid)
       data.append("chunks", chunks)
@@ -205,21 +229,56 @@ function fileUpload(props) {
       if (res.data.code === 200) {
         if (currentChunk < chunks) {
           toUploadChunk(bid, chunks, currentChunk + 1, size, name, md5, file)
+          const progressPercent = (
+            Number(res.data.data.length / chunks) * 100
+          ).toFixed(1)
+          setUploadData((prevState) =>
+            prevState.map((item) => {
+              if (item.name === name) {
+                return {
+                  ...item,
+                  percent: progressPercent
+                }
+              }
+              return item
+            })
+          )
         } else {
-          checkChunksNum(md5)
-          // toAbortUploadLargeFile(md5)
+          setUploadData((prevState) =>
+            prevState.map((item) => {
+              if (item.name === name) {
+                return {
+                  ...item,
+                  percent: 100
+                }
+              }
+              return item
+            })
+          )
+          // checkChunksNum(md5)
         }
       } else if (res.data.code === 500) {
         message.error(res.data.msg)
-        // toAbortUploadLargeFile(md5)
       }
     })
   }
   const toAbortUploadLargeFile = (md5) => {
+    const x = [...uploadData]
+    setUploadData((prevState) =>
+      prevState.map((item) => {
+        if (item.md5 === md5) {
+          return {
+            ...item,
+            exception: true
+          }
+        }
+        return item
+      })
+    )
     abortAPI(md5).then((res) => {
       console.log(res)
       if (res.data.code === 200) {
-        message.success("上传已取消！")
+        message.info("上传已取消！")
       } else if (res.data.code === 500) {
         message.error(res.data.msg)
       }
@@ -234,27 +293,26 @@ function fileUpload(props) {
       <div className='fileUpload'>
         <div className='fileUpload-content'>
           <div className='fileUpload-content-main'>
-            <UploadList data={uploadData} />
+            <UploadList data={uploadData} onDataUpdate={handleDataUpdate} />
           </div>
           <div className='fileUpload-content-foot'>
-            <Button className='fileUpload-content-foot-btn' onClick={test}>
+            {/* <Button className='fileUpload-content-foot-btn' onClick={test}>
               取消
-            </Button>
+            </Button> */}
+            <Popover
+              name='压缩设置'
+              button={false}
+              mode={
+                <Button
+                  type='text'
+                  className='fileUpload-content-foot-right-btn'
+                >
+                  压缩设置
+                </Button>
+              }
+              content={<CompressionSite />}
+            />
             <div className='fileUpload-content-foot-right'>
-              <Popover
-                name='压缩设置'
-                button={false}
-                mode={
-                  <Button
-                    type='text'
-                    className='fileUpload-content-foot-right-btn'
-                  >
-                    压缩设置
-                  </Button>
-                }
-                content={<CompressionSite />}
-              />
-
               <Upload
                 beforeUpload={(file) => {
                   checkSecUpload(file)
