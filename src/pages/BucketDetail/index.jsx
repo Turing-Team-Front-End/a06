@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import BucketTable from "../../components/bucketTable"
+import BucketTable from "../../components/bucketTableForDetail"
 import Popover from "../../components/popover"
-import FileDetail from "../../components/fileDetail"
 import FileUpload from "../../components/fileUpload"
 import ShareFile from "../../components/shareFile"
 import DeleteWarning from "../../components/deleteWarning"
 import { filesListallAPI, downloadAPI } from "../../request/api/files"
-import { Button, Input, Space, Spin, Pagination, message } from "antd"
-import {
-  SearchOutlined,
-  UploadOutlined,
-  DownloadOutlined
-} from "@ant-design/icons"
+import { imageDiffAPI } from "../../request/api/extra"
+import { shareFileAPI } from "../../request/api/files"
+import { Button, Space, Spin, Pagination, message, Progress } from "antd"
+import { SearchOutlined, UploadOutlined } from "@ant-design/icons"
 import arrowLeft from "../../assets/arrow-left.svg"
 import "./index.css"
 export default function BucketDetail() {
@@ -22,6 +19,19 @@ export default function BucketDetail() {
   const [pageSize, setPageSize] = useState(5)
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [selectedFileArray, setSelectedFileArray] = useState([])
+  const [selectedFileName, setSelectedFileName] = useState([])
+  const [diffPercent, setDiffPercent] = useState(0)
+  const [src1, setSrc1] = useState("")
+  const [src2, setSrc2] = useState("")
+  const selectedFileChange = (selectedFileArray) => {
+    // console.log(selectedFileArray)
+    setSelectedFileArray(selectedFileArray)
+  }
+  const showName = (name) => {
+    // console.log(name)
+    setSelectedFileName(name)
+  }
   const getFilesData = async () => {
     try {
       let res = await filesListallAPI(params.bid, current, pageSize)
@@ -29,6 +39,64 @@ export default function BucketDetail() {
       setData(res.data.data.records)
       setTotal(res.data.data.total)
       setIsLoading(false)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const toImageDiff = async () => {
+    if (selectedFileArray.length !== 2) {
+      message.error("请选择两个图片类型文件进行比对")
+      return
+    }
+    try {
+      let res = await imageDiffAPI([selectedFileArray[0], selectedFileArray[1]])
+      console.log(res)
+      if (res.data.data.length === 0) {
+        setDiffPercent(0)
+        setSrc1("")
+        setSrc2("")
+        message.success("图片相似度为0")
+      } else {
+        message.success(
+          "图片相似度为" +
+            (res.data.data[0].similarity * 100).toFixed(2) +
+            "%" +
+            ",点击左侧按钮查看详情"
+        )
+        setDiffPercent((res.data.data[0].similarity * 100).toFixed(2))
+        let data = {
+          bid: params.bid,
+          expire: 5,
+          fileId: res.data.data[0].id1
+        }
+        try {
+          let res = await shareFileAPI(data)
+          console.log(res)
+          if (res.data.code === 200) {
+            setSrc1(res.data.data)
+          } else if (res.data.code === 500) {
+            message.error(res.data.msg)
+          }
+        } catch (error) {
+          console.error(error)
+        }
+        data = {
+          bid: params.bid,
+          expire: 5,
+          fileId: res.data.data[0].id2
+        }
+        try {
+          let res = await shareFileAPI(data)
+          console.log(res)
+          if (res.data.code === 200) {
+            setSrc2(res.data.data)
+          } else if (res.data.code === 500) {
+            message.error(res.data.msg)
+          }
+        } catch (error) {
+          console.error(error)
+        }
+      }
     } catch (error) {
       console.error(error)
     }
@@ -74,7 +142,6 @@ export default function BucketDetail() {
   }
   useEffect(() => {
     getFilesData()
-    // console.log(params.privilege, 5555555555555)
   }, [current])
 
   const columns = [
@@ -89,17 +156,16 @@ export default function BucketDetail() {
           fontSize: "20px",
           fontWeight: 400,
           color: "#73768B",
-          borderRadius: "8px 0 0 8px",
+          // borderRadius: "8px 0 0 8px",
           borderColor: "#dde1ff"
         }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+      })
     },
     {
       title: "创建时间",
       dataIndex: "createTime",
       key: "createTime",
-      width: "calc(25vw - 43px)",
+      width: "calc(23vw - 43px)",
       align: "center",
       onHeaderCell: () => ({
         style: {
@@ -109,7 +175,6 @@ export default function BucketDetail() {
           color: "#73768B"
         }
       }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
       render: (text, record, index) => {
         return text.replace("T", "  ")
       }
@@ -118,7 +183,7 @@ export default function BucketDetail() {
       title: "文件大小",
       dataIndex: "fileSize",
       key: "fileSize",
-      width: "calc(25vw - 43px)",
+      width: "calc(23vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
@@ -129,7 +194,6 @@ export default function BucketDetail() {
           color: "#73768B"
         }
       }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
       render: (text, record, index) => {
         let bytes = Number(text)
         if (bytes === 0) return "0 Bytes"
@@ -146,7 +210,7 @@ export default function BucketDetail() {
     {
       title: "操作",
       key: "operation",
-      width: "calc(25vw - 43px)",
+      width: "calc(23vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
@@ -158,7 +222,6 @@ export default function BucketDetail() {
           borderRadius: "0 8px 8px 0"
         }
       }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
       render: (text, record, index) => (
         <Space size='middle'>
           {/* <Popover
@@ -221,46 +284,76 @@ export default function BucketDetail() {
           ) : (
             ""
           )}
-
-          {/* <Button
-            icon={<DownloadOutlined />}
+        </div>
+        <div className='bucket-detail-mid-right'>
+          <Popover
+            name='图片查重结果'
+            button={false}
+            mode={
+              <Button
+                style={{
+                  color: "#3452CE",
+                  display: src1 !== "" && src2 !== "" ? "block" : "none"
+                }}
+              >
+                查看
+              </Button>
+            }
+            content={
+              <div className='diff'>
+                <div className='diff-left'>
+                  <p>图片一</p>
+                  <img className='img1' src={src1} />
+                </div>
+                <div className='diff-mid'>
+                  <p>相似度</p>
+                  <Progress
+                    type='dashboard'
+                    percent={diffPercent}
+                    gapDegree={30}
+                  />
+                </div>
+                <div className='diff-right'>
+                  <p>图片二</p>
+                  <img className='img2' src={src2} />
+                </div>
+              </div>
+            }
+          />
+          <Button
+            icon={<SearchOutlined />}
             className='bucket-detail-mid-left-download'
             type='text'
-          ></Button> */}
-          {/* <Button className='bucket-detail-mid-left-delete' type='text'>
-            <svg
-              viewBox='0 0 1024 1024'
-              version='1.1'
-              xmlns='http://www.w3.org/2000/svg'
-              p-id='1393'
-              width='20'
-              height='20'
-            >
-              <path
-                d='M723.2 204.8V102.4C723.2 44.8 672 0 614.4 0H409.6C352 0 300.8 44.8 300.8 102.4v102.4H96v102.4h51.2v563.2c0 83.2 70.4 153.6 153.6 153.6h416c83.2 0 153.6-70.4 153.6-153.6V307.2h57.6V204.8H723.2zM409.6 102.4h204.8v102.4H409.6V102.4z m364.8 768c0 25.6-25.6 51.2-51.2 51.2H300.8c-25.6 0-51.2-25.6-51.2-51.2V307.2h518.4v563.2h6.4z'
-                fill='currentColor'
-                p-id='1394'
-              ></path>
-              <path
-                d='M358.4 409.6h102.4v409.6H358.4zM563.2 409.6h102.4v409.6H563.2z'
-                fill='currentColor'
-                p-id='1395'
-              ></path>
-            </svg>
-          </Button> */}
-          {/* <div className='bucket-detail-mid-left-selected'>0个已选中</div> */}
-        </div>
-        {/* <Input
+            onClick={() => toImageDiff()}
+          >
+            图片查重
+          </Button>
+          {/* <div className='bucket-selected-file-name'>
+            <p>{selectedFileName[0] ? `${selectedFileName[0]}` : ""}</p>
+            <p>{selectedFileName[1] ? `${selectedFileName[1]}` : ""}</p>
+          </div> */}
+
+          <div className='bucket-detail-mid-left-selected'>
+            {selectedFileArray.length}个已选中
+          </div>
+          {/* <Input
           className='bucket-detail-mid-right-input'
           placeholder='搜索文件...'
           prefix={
             <SearchOutlined className='bucket-detail-mid-right-input-svg' />
           }
         ></Input> */}
+        </div>
       </div>
+
       <div className='bucket-detail-bottom'>
         <Spin tip='Loading' spinning={isLoading}>
-          <BucketTable columns={columns} data={data} />
+          <BucketTable
+            columns={columns}
+            data={data}
+            onSelectedFileChange={selectedFileChange}
+            showName={showName}
+          />
           <Pagination
             current={current}
             total={total}
