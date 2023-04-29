@@ -251,6 +251,7 @@ export default function BucketDetail() {
             total={total}
             pageSize={pageSize}
             onChange={changePage}
+            showSizeChanger={false}
             style={{ position: "bottomCenter" }}
           />
         </Spin>
