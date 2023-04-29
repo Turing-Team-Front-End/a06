@@ -83,7 +83,10 @@ export default function BucketMain() {
           color: "#73768B"
         }
       }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
+      render: (text, record, index) => {
+        return text.replace("T", "  ")
+      }
     },
     {
       title: "总共大小",
@@ -117,7 +120,18 @@ export default function BucketMain() {
           color: "#73768B"
         }
       }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
+      render: (text, record, index) => {
+        let bytes = Number(text)
+        if (bytes === 0) return "0"
+
+        const k = 1024
+        const dm = 2
+        const sizes = ["字节", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
+      }
     },
     {
       title: "操作",
