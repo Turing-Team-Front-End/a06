@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { Select, Input, Button, Table, message, Spin, Pagination } from "antd"
-import { SearchOutlined } from "@ant-design/icons"
 import Popover from "../popover"
 import SetUserPrivilege from "../setUserPrivilege"
 import {
@@ -134,11 +133,25 @@ function userManage(props) {
       })
     }
   ]
-
-  const getBucketPrivilegeData = async () => {
+  const changeGetData = (value) => {
+    console.log(value)
+    if (value.value === "只读") {
+      getBucketPrivilegeData("r")
+    } else if (value.value === "读写") {
+      getBucketPrivilegeData("rw")
+    } else {
+      getBucketPrivilegeData("all")
+    }
+  }
+  const getBucketPrivilegeData = async (type) => {
     try {
-      let res = await getBucketPrivilegeAPI(props.record.id, current, pageSize)
-      // console.log(res)
+      let res = await getBucketPrivilegeAPI(
+        props.record.id,
+        type,
+        current,
+        pageSize
+      )
+      console.log(res)
       if (res.data.code === 200) {
         const newData = res.data.data.records.map((record) => ({
           ...record,
@@ -195,8 +208,8 @@ function userManage(props) {
   }
 
   useEffect(() => {
-    getBucketPrivilegeData()
-  }, [current, total])
+    getBucketPrivilegeData("all")
+  }, [current])
   return (
     <>
       <div className='user-top'>
@@ -219,7 +232,7 @@ function userManage(props) {
             defaultValue='全部'
             bordered={false}
             labelInValue
-            // onChange={handleChange}
+            onChange={changeGetData}
             options={[
               {
                 value: "全部",
