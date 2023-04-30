@@ -16,7 +16,9 @@ export default function createBucket() {
       console.log(res)
       if (res.data.code === 200) {
         message.success("创建成功！")
-        window.location.reload()
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } else if (res.data.code === 500) {
         message.error("创建失败！" + res.data.msg)
       }

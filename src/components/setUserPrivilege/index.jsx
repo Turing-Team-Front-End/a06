@@ -28,9 +28,6 @@ export default function setUserPrivilege(props) {
   }
   return (
     <div>
-      <div className='login-title'>
-        <p>setUserPrivilege</p>
-      </div>
       <Form
         style={{ margin: "auto", paddingTop: 40, width: 600 }}
         form={form}
@@ -44,40 +41,40 @@ export default function setUserPrivilege(props) {
         onFinish={toSet}
         onFinishFailed={onFinishFailed}
       >
-        <p>username</p>
+        <p>用户名</p>
         <Form.Item
           name='username'
           rules={[
             {
               required: true,
-              message: "username不能为空"
-            }
-          ]}
-        >
-          <Input className='login-input' placeholder='请输入username' />
-        </Form.Item>
-        <p>privilege</p>
-        <Form.Item
-          name='privilege'
-          rules={[
-            {
-              required: true,
-              message: "privilege不能为空"
+              message: "用户名不能为空"
             }
           ]}
         >
           <Input
             className='login-input'
-            placeholder='请输入privilege,只能为rw或r'
+            placeholder='请输入需赋予权限的用户名'
+          />
+        </Form.Item>
+        <p>权限</p>
+        <Form.Item
+          name='privilege'
+          rules={[
+            {
+              required: true,
+              message: "设置权限不能为空"
+            }
+          ]}
+        >
+          <Input
+            className='login-input'
+            placeholder='请输入需要设置的权限种类,只能为rw或r'
           />
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
-          <Button className='login-button' htmlType='submit'>
-            <p>Set →</p>
+          <Button className='update-button' htmlType='submit'>
+            <p>设置权限</p>
           </Button>
-          {/* <Button shape='round' htmlType='button' onClick={onReset}>
-            重置
-          </Button> */}
         </Form.Item>
       </Form>
     </div>

@@ -16,6 +16,9 @@ export default function updatePassword() {
       console.log(res)
       if (res.data.code === 200) {
         message.success("更新密码成功！")
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } else if (res.data.code === 500) {
         message.error("更新密码失败！" + res.data.msg)
       }
