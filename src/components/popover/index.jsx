@@ -14,9 +14,7 @@ function popover(props) {
   const handleCancel = () => {
     setIsModalOpen(false)
   }
-  useEffect(() => {
-    // console.log(props, "111")
-  })
+  useEffect(() => {})
   return (
     <>
       <div onClick={showModal}>{props.mode}</div>

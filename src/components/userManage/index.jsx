@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { Select, Input, Button, Table, message, Spin, Pagination } from "antd"
-import { SearchOutlined } from "@ant-design/icons"
 import Popover from "../popover"
 import SetUserPrivilege from "../setUserPrivilege"
 import {
@@ -134,42 +133,59 @@ function userManage(props) {
       })
     }
   ]
-
-  const getBucketPrivilegeData = async () => {
+  const changeGetData = (value) => {
+    console.log(value)
+    if (value.value === "只读") {
+      getBucketPrivilegeData("r")
+    } else if (value.value === "读写") {
+      getBucketPrivilegeData("rw")
+    } else {
+      getBucketPrivilegeData("all")
+    }
+  }
+  const getBucketPrivilegeData = async (type) => {
     try {
-      let res = await getBucketPrivilegeAPI(props.record.id, current, pageSize)
-      console.log(res.data.data.records)
-      const newData = res.data.data.records.map((record) => ({
-        ...record,
-        key: record.id + " " + record.uid,
-        action: (
-          <Select
-            className='dropdown'
-            defaultValue={
-              record.privilege === "rw"
-                ? { value: `${record.id} 读写`, label: "读写" }
-                : { value: `${record.id} 只读`, label: "只读" }
-            }
-            bordered={false}
-            labelInValue
-            disabled={props.record.uid === record.uid ? true : false}
-            onChange={handleChange}
-            options={[
-              {
-                value: `${record.id} 读写`,
-                label: "读写"
-              },
-              {
-                value: `${record.id} 只读`,
-                label: "只读"
+      let res = await getBucketPrivilegeAPI(
+        props.record.id,
+        type,
+        current,
+        pageSize
+      )
+      console.log(res)
+      if (res.data.code === 200) {
+        const newData = res.data.data.records.map((record) => ({
+          ...record,
+          key: record.id + " " + record.uid,
+          action: (
+            <Select
+              className='dropdown'
+              defaultValue={
+                record.privilege === "rw"
+                  ? { value: `${record.id} 读写`, label: "读写" }
+                  : { value: `${record.id} 只读`, label: "只读" }
               }
-            ]}
-          />
-        )
-      }))
-      // console.log(newData)
-      setData(newData)
-      setTotal(res.data.data.total)
+              bordered={false}
+              labelInValue
+              disabled={props.record.uid === record.uid ? true : false}
+              onChange={handleChange}
+              options={[
+                {
+                  value: `${record.id} 读写`,
+                  label: "读写"
+                },
+                {
+                  value: `${record.id} 只读`,
+                  label: "只读"
+                }
+              ]}
+            />
+          )
+        }))
+        setData(newData)
+        setTotal(res.data.data.total)
+      } else {
+        message.error(res.data.msg)
+      }
       setIsLoading(false)
     } catch (error) {
       console.error(error)
@@ -191,8 +207,8 @@ function userManage(props) {
   }
 
   useEffect(() => {
-    getBucketPrivilegeData()
-  }, [current, total])
+    getBucketPrivilegeData("all")
+  }, [current])
   return (
     <>
       <div className='user-top'>
@@ -215,7 +231,7 @@ function userManage(props) {
             defaultValue='全部'
             bordered={false}
             labelInValue
-            // onChange={handleChange}
+            onChange={changeGetData}
             options={[
               {
                 value: "全部",

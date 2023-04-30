@@ -1,0 +1,27 @@
+.ant-table-wrapper .ant-table {
+  background-color: #f4f5fb;
+}
+:where(.css-dev-only-do-not-override-k83k30).ant-table-wrapper
+  .ant-table-tbody
+  > tr.ant-table-row:hover
+  > td {
+  background-color: #f4f5fb;
+}
+:where(.css-dev-only-do-not-override-k83k30).ant-table-wrapper
+  .ant-table-container
+  table
+  > thead
+  > tr:first-child
+  > *:first-child {
+  border-end-start-radius: 8px;
+}
+:where(.css-dev-only-do-not-override-k83k30).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th,
+:where(.css-dev-only-do-not-override-k83k30).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td {
+  border-bottom: none;
+}

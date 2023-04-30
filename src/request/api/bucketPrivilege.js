@@ -23,9 +23,13 @@ export function getSimplePrivilegeInfoAPI() {
   })
 }
 //获取指定bucket的授权信息(所有or只读or读写)(需要此bucket所有权)
-export function getBucketPrivilegeAPI(bid, page, size) {
+export function getBucketPrivilegeAPI(bid, type, page, size) {
   return myAxios2({
-    url: `bucket/privilege/getBucketPrivilege/${bid}/${page}/${size}`,
+    url:
+      type == "all"
+        ? `bucket/privilege/getBucketPrivilege/${bid}/${page}/${size}`
+        : `bucket/privilege/getBucketPrivilege/${bid}/${type}/${page}/${size}`,
+
     method: "get"
   })
 }

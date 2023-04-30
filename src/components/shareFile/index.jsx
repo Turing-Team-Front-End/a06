@@ -32,9 +32,6 @@ export default function shareFile(props) {
   }, [])
   return (
     <div>
-      <div className='login-title'>
-        <p>setExpire</p>
-      </div>
       <Form
         style={{ margin: "auto", paddingTop: 40, width: 600 }}
         form={form}
@@ -47,21 +44,24 @@ export default function shareFile(props) {
         onFinish={toShare}
         onFinishFailed={onFinishFailed}
       >
-        <p>expire</p>
+        <p>链接过期时间</p>
         <Form.Item
           name='expire'
           rules={[
             {
               required: true,
-              message: "expire不能为空"
+              message: "过期时间不能为空"
             }
           ]}
         >
-          <Input className='login-input' placeholder='请输入expire' />
+          <Input
+            className='login-input'
+            placeholder='请设置链接过期时间（单位为min）'
+          />
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
           <Button className='login-button' htmlType='submit'>
-            <p>share →</p>
+            <p>生成分享链接</p>
           </Button>
           {/* <Button shape='round' htmlType='button' onClick={onReset}>
             重置

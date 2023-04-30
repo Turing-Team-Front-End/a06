@@ -9,15 +9,18 @@ export default function createBucket() {
   const toCreate = async (values) => {
     let data = {
       name: values.name,
-      totalSize: values.totalSize
+      totalSize: 0
     }
     try {
       let res = await bucketAPI(data)
       console.log(res)
       if (res.data.code === 200) {
         message.success("创建成功！")
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } else if (res.data.code === 500) {
-        message.error("创建失败！")
+        message.error("创建失败！" + res.data.msg)
       }
     } catch (error) {
       console.error(error)
@@ -52,21 +55,6 @@ export default function createBucket() {
           ]}
         >
           <Input className='login-input' placeholder='请输入Bucket名' />
-        </Form.Item>
-        <p>Bucket容量</p>
-        <Form.Item
-          name='totalSize'
-          rules={[
-            {
-              required: true,
-              message: "Bucket容量不能为空"
-            }
-          ]}
-        >
-          <Input
-            className='login-input'
-            placeholder='请输入Bucket容量（单位为byte）'
-          />
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
           <Button className='create-button' htmlType='submit'>

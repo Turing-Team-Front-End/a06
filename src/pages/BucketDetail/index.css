@@ -191,19 +191,14 @@
   font-size: 24px;
 }
 
-.bucket-detail-mid-left .bucket-detail-mid-left-download {
+.bucket-detail-mid-left-download {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 44px;
   height: 44px;
   background: #3452ce;
   color: #fff;
   border-radius: 8px;
-
-  /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -212,7 +207,10 @@
 .bucket-detail-mid-left-download svg {
   font-size: 20px;
 }
-
+.bucket-selected-file-name {
+  display: flex;
+  flex-direction: column;
+}
 .bucket-detail-mid-left-delete {
   display: flex;
   justify-content: center;
@@ -265,14 +263,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 12px 28px;
   gap: 4px;
 
   width: 256px;
   height: 44px;
-
-  border: 1px solid #767680;
-  border-radius: 46px;
 
   /* Inside auto layout */
 
@@ -315,4 +309,41 @@
   order: 2;
   align-self: stretch;
   flex-grow: 1;
+}
+.diff {
+  display: flex;
+  flex-direction: row;
+  gap: 5vw;
+}
+
+.diff-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  order: 0;
+}
+.diff-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  order: 1;
+}
+.diff-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  order: 2;
+}
+.img1 {
+  width: 20vw;
+}
+.img2 {
+  width: 20vw;
 }
