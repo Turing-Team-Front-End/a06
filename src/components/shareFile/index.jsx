@@ -61,7 +61,7 @@ export default function shareFile(props) {
         </Form.Item>
         <Form.Item style={{ textAlign: "center" }}>
           <Button className='login-button' htmlType='submit'>
-            <p>share →</p>
+            <p>生成分享链接</p>
           </Button>
           {/* <Button shape='round' htmlType='button' onClick={onReset}>
             重置

@@ -17,8 +17,11 @@ function deleteWarning(props) {
       console.log(res)
       if (res.data.code === 200) {
         message.success("删除成功！")
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } else if (res.data.code === 500) {
-        message.error("删除失败！")
+        message.error("删除失败！" + res.data.msg)
       }
     } catch (error) {
       console.error(error)
@@ -30,8 +33,11 @@ function deleteWarning(props) {
       console.log(res)
       if (res.data.code === 200) {
         message.success("删除文件成功！")
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } else if (res.data.code === 500) {
-        message.error("删除文件失败！")
+        message.error("删除文件失败！" + res.data.msg)
       }
     } catch (error) {
       console.error(error)

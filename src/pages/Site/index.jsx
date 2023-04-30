@@ -169,7 +169,12 @@ export default function Site() {
         <div className='site-content-own'>
           <div className='site-content-own-main'>
             <div className='site-content-own-main-name'>设置</div>
-            <div className='site-content-own-main-icon'>
+            <div
+              className='site-content-own-main-icon'
+              onClick={() => {
+                window.location.reload()
+              }}
+            >
               <img src={icon} alt='' />
             </div>
           </div>

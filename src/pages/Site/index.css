@@ -75,12 +75,10 @@
 .site-content-own-main-icon {
   width: 24px;
   height: 24px;
-
-  /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;
+  cursor: pointer;
 }
 
 .site-content-main {

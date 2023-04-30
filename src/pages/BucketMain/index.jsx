@@ -56,7 +56,7 @@ export default function BucketMain() {
       title: "Bucket名",
       dataIndex: "name",
       key: "name",
-      width: "calc(15vw - 43px)",
+      width: "calc(22vw - 43px)",
       onHeaderCell: () => ({
         style: {
           backgroundColor: "#dde1ff",
@@ -73,7 +73,7 @@ export default function BucketMain() {
       title: "创建时间",
       dataIndex: "createTime",
       key: "createTime",
-      width: "calc(20vw - 43px)",
+      width: "calc(23vw - 43px)",
       align: "center",
       onHeaderCell: () => ({
         style: {
@@ -88,28 +88,28 @@ export default function BucketMain() {
         return text.replace("T", "  ")
       }
     },
-    {
-      title: "总共大小",
-      dataIndex: "totalSize",
-      key: "totalSize",
-      width: "calc(20vw - 43px)",
-      align: "center",
+    // {
+    //   title: "总共大小",
+    //   dataIndex: "totalSize",
+    //   key: "totalSize",
+    //   width: "calc(20vw - 43px)",
+    //   align: "center",
 
-      onHeaderCell: () => ({
-        style: {
-          backgroundColor: "#dde1ff",
-          fontSize: "20px",
-          fontWeight: 400,
-          color: "#73768B"
-        }
-      }),
-      onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
-    },
+    //   onHeaderCell: () => ({
+    //     style: {
+    //       backgroundColor: "#dde1ff",
+    //       fontSize: "20px",
+    //       fontWeight: 400,
+    //       color: "#73768B"
+    //     }
+    //   }),
+    //   onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+    // },
     {
       title: "已使用大小",
       dataIndex: "usedSize",
       key: "usedSize",
-      width: "calc(20vw - 43px)",
+      width: "calc(23vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
@@ -136,7 +136,7 @@ export default function BucketMain() {
     {
       title: "操作",
       key: "operation",
-      width: "calc(27.5vw - 43px)",
+      width: "calc(31vw - 43px)",
       align: "center",
 
       onHeaderCell: () => ({
@@ -191,7 +191,7 @@ export default function BucketMain() {
       </div>
       <div className='bucket-content-mid'>
         <Popover
-          name='创建bucket'
+          name='创建Bucket'
           button={false}
           mode={
             <Button className='bucket-create' type='text'>
