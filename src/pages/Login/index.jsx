@@ -1,12 +1,15 @@
 import React from "react"
-import { Button, Checkbox, Form, Input, message } from "antd"
+import { Button, Checkbox, Form, Input, message, notification } from "antd"
 import "./index.css"
 import { doLoginAPI } from "../../request/api/login"
 import { Link, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
+import { useState } from "react"
 export default function Login() {
   let email
   let password
   const [form] = Form.useForm()
+  const [flag, setFlag] = useState(false)
   let navigate = useNavigate()
   const toLogin = async (values) => {
     let data = {
@@ -30,11 +33,32 @@ export default function Login() {
   const onFinishFailed = (errorInfo) => {
     console.log(errorInfo)
   }
+  const openNotification = () => {
+    // if (!flag) {
+    // setFlag(true)
+    notification.open({
+      message: "测试账号",
+      description: `邮箱地址：1212
+        密码：1212`,
+      duration: 0,
+      onClick: () => {
+        console.log("Notification Clicked!")
+        // setFlag(false)
+      }
+    })
+    // }
+  }
+  useEffect(() => {
+    openNotification()
+  }, [])
   return (
     <div>
       <div className='login-title'>
         <p>登录</p>
       </div>
+      <Button type='primary' onClick={openNotification}>
+        查看测试账号
+      </Button>
       <Form
         style={{ margin: "auto", paddingTop: 40, width: "30vw" }}
         form={form}
