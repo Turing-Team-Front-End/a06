@@ -1,6 +1,6 @@
 import { myAxios2 } from "../http"
 
-export function updateResponseHeader(data) {
+export function updateResponseHeaderAPI(data) {
   return myAxios2({
     url: "/respHeaderCtrl/update",
     method: "post",
@@ -8,21 +8,21 @@ export function updateResponseHeader(data) {
   })
 }
 
-export function addResponseHeader(data) {
+export function addResponseHeaderAPI(data) {
   return myAxios2({
     url: "/respHeaderCtrl/add",
     method: "post",
     data
   })
 }
-export function getAllResponseHeader(data) {
+export function getAllResponseHeaderAPI(data) {
   return myAxios2({
     url: "/respHeaderCtrl/getAll",
     method: "get",
     params: data
   })
 }
-export function deleteResponseHeader(data) {
+export function deleteResponseHeaderAPI(data) {
   return myAxios2({
     url: "/respHeaderCtrl/delete",
     method: "delete",

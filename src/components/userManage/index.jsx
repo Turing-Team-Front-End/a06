@@ -181,7 +181,6 @@ function userManage(props) {
             />
           )
         }))
-        // console.log(newData)
         setData(newData)
         setTotal(res.data.data.total)
       } else {

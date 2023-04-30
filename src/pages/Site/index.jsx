@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react"
 import BucketTable from "../../components/bucketTable"
 import Popover from "../../components/popover"
+import AddNewResponseHeader from "../../components/addNewResponseHeader"
+import UpdateResponseHeader from "../../components/updateResponseHeader"
 import UpdateUsername from "../../components/updateUsername"
 import UpdateEmail from "../../components/updateEmail"
 import UpdatePassword from "../../components/updatePassword"
 import "./index.css"
 import { logoutAPI } from "../../request/api/login"
 import { userGetAPI, getLoginRecordAPI } from "../../request/api/user"
+import {
+  updateResponseHeaderAPI,
+  getAllResponseHeaderAPI,
+  deleteResponseHeaderAPI
+} from "../../request/api/respHeaderCtrl"
+
 import {
   Avatar,
   message,
@@ -15,14 +23,14 @@ import {
   Pagination,
   Button,
   Popconfirm,
-  Typography
+  Typography,
+  Radio
 } from "antd"
 const { Text } = Typography
 import { useNavigate } from "react-router-dom"
 
 import icon from "../../assets/refresh-cw.svg"
 import caster from "../../assets/caster.jpg"
-import logo1 from "../../assets/turingLogo.svg"
 const columns = [
   {
     title: "时间",
@@ -101,6 +109,30 @@ export default function Site() {
   const [pageSize, setPageSize] = useState(5)
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const updateResponseHeader = async (data) => {
+    try {
+      let data = { id: id, uid: uid, respheader: respheader, value: "" }
+      let res = await updateResponseHeaderAPI(data)
+      if (res.data.code === 200) {
+        message.success("修改成功！")
+        getAllResponseHeader()
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  const getAllResponseHeader = async () => {
+    let data = { page: 1, size: 5 }
+    try {
+      let res = await getAllResponseHeaderAPI(data)
+      if (res.data.code === 200) {
+        setData(res.data.data)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const getUserData = async () => {
     try {
       let res = await userGetAPI()
@@ -178,9 +210,30 @@ export default function Site() {
               <img src={icon} alt='' />
             </div>
           </div>
+          <div className='site-content-own-extra'>
+            <div className='site-switch'>
+              <Radio.Group defaultValue='a' size='mid' buttonStyle='solid'>
+                <Radio.Button value='a'>IP</Radio.Button>
+                <Radio.Button value='b'>响应头</Radio.Button>
+              </Radio.Group>
+            </div>
+            <div>
+              <Popover
+                name='添加响应头'
+                button={false}
+                mode={
+                  <Button className='site-add-response-header'>
+                    添加响应头
+                  </Button>
+                }
+                content={<AddNewResponseHeader />}
+              />
+            </div>
+          </div>
         </div>
         <div className='site-content-main'>
           <div className='site-left'>
+            d
             <div className='site-content-main-img'>
               <div className='site-content-main-img-icon'>
                 <Avatar size={180} src={caster} />
