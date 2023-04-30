@@ -12,7 +12,7 @@ export function addResponseHeaderAPI(data) {
   return myAxios2({
     url: "/respHeaderCtrl/add",
     method: "post",
-    data
+    params: data
   })
 }
 export function getAllResponseHeaderAPI(data) {

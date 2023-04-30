@@ -30,15 +30,6 @@ export default function addNewResponseHeader() {
     } catch (error) {
       console.error(error)
     }
-    try {
-      let res = await addResponseHeaderAPI(data)
-      if (res.data.code === 200) {
-        message.success("添加成功！")
-        getAllResponseHeader()
-      }
-    } catch (error) {
-      console.error(error)
-    }
   }
   const onFinishFailed = (errorInfo) => {
     console.log(errorInfo)
