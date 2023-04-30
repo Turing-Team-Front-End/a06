@@ -6,11 +6,11 @@ import UpdateResponseHeader from "../../components/updateResponseHeader"
 import UpdateUsername from "../../components/updateUsername"
 import UpdateEmail from "../../components/updateEmail"
 import UpdatePassword from "../../components/updatePassword"
+import DeleteWarning from "../../components/deleteWarning"
 import "./index.css"
 import { logoutAPI } from "../../request/api/login"
 import { userGetAPI, getLoginRecordAPI } from "../../request/api/user"
 import {
-  updateResponseHeaderAPI,
   getAllResponseHeaderAPI,
   deleteResponseHeaderAPI
 } from "../../request/api/respHeaderCtrl"
@@ -28,10 +28,9 @@ import {
 } from "antd"
 const { Text } = Typography
 import { useNavigate } from "react-router-dom"
-
 import icon from "../../assets/refresh-cw.svg"
 import caster from "../../assets/caster.jpg"
-const columns = [
+const columns1 = [
   {
     title: "时间",
     dataIndex: "time",
@@ -100,6 +99,80 @@ const columns = [
     onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
   }
 ]
+const columns2 = [
+  {
+    title: "响应头",
+    dataIndex: "respheader",
+    key: "respheader",
+    width: "calc(25vw - 43px)",
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B",
+        borderRadius: "8px 0 0 8px",
+        borderColor: "#dde1ff"
+      }
+    }),
+    onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+  },
+  {
+    title: "响应值",
+    dataIndex: "value",
+    key: "value",
+    width: "calc(25vw - 43px)",
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B",
+        borderColor: "#dde1ff"
+      }
+    }),
+    onCell: () => ({ style: { backgroundColor: "#f4f5fb" } })
+  },
+  {
+    title: "操作",
+    key: "operation",
+    width: "calc(25vw - 43px)",
+    align: "center",
+
+    onHeaderCell: () => ({
+      style: {
+        backgroundColor: "#dde1ff",
+        fontSize: "20px",
+        fontWeight: 400,
+        color: "#73768B",
+        borderRadius: "0 8px 8px 0"
+      }
+    }),
+    onCell: () => ({ style: { backgroundColor: "#f4f5fb" } }),
+    render: (text, record, index) => (
+      // console.log(record, index),
+      <Space size='middle'>
+        <Popover
+          name={
+            <>
+              响应头更新
+              <div className='bucket-user-title'>/ {record.respheader}</div>
+            </>
+          }
+          record={record}
+          mode={<a style={{ color: "#3452CE" }}>更新</a>}
+          content={<UpdateResponseHeader record={record} />}
+        />
+        <DeleteWarning
+          name='提示'
+          button={false}
+          record={record}
+          mode={<a style={{ color: "#BA1A1A" }}>删除</a>}
+        />
+      </Space>
+    )
+  }
+]
 export default function Site() {
   const [id, setId] = useState("")
   const [email, setEmail] = useState("")
@@ -108,25 +181,16 @@ export default function Site() {
   const [current, setCurrent] = useState(1)
   const [pageSize, setPageSize] = useState(5)
   const [total, setTotal] = useState(0)
+  const [currentList, setCurrentList] = useState("IP")
   const [isLoading, setIsLoading] = useState(true)
-  const updateResponseHeader = async (data) => {
-    try {
-      let data = { id: id, uid: uid, respheader: respheader, value: "" }
-      let res = await updateResponseHeaderAPI(data)
-      if (res.data.code === 200) {
-        message.success("修改成功！")
-        getAllResponseHeader()
-      }
-    } catch (error) {
-      console.error(error)
-    }
-  }
   const getAllResponseHeader = async () => {
-    let data = { page: 1, size: 5 }
+    let data = { page: current, size: pageSize }
     try {
       let res = await getAllResponseHeaderAPI(data)
+      console.log(res)
       if (res.data.code === 200) {
-        setData(res.data.data)
+        setData(res.data.data.records)
+        setTotal(res.data.data.total)
       }
     } catch (error) {
       console.error(error)
@@ -169,11 +233,21 @@ export default function Site() {
   const changePage = (page) => {
     setCurrent(page)
   }
+  const listSwitch = async (e) => {
+    setCurrent(1)
+    setCurrentList(e.target.value)
+    if (e.target.value === "IP") {
+      await getUserLoginData()
+    } else {
+      await getAllResponseHeader()
+    }
+  }
   useEffect(() => {
     getUserData()
   }, [])
   useEffect(() => {
-    getUserLoginData()
+    if (currentList === "IP") getUserLoginData()
+    else getAllResponseHeader()
   }, [current])
 
   let navigate = useNavigate()
@@ -212,9 +286,16 @@ export default function Site() {
           </div>
           <div className='site-content-own-extra'>
             <div className='site-switch'>
-              <Radio.Group defaultValue='a' size='mid' buttonStyle='solid'>
-                <Radio.Button value='a'>IP</Radio.Button>
-                <Radio.Button value='b'>响应头</Radio.Button>
+              <Radio.Group
+                defaultValue='IP'
+                size='mid'
+                buttonStyle='solid'
+                onChange={(e) => {
+                  listSwitch(e)
+                }}
+              >
+                <Radio.Button value='IP'>IP</Radio.Button>
+                <Radio.Button value='response'>响应头</Radio.Button>
               </Radio.Group>
             </div>
             <div>
@@ -233,7 +314,6 @@ export default function Site() {
         </div>
         <div className='site-content-main'>
           <div className='site-left'>
-            d
             <div className='site-content-main-img'>
               <div className='site-content-main-img-icon'>
                 <Avatar size={180} src={caster} />
@@ -367,7 +447,10 @@ export default function Site() {
           </div>
           <div className='site-right'>
             <Spin tip='Loading' spinning={isLoading}>
-              <BucketTable columns={columns} data={data} />
+              <BucketTable
+                columns={currentList === "IP" ? columns1 : columns2}
+                data={data}
+              />
               <Pagination
                 className='site-pagination'
                 current={current}
